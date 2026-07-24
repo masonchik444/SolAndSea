@@ -350,7 +350,11 @@
     background:var(--paper-raised); border:1px solid var(--line); border-radius:var(--radius);
     overflow:hidden; box-shadow:var(--shadow);
   }
-  .card-media{ aspect-ratio:16/10; position:relative; }
+  .card-media{
+    aspect-ratio:16/10; position:relative;
+    background-image:var(--photo), var(--fallback);
+    background-size:cover; background-position:center; background-repeat:no-repeat;
+  }
   .card-media span{
     position:absolute; top:12px; left:12px; background:rgba(0,0,0,0.35); color:#fff;
     font-size:0.7rem; letter-spacing:0.06em; text-transform:uppercase; padding:5px 10px; border-radius:999px;
@@ -706,7 +710,8 @@
     </div>
     <div class="cards">
       <div class="card">
-        <div class="card-media" style="background:linear-gradient(135deg,#c0466b,#e08a3f)"><span lang-es>Próximamente</span><span lang-en>Coming soon</span></div>
+        <div class="card-media"
+             style="--photo:url('../assets/hero/exc1.jpg'); --fallback:linear-gradient(135deg,#c0466b,#e08a3f);"><span lang-es>Próximamente</span><span lang-en>Coming soon</span></div>
         <div class="card-body">
           <h3>Castillo de Santa Bárbara</h3>
           <p><span lang-es>Visita guiada con vistas panorámicas de la bahía de Alicante.</span><span lang-en>Guided visit with panoramic views over Alicante bay.</span></p>
@@ -714,7 +719,9 @@
         </div>
       </div>
       <div class="card">
-        <div class="card-media" style="background:linear-gradient(135deg,#e08a3f,#1c8a86)"><span lang-es>Próximamente</span><span lang-en>Coming soon</span></div>
+        <!-- OJO: exc2.jpg muestra Sevilla, no el casco antiguo de Alicante. Sustituir. -->
+        <div class="card-media"
+             style="--photo:url('../assets/hero/exc2.jpg'); --fallback:linear-gradient(135deg,#e08a3f,#1c8a86);"><span lang-es>Próximamente</span><span lang-en>Coming soon</span></div>
         <div class="card-body">
           <h3><span lang-es>Casco Antiguo</span><span lang-en>Old Town Walk</span></h3>
           <p><span lang-es>Recorrido a pie por el Barrio de Santa Cruz y la Explanada.</span><span lang-en>Walking route through Santa Cruz quarter and the Explanada.</span></p>
@@ -722,7 +729,8 @@
         </div>
       </div>
       <div class="card">
-        <div class="card-media" style="background:linear-gradient(135deg,#1c8a86,#1d4d84)"><span lang-es>Próximamente</span><span lang-en>Coming soon</span></div>
+        <div class="card-media"
+             style="--photo:url('../assets/hero/exc3.jpg'); --fallback:linear-gradient(135deg,#1c8a86,#1d4d84);"><span lang-es>Próximamente</span><span lang-en>Coming soon</span></div>
         <div class="card-body">
           <h3>MARQ</h3>
           <p><span lang-es>Museo Arqueológico de Alicante, entrada y visita guiada.</span><span lang-en>Alicante Archaeological Museum, entry and guided tour.</span></p>
