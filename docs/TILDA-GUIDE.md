@@ -26,7 +26,7 @@
 | Hero | Обложка с галереей фотографий — см. отдельный раздел «3.1» ниже |
 | Cómo funciona | Блок "3 колонки с иконками/номерами" (Zero Block → Columns) |
 | Para hoteles / Para atracciones | Zero Block с двумя переключаемыми группами, или просто два блока подряд с подзаголовками "Para hoteles" / "Para atracciones" (если табы делать сложно — на первой версии проще сделать статично, без переключения) |
-| Excursiones | Блок "Cards"/"Grid" — 3 карточки с фото/цветной подложкой, заголовком, описанием |
+| Excursiones | Блок "Cards"/"Grid" — 3 карточки, фото берутся из `assets/hero/exc1–exc3.jpg` |
 | Cómo empezar | 2 колонки с текстом и кнопкой на форму |
 | Contacto | Блок "Form" — поля: Nombre, Empresa, Email, Mensaje + выбор Hotel/Atracción |
 | Footer | Стандартный Footer-блок Tilda |
