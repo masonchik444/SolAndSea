@@ -12,7 +12,6 @@
 | Cómo funciona | How it works |
 | Hoteles y atracciones | Hotels & attractions |
 | Excursiones | Excursions |
-| Sobre nosotros | About |
 | Contacto | Contact |
 | Solicitar información *(botón)* | Get in touch *(button)* |
 
@@ -21,8 +20,13 @@
 ## Hero
 
 **H1** (единственная надпись на фото, над поисковой строкой)
-- ES: Excursiones y tours originales por todo el mundo
-- EN: Unusual excursions and tours around the world
+- ES: Excursiones que dan ingresos a hoteles y visitantes a atracciones
+- EN: Excursions that bring revenue to hotels and visitors to attractions
+
+**Две двери / Two doors** (под поисковой строкой, ведут в секцию
+«Para quién trabajamos» и сразу открывают нужную вкладку)
+- ES: Soy hotel · Soy atracción
+- EN: I'm a hotel · I'm an attraction
 
 **Buscador central / Central search bar**
 - Placeholder ES: ¿A dónde vamos?
@@ -126,26 +130,15 @@ cada atracción.
 
 ---
 
-## Sobre nosotros / About
-
-- **ES:** Nacidos en Alicante — SolAndSea nace en Alicante para acercar el
-  patrimonio y las atracciones de la Costa Blanca a los hoteles de la
-  región, creando experiencias sencillas de vender y de disfrutar.
-- **EN:** Born in Alicante — SolAndSea was founded in Alicante to bring the
-  heritage and attractions of the Costa Blanca closer to the region's
-  hotels, creating experiences that are simple to sell and to enjoy.
-
----
-
 ## Contacto / Contact
 
 **Formulario:** Nombre / Name · Soy… (Hotel / Atracción · Hotel / Attraction)
 · Empresa / Company · Correo electrónico / Email · Mensaje / Message ·
 *(botón)* Enviar solicitud / Send request
 
-**Datos de contacto** *(pendientes — ver `PROJECT-BRIEF.md`)*
-- Email: hola@solandsea.example *(placeholder)*
-- Teléfono / WhatsApp: +34 6XX XXX XXX *(placeholder)*
+**Datos de contacto**
+- Email: doremisolandsea@gmail.com
+- Teléfono / WhatsApp: +34 613 54 40 24
 - Ubicación / Location: Alicante, España / Alicante, Spain
 
 ---

@@ -244,6 +244,18 @@
   .search-item small{ display:block; color:var(--ink-soft); font-size:0.78rem; margin-top:1px; }
   .search-empty{ padding:18px 12px; font-size:0.9rem; color:var(--ink-soft); }
 
+  .hero-doors{ display:flex; gap:12px; margin-top:20px; flex-wrap:wrap; justify-content:center; }
+  .door{
+    display:inline-flex; align-items:center; justify-content:center;
+    padding:11px 24px; border-radius:999px; text-decoration:none;
+    font-size:0.92rem; font-weight:700; color:#fff;
+    background:rgba(255,255,255,0.14); border:1px solid rgba(255,255,255,0.42);
+    backdrop-filter:blur(6px);
+    transition:background .15s, border-color .15s, transform .15s;
+  }
+  .door:hover{ background:rgba(255,255,255,0.24); border-color:#fff; transform:translateY(-1px); }
+  .door:focus-visible{ outline:2px solid #fff; outline-offset:3px; }
+
   /* firma del lugar, abajo a la derecha / place caption, bottom right */
   .hero-caption{
     position:absolute; right:32px; bottom:78px; z-index:2;
@@ -358,11 +370,6 @@
   .start-card h3{ font-size:1.2rem; margin-bottom:10px; }
   .start-card p{ margin-bottom:20px; font-size:0.94rem; }
 
-  .about-grid{ display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center; }
-  .about-art{
-    aspect-ratio:5/4; border-radius:var(--radius); background:var(--wave-gradient); box-shadow:var(--shadow);
-  }
-
   .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:56px; }
   .field{ display:flex; flex-direction:column; gap:6px; margin-bottom:16px; }
   .field label{ font-size:0.82rem; font-weight:700; color:var(--ink); }
@@ -384,6 +391,8 @@
   }
   .info-item strong{ display:block; font-size:0.92rem; }
   .info-item span{ font-size:0.86rem; }
+  .info-item a{ font-size:0.86rem; color:var(--ink-soft); text-decoration:none; }
+  .info-item a:hover, .info-item a:focus-visible{ color:var(--accent); text-decoration:underline; }
 
   footer{ border-top:1px solid var(--line); padding:40px 0; }
   .footer-inner{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
@@ -411,7 +420,7 @@
   }
 
   @media (max-width:880px){
-    .steps, .tab-panel, .cards, .start-grid, .about-grid, .contact-grid{
+    .steps, .tab-panel, .cards, .start-grid, .contact-grid{
       grid-template-columns:1fr;
     }
     .step{ padding-right:0; margin-bottom:28px; }
@@ -468,7 +477,6 @@
       <a href="#como-funciona"><span lang-es>Cómo funciona</span><span lang-en>How it works</span></a>
       <a href="#audiencias"><span lang-es>Hoteles y atracciones</span><span lang-en>Hotels &amp; attractions</span></a>
       <a href="#excursiones"><span lang-es>Excursiones</span><span lang-en>Excursions</span></a>
-      <a href="#nosotros"><span lang-es>Sobre nosotros</span><span lang-en>About</span></a>
       <a href="#contacto"><span lang-es>Contacto</span><span lang-en>Contact</span></a>
     </nav>
     <div class="header-actions">
@@ -499,8 +507,8 @@
 
   <div class="wrap hero-content">
     <h1>
-      <span lang-es>Excursiones y tours originales por todo el mundo</span>
-      <span lang-en>Unusual excursions and tours around the world</span>
+      <span lang-es>Excursiones que dan ingresos a hoteles y visitantes a atracciones</span>
+      <span lang-en>Excursions that bring revenue to hotels and visitors to attractions</span>
     </h1>
 
     <div class="hero-search" role="search">
@@ -564,6 +572,15 @@
       </div>
     </div>
 
+    <!-- dos puertas: cada público entra por la suya / two doors, one per audience -->
+    <div class="hero-doors">
+      <a href="#audiencias" class="door" onclick="setTab('hoteles')">
+        <span lang-es>Soy hotel</span><span lang-en>I'm a hotel</span>
+      </a>
+      <a href="#audiencias" class="door" onclick="setTab('atracciones')">
+        <span lang-es>Soy atracción</span><span lang-en>I'm an attraction</span>
+      </a>
+    </div>
   </div>
 
   <!-- Nombre del lugar de la foto actual / place name of the current photo -->
@@ -737,20 +754,6 @@
   </div>
 </section>
 
-<section id="nosotros">
-  <div class="wrap about-grid">
-    <div class="about-art"></div>
-    <div>
-      <p class="eyebrow"><span lang-es>Quiénes somos</span><span lang-en>Who we are</span></p>
-      <h2 style="margin-top:10px;"><span lang-es>Nacidos en Alicante</span><span lang-en>Born in Alicante</span></h2>
-      <p style="margin-top:16px; font-size:1rem;">
-        <span lang-es>SolAndSea nace en Alicante para acercar el patrimonio y las atracciones de la Costa Blanca a los hoteles de la región, creando experiencias sencillas de vender y de disfrutar.</span>
-        <span lang-en>SolAndSea was founded in Alicante to bring the heritage and attractions of the Costa Blanca closer to the region's hotels, creating experiences that are simple to sell and to enjoy.</span>
-      </p>
-    </div>
-  </div>
-</section>
-
 <section class="section-alt" id="contacto">
   <div class="wrap contact-grid">
     <div>
@@ -786,11 +789,11 @@
     <div class="contact-info">
       <div class="info-item">
         <div class="info-icon">@</div>
-        <div><strong>Email</strong><span>hola@solandsea.example</span></div>
+        <div><strong>Email</strong><a href="mailto:doremisolandsea@gmail.com">doremisolandsea@gmail.com</a></div>
       </div>
       <div class="info-item">
         <div class="info-icon">✆</div>
-        <div><strong><span lang-es>Teléfono / WhatsApp</span><span lang-en>Phone / WhatsApp</span></strong><span>+34 6XX XXX XXX</span></div>
+        <div><strong><span lang-es>Teléfono / WhatsApp</span><span lang-en>Phone / WhatsApp</span></strong><a href="tel:+34613544024">+34 613 54 40 24</a></div>
       </div>
       <div class="info-item">
         <div class="info-icon">◎</div>
