@@ -248,21 +248,6 @@
   .search-item small{ display:block; color:var(--ink-soft); font-size:0.78rem; margin-top:1px; }
   .search-empty{ padding:18px 12px; font-size:0.9rem; color:var(--ink-soft); }
 
-  .hero-links{ display:flex; gap:22px; margin-top:20px; flex-wrap:wrap; justify-content:center; }
-  .hero-links a{
-    color:#fff; font-size:0.9rem; text-decoration:none; padding-bottom:2px;
-    border-bottom:1px solid rgba(255,255,255,0.45); transition:border-color .15s;
-    text-shadow:0 1px 10px rgba(0,0,0,0.4);
-  }
-  .hero-links a:hover, .hero-links a:focus-visible{ border-color:#fff; outline:none; }
-
-  .hero-stats{
-    display:flex; gap:30px; margin-top:36px; justify-content:center; flex-wrap:wrap;
-  }
-  .hero-stats div{ display:flex; flex-direction:column; align-items:center; }
-  .hero-stats strong{ font-family:"Iowan Old Style",Georgia,serif; font-size:1.4rem; color:#fff; }
-  .hero-stats span{ font-size:0.76rem; color:rgba(255,255,255,0.78); margin-top:2px; }
-
   /* firma del lugar, abajo a la derecha / place caption, bottom right */
   .hero-caption{
     position:absolute; right:32px; bottom:78px; z-index:2;
@@ -438,7 +423,6 @@
     nav{ display:none; }
     .hero{ padding:calc(var(--header-h) + 56px) 0 132px; min-height:min(680px, 92svh); }
     .hero-caption{ right:20px; bottom:70px; }
-    .hero-stats{ gap:22px; margin-top:28px; }
   }
 
   @media (max-width:620px){
@@ -450,9 +434,7 @@
     .search-bar input{ padding:6px 4px; }
     .search-go{ width:100%; justify-content:center; }
     .hero .lede{ font-size:0.98rem; }
-    /* en móvil el hero se queda con foto + buscador + lugar */
-    .hero-stats{ display:none; }
-    .hero{ padding-bottom:180px; }
+    .hero{ padding-bottom:150px; }
     .hero-caption{ bottom:64px; }
     .header-actions .btn{ padding:8px 12px; font-size:0.76rem; }
     .lang-toggle button{ padding:4px 8px; font-size:0.7rem; }
@@ -521,7 +503,6 @@
   <div class="hero-scrim" aria-hidden="true"></div>
 
   <div class="wrap hero-content">
-    <p class="eyebrow"><span lang-es>Turismo B2B · Costa Blanca, Alicante</span><span lang-en>B2B Tourism · Costa Blanca, Alicante</span></p>
     <h1>
       <span lang-es>Excursiones que dan ingresos a hoteles y visitantes a museos</span>
       <span lang-en>Excursions that bring revenue to hotels and visitors to museums</span>
@@ -540,9 +521,9 @@
         </span>
         <input id="hero-q" type="text" autocomplete="off" role="combobox"
                aria-expanded="false" aria-controls="search-panel" aria-autocomplete="list"
-               data-ph-es="¿Qué destino o excursión busca?"
-               data-ph-en="Which destination or excursion are you looking for?"
-               placeholder="¿Qué destino o excursión busca?"
+               data-ph-es="¿A dónde vamos?"
+               data-ph-en="Where shall we go?"
+               placeholder="¿A dónde vamos?"
                aria-label="Buscar destinos y excursiones"
                onfocus="openSearch()" onclick="openSearch()" oninput="filterSearch()" onkeydown="searchKeys(event)" />
         <button type="submit" class="btn btn-primary search-go">
@@ -592,16 +573,6 @@
       </div>
     </div>
 
-    <div class="hero-links">
-      <a href="#contacto"><span lang-es>Convertirse en socio</span><span lang-en>Become a partner</span></a>
-      <a href="#como-funciona"><span lang-es>Ver cómo funciona</span><span lang-en>See how it works</span></a>
-    </div>
-
-    <div class="hero-stats">
-      <div><strong>0</strong><span lang-es>socios activos — ronda de lanzamiento</span><span lang-en>active partners — launch round</span></div>
-      <div><strong>1</strong><span lang-es>ciudad: Alicante</span><span lang-en>city: Alicante</span></div>
-      <div><strong>2</strong><span lang-es>idiomas de trabajo</span><span lang-en>working languages</span></div>
-    </div>
   </div>
 
   <!-- Nombre del lugar de la foto actual / place name of the current photo -->
@@ -870,7 +841,7 @@
   }
 
   /* ---------- Galería del hero / hero photo gallery ---------- */
-  var SLIDE_MS = 7000;
+  var SLIDE_MS = 5000;
   var slides = document.querySelectorAll('.hero-slide');
   var places = document.querySelectorAll('.hero-place b');
   var dots   = document.querySelectorAll('.hero-dots button');

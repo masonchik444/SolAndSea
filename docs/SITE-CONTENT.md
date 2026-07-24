@@ -20,10 +20,6 @@
 
 ## Hero
 
-**Eyebrow**
-- ES: Turismo B2B · Costa Blanca, Alicante
-- EN: B2B Tourism · Costa Blanca, Alicante
-
 **H1**
 - ES: Excursiones que dan ingresos a hoteles y visitantes a museos
 - EN: Excursions that bring revenue to hotels and visitors to museums
@@ -36,8 +32,8 @@
   into ready-made programs hotels can offer their guests.
 
 **Buscador central / Central search bar**
-- Placeholder ES: ¿Qué destino o excursión busca?
-- Placeholder EN: Which destination or excursion are you looking for?
+- Placeholder ES: ¿A dónde vamos?
+- Placeholder EN: Where shall we go?
 - Botón ES: Buscar · EN: Search
 - Grupos de sugerencias: Destinos / Destinations · Excursiones / Excursions
 - Sin resultados — ES: Nada encontrado todavía — escríbanos y lo preparamos.
@@ -58,13 +54,11 @@
 - Eyebrow ES: En la foto · EN: In this photo
 - Подписи (одинаковые в обоих языках): Alicante · Elche · Torrevieja · Mar Menor
 
-**CTA enlaces / links** (под поисковой строкой)
-- ES: Convertirse en socio / Ver cómo funciona
-- EN: Become a partner / See how it works
-
-**Stats** (placeholder hasta tener datos reales)
-- ES: 0 socios activos — ronda de lanzamiento · 1 ciudad: Alicante · 2 idiomas de trabajo
-- EN: 0 active partners — launch round · 1 city: Alicante · 2 working languages
+Больше на фотографии ничего не выводится: эйбрау «Turismo B2B · Costa
+Blanca», ссылки «Convertirse en socio / Ver cómo funciona» и строка с
+цифрами (socios activos · ciudad · idiomas) убраны из hero — первый экран
+это фото, заголовок, подзаголовок и поиск. Путь к заявке остаётся через
+кнопку в шапке и секцию «Cómo empezar a colaborar».
 
 ---
 
