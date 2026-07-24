@@ -19,6 +19,7 @@ B2B-туроператор в Аликанте (Коста-Бланка). Мы �
 └── docs/                    # Контекст проекта: бриф, тексты, дизайн, гайд по Tilda
     ├── PROJECT-BRIEF.md
     ├── SITE-CONTENT.md
+    ├── PARTNER-OUTREACH.md
     ├── DESIGN.md
     └── TILDA-GUIDE.md
 ```
@@ -34,6 +35,8 @@ B2B-туроператор в Аликанте (Коста-Бланка). Мы �
    [`docs/TILDA-GUIDE.md`](docs/TILDA-GUIDE.md).
 4. Держаться палитры и типографики из [`docs/DESIGN.md`](docs/DESIGN.md),
    чтобы сайт в Tilda выглядел так же, как макет.
+5. Для выхода на туристические объекты взять готовые письма и скрипты из
+   [`docs/PARTNER-OUTREACH.md`](docs/PARTNER-OUTREACH.md).
 
 ## Статус
 
