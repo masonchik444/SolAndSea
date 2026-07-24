@@ -12,7 +12,6 @@
 | Cómo funciona | How it works |
 | Hoteles y atracciones | Hotels & attractions |
 | Excursiones | Excursions |
-| Sobre nosotros | About |
 | Contacto | Contact |
 | Solicitar información *(botón)* | Get in touch *(button)* |
 
@@ -20,24 +19,18 @@
 
 ## Hero
 
-**Eyebrow**
-- ES: Turismo B2B · Costa Blanca, Alicante
-- EN: B2B Tourism · Costa Blanca, Alicante
+**H1** (единственная надпись на фото, над поисковой строкой)
+- ES: Excursiones que dan ingresos a hoteles y visitantes a atracciones
+- EN: Excursions that bring revenue to hotels and visitors to attractions
 
-**H1**
-- ES: Excursiones que dan ingresos a hoteles y visitantes a museos
-- EN: Excursions that bring revenue to hotels and visitors to museums
-
-**Lede**
-- ES: Negociamos tarifas directamente con las atracciones de Alicante y las
-  convertimos en programas listos para que los hoteles se los ofrezcan a sus
-  huéspedes.
-- EN: We negotiate rates directly with Alicante's attractions and turn them
-  into ready-made programs hotels can offer their guests.
+**Две двери / Two doors** (под поисковой строкой, ведут в секцию
+«Para quién trabajamos» и сразу открывают нужную вкладку)
+- ES: Soy hotel · Soy atracción
+- EN: I'm a hotel · I'm an attraction
 
 **Buscador central / Central search bar**
-- Placeholder ES: ¿Qué destino o excursión busca?
-- Placeholder EN: Which destination or excursion are you looking for?
+- Placeholder ES: ¿A dónde vamos?
+- Placeholder EN: Where shall we go?
 - Botón ES: Buscar · EN: Search
 - Grupos de sugerencias: Destinos / Destinations · Excursiones / Excursions
 - Sin resultados — ES: Nada encontrado todavía — escríbanos y lo preparamos.
@@ -58,13 +51,11 @@
 - Eyebrow ES: En la foto · EN: In this photo
 - Подписи (одинаковые в обоих языках): Alicante · Elche · Torrevieja · Mar Menor
 
-**CTA enlaces / links** (под поисковой строкой)
-- ES: Convertirse en socio / Ver cómo funciona
-- EN: Become a partner / See how it works
-
-**Stats** (placeholder hasta tener datos reales)
-- ES: 0 socios activos — ronda de lanzamiento · 1 ciudad: Alicante · 2 idiomas de trabajo
-- EN: 0 active partners — launch round · 1 city: Alicante · 2 working languages
+Больше на фотографии ничего не выводится: эйбрау «Turismo B2B · Costa
+Blanca», ссылки «Convertirse en socio / Ver cómo funciona» и строка с
+цифрами (socios activos · ciudad · idiomas) убраны из hero — первый экран
+это фото, заголовок, подзаголовок и поиск. Путь к заявке остаётся через
+кнопку в шапке и секцию «Cómo empezar a colaborar».
 
 ---
 
@@ -139,26 +130,15 @@ cada atracción.
 
 ---
 
-## Sobre nosotros / About
-
-- **ES:** Nacidos en Alicante — SolAndSea nace en Alicante para acercar el
-  patrimonio y las atracciones de la Costa Blanca a los hoteles de la
-  región, creando experiencias sencillas de vender y de disfrutar.
-- **EN:** Born in Alicante — SolAndSea was founded in Alicante to bring the
-  heritage and attractions of the Costa Blanca closer to the region's
-  hotels, creating experiences that are simple to sell and to enjoy.
-
----
-
 ## Contacto / Contact
 
 **Formulario:** Nombre / Name · Soy… (Hotel / Atracción · Hotel / Attraction)
 · Empresa / Company · Correo electrónico / Email · Mensaje / Message ·
 *(botón)* Enviar solicitud / Send request
 
-**Datos de contacto** *(pendientes — ver `PROJECT-BRIEF.md`)*
-- Email: hola@solandsea.example *(placeholder)*
-- Teléfono / WhatsApp: +34 6XX XXX XXX *(placeholder)*
+**Datos de contacto**
+- Email: doremisolandsea@gmail.com
+- Teléfono / WhatsApp: +34 613 54 40 24
 - Ubicación / Location: Alicante, España / Alicante, Spain
 
 ---
