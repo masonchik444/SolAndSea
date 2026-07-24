@@ -20,16 +20,9 @@
 
 ## Hero
 
-**H1**
-- ES: Excursiones que dan ingresos a hoteles y visitantes a museos
-- EN: Excursions that bring revenue to hotels and visitors to museums
-
-**Lede**
-- ES: Negociamos tarifas directamente con las atracciones de Alicante y las
-  convertimos en programas listos para que los hoteles se los ofrezcan a sus
-  huéspedes.
-- EN: We negotiate rates directly with Alicante's attractions and turn them
-  into ready-made programs hotels can offer their guests.
+**H1** (единственная надпись на фото, над поисковой строкой)
+- ES: Excursiones y tours originales por todo el mundo
+- EN: Unusual excursions and tours around the world
 
 **Buscador central / Central search bar**
 - Placeholder ES: ¿A dónde vamos?
