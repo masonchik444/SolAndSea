@@ -35,7 +35,30 @@
 - EN: We negotiate rates directly with Alicante's attractions and turn them
   into ready-made programs hotels can offer their guests.
 
-**CTA botones**
+**Buscador central / Central search bar**
+- Placeholder ES: ¿Qué destino o excursión busca?
+- Placeholder EN: Which destination or excursion are you looking for?
+- Botón ES: Buscar · EN: Search
+- Grupos de sugerencias: Destinos / Destinations · Excursiones / Excursions
+- Sin resultados — ES: Nada encontrado todavía — escríbanos y lo preparamos.
+  EN: Nothing found yet — write to us and we'll put it together.
+
+| Sugerencia | ES | EN |
+|---|---|---|
+| Alicante | Castillo, casco antiguo, bodegas | Castle, old town, wineries |
+| Elche | Palmeral y jardines | Palm grove and gardens |
+| Torrevieja | Salinas y costa | Salt lakes and coast |
+| Mar Menor | Laguna y atardeceres | Lagoon and sunsets |
+| Castillo de Santa Bárbara | Visita guiada · ~2h | Guided visit · ~2h |
+| Casco Antiguo | Ruta a pie · ~1.5h | Walking route · ~1.5h |
+| MARQ | Museo Arqueológico · ~1h | Archaeological Museum · ~1h |
+
+**Galería de fotos / Photo gallery** (подпись справа снизу, меняется вместе
+с фотографией — порядок и файлы см. `assets/hero/README.md`)
+- Eyebrow ES: En la foto · EN: In this photo
+- Подписи (одинаковые в обоих языках): Alicante · Elche · Torrevieja · Mar Menor
+
+**CTA enlaces / links** (под поисковой строкой)
 - ES: Convertirse en socio / Ver cómo funciona
 - EN: Become a partner / See how it works
 
