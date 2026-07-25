@@ -45,7 +45,12 @@ Cloudflare Pages требует, чтобы домен обслуживался 
 1. В дашборде: **Add a site** → ввести `doremisolandsea.com` → выбрать план
    **Free**.
 2. Cloudflare просканирует текущие записи и покажет **два своих
-   nameserver-адреса** вида `xxx.ns.cloudflare.com` — их нужно записать.
+   nameserver-адреса**. Для этого домена выданы:
+
+   ```
+   laylah.ns.cloudflare.com
+   rick.ns.cloudflare.com
+   ```
 3. Привязать домен к проекту:
    - в варианте Workers: проект → **Settings** → **Domains & Routes** →
      **Add** → **Custom domain** → `doremisolandsea.com`, затем так же
@@ -55,10 +60,15 @@ Cloudflare Pages требует, чтобы домен обслуживался 
 ## Шаг 3. Переключить домен в Namecheap
 
 1. Войти в Namecheap → **Domain List** → напротив `doremisolandsea.com`
-   нажать **Manage**.
-2. Раздел **Nameservers**: сменить текущее значение на **Custom DNS** и
-   вписать два адреса из шага 2.
-3. Сохранить (галочка справа).
+   нажать **Manage**. Нужна первая вкладка **Domain**, не Advanced DNS.
+2. Секция **Nameservers**: в выпадающем списке вместо `Namecheap BasicDNS`
+   выбрать **Custom DNS**.
+3. В два появившихся поля вписать адреса Cloudflare, по одному в каждое:
+   `laylah.ns.cloudflare.com` и `rick.ns.cloudflare.com`. Старые
+   `dns1.registrar-servers.com` и `dns2.registrar-servers.com` при этом
+   пропадают сами — отдельно удалять не нужно.
+4. Сохранить зелёной галочкой справа.
+5. Вернуться в Cloudflare и нажать **Continue** / **Check nameservers now**.
 
 После этого DNS-зоной управляет Cloudflare, а старые записи Tilda
 (A-запись на IP Тильды и CNAME для `www`) перестают действовать. Если
