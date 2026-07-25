@@ -1,3 +1,18 @@
+<meta name="description" content="Doremi | Sol&amp;Sea — excursiones listas para vender: negociamos las tarifas con las atracciones y los hoteles las ofrecen a sus huéspedes.">
+<link rel="canonical" href="https://doremisolandsea.com/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Doremi | Sol&amp;Sea">
+<meta property="og:title" content="Doremi | Sol&amp;Sea — excursiones para hoteles y atracciones">
+<meta property="og:description" content="Negociamos las tarifas con las atracciones y las convertimos en programas listos para que los hoteles se los ofrezcan a sus huéspedes.">
+<meta property="og:url" content="https://doremisolandsea.com/">
+<meta property="og:image" content="https://doremisolandsea.com/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="es_ES">
+<meta property="og:locale:alternate" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0d1a20">
 <title>Doremi | Sol&amp;Sea — B2B Excursions Alicante</title>
 <style>
   :root{
@@ -81,18 +96,6 @@
   }
 
   .wrap{ max-width:1120px; margin:0 auto; padding:0 32px; }
-
-  /* preview banner */
-  .preview-bar{
-    background:var(--ink);
-    color:var(--paper);
-    text-align:center;
-    font-size:0.82rem;
-    padding:9px 16px;
-    letter-spacing:0.01em;
-  }
-  :root[data-theme="dark"] .preview-bar,
-  @media (prefers-color-scheme: dark){ .preview-bar{ background:#050d11; } }
 
   /* header */
   header{
@@ -336,12 +339,19 @@
   .benefit span{ font-size:0.9rem; color:var(--ink-soft); }
 
   .tab-visual{
-    border-radius:var(--radius); background:var(--wave-gradient);
+    border-radius:var(--radius);
+    background-image:var(--photo, none), var(--fallback, var(--wave-gradient));
+    background-size:cover; background-position:center; background-repeat:no-repeat;
     aspect-ratio:4/3; box-shadow:var(--shadow); position:relative; overflow:hidden;
   }
+  /* оscurecido inferior para que la firma se lea sobre cualquier foto */
+  .tab-visual::after{
+    content:""; position:absolute; left:0; right:0; bottom:0; height:45%;
+    background:linear-gradient(180deg, rgba(6,17,22,0) 0%, rgba(6,17,22,0.6) 100%);
+  }
   .tab-visual::before{
-    content:attr(data-label); position:absolute; left:20px; bottom:18px; color:#fff;
-    font-family:"Iowan Old Style",Georgia,serif; font-size:1.3rem; text-shadow:0 2px 10px rgba(0,0,0,0.25);
+    content:attr(data-label); position:absolute; left:20px; bottom:18px; z-index:1; color:#fff;
+    font-family:"Iowan Old Style",Georgia,serif; font-size:1.3rem; text-shadow:0 2px 10px rgba(0,0,0,0.35);
   }
 
   /* tour cards */
@@ -350,7 +360,11 @@
     background:var(--paper-raised); border:1px solid var(--line); border-radius:var(--radius);
     overflow:hidden; box-shadow:var(--shadow);
   }
-  .card-media{ aspect-ratio:16/10; position:relative; }
+  .card-media{
+    aspect-ratio:16/10; position:relative;
+    background-image:var(--photo, none), var(--fallback, var(--wave-gradient));
+    background-size:cover; background-position:center; background-repeat:no-repeat;
+  }
   .card-media span{
     position:absolute; top:12px; left:12px; background:rgba(0,0,0,0.35); color:#fff;
     font-size:0.7rem; letter-spacing:0.06em; text-transform:uppercase; padding:5px 10px; border-radius:999px;
@@ -450,11 +464,6 @@
   }
 </style>
 
-<div class="preview-bar">
-  <span lang-es>Vista previa de diseño — referencia visual para construir en Tilda, no es una web funcional.</span>
-  <span lang-en>Design preview — visual reference for building in Tilda, not a functional website.</span>
-</div>
-
 <header>
   <div class="wrap header-inner">
     <div class="brand">
@@ -495,13 +504,13 @@
   <!-- Galería: cada slide = una foto + su nombre de lugar (ver assets/hero/README.md) -->
   <div class="hero-gallery" aria-hidden="true">
     <div class="hero-slide is-active" data-place="Alicante"
-         style="--photo:url('../assets/hero/01-alicante.jpg'); --fallback:linear-gradient(160deg,#3c5a34 0%,#1d3a28 55%,#0d1a20 100%);"></div>
+         style="--photo:url('assets/hero/01-alicante.jpg'); --fallback:linear-gradient(160deg,#3c5a34 0%,#1d3a28 55%,#0d1a20 100%);"></div>
     <div class="hero-slide" data-place="Elche"
-         style="--photo:url('../assets/hero/02-elche.jpg'); --fallback:linear-gradient(160deg,#4a93bd 0%,#2c6b4f 55%,#12301f 100%);"></div>
+         style="--photo:url('assets/hero/02-elche.jpg'); --fallback:linear-gradient(160deg,#4a93bd 0%,#2c6b4f 55%,#12301f 100%);"></div>
     <div class="hero-slide" data-place="Torrevieja"
-         style="--photo:url('../assets/hero/03-torrevieja.jpg'); --fallback:linear-gradient(160deg,#f0a04b 0%,#c0466b 45%,#1d4d84 100%);"></div>
+         style="--photo:url('assets/hero/03-torrevieja.jpg'); --fallback:linear-gradient(160deg,#f0a04b 0%,#c0466b 45%,#1d4d84 100%);"></div>
     <div class="hero-slide" data-place="Mar Menor"
-         style="--photo:url('../assets/hero/04-mar-menor.jpg'); --fallback:linear-gradient(160deg,#e0662f 0%,#8e2c3f 38%,#2b1526 72%,#0d1a20 100%);"></div>
+         style="--photo:url('assets/hero/04-mar-menor.jpg'); --fallback:linear-gradient(160deg,#e0662f 0%,#8e2c3f 38%,#2b1526 72%,#0d1a20 100%);"></div>
   </div>
   <div class="hero-scrim" aria-hidden="true"></div>
 
@@ -666,7 +675,8 @@
           </div>
         </div>
       </div>
-      <div class="tab-visual" data-label="Hoteles · Alicante"></div>
+      <div class="tab-visual" data-label="Hoteles · Alicante"
+           style="--photo:url('assets/hero/hotel1.jpg');"></div>
     </div>
 
     <div class="tab-panel" data-panel="atracciones">
@@ -693,7 +703,8 @@
           </div>
         </div>
       </div>
-      <div class="tab-visual" data-label="Atracciones · Alicante"></div>
+      <div class="tab-visual" data-label="Atracciones · Alicante"
+           style="--photo:url('assets/hero/atr1.jpg');"></div>
     </div>
   </div>
 </section>
@@ -706,7 +717,7 @@
     </div>
     <div class="cards">
       <div class="card">
-        <div class="card-media" style="background:linear-gradient(135deg,#c0466b,#e08a3f)"><span lang-es>Próximamente</span><span lang-en>Coming soon</span></div>
+        <div class="card-media" style="--photo:url('assets/hero/exc1.jpg'); --fallback:linear-gradient(135deg,#c0466b,#e08a3f);"><span lang-es>Próximamente</span><span lang-en>Coming soon</span></div>
         <div class="card-body">
           <h3>Castillo de Santa Bárbara</h3>
           <p><span lang-es>Visita guiada con vistas panorámicas de la bahía de Alicante.</span><span lang-en>Guided visit with panoramic views over Alicante bay.</span></p>
@@ -714,7 +725,7 @@
         </div>
       </div>
       <div class="card">
-        <div class="card-media" style="background:linear-gradient(135deg,#e08a3f,#1c8a86)"><span lang-es>Próximamente</span><span lang-en>Coming soon</span></div>
+        <div class="card-media" style="--photo:url('assets/hero/exc2.jpg'); --fallback:linear-gradient(135deg,#e08a3f,#1c8a86);"><span lang-es>Próximamente</span><span lang-en>Coming soon</span></div>
         <div class="card-body">
           <h3><span lang-es>Casco Antiguo</span><span lang-en>Old Town Walk</span></h3>
           <p><span lang-es>Recorrido a pie por el Barrio de Santa Cruz y la Explanada.</span><span lang-en>Walking route through Santa Cruz quarter and the Explanada.</span></p>
@@ -722,7 +733,7 @@
         </div>
       </div>
       <div class="card">
-        <div class="card-media" style="background:linear-gradient(135deg,#1c8a86,#1d4d84)"><span lang-es>Próximamente</span><span lang-en>Coming soon</span></div>
+        <div class="card-media" style="--photo:url('assets/hero/exc3.jpg'); --fallback:linear-gradient(135deg,#1c8a86,#1d4d84);"><span lang-es>Próximamente</span><span lang-en>Coming soon</span></div>
         <div class="card-body">
           <h3>MARQ</h3>
           <p><span lang-es>Museo Arqueológico de Alicante, entrada y visita guiada.</span><span lang-en>Alicante Archaeological Museum, entry and guided tour.</span></p>

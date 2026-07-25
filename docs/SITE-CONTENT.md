@@ -1,7 +1,7 @@
 # Тексты сайта (ES / EN)
 
 Источник истины для копирования в блоки Tilda. Соответствует макету
-`mockups/solandsea-mockup.html`. ES — основной язык, EN — вторая версия.
+`public/index.html`. ES — основной язык, EN — вторая версия.
 
 ---
 
@@ -47,7 +47,7 @@
 | MARQ | Museo Arqueológico · ~1h | Archaeological Museum · ~1h |
 
 **Galería de fotos / Photo gallery** (подпись справа снизу, меняется вместе
-с фотографией — порядок и файлы см. `assets/hero/README.md`)
+с фотографией — порядок и файлы см. `docs/PHOTOS.md`)
 - Eyebrow ES: En la foto · EN: In this photo
 - Подписи (одинаковые в обоих языках): Alicante · Elche · Torrevieja · Mar Menor
 
