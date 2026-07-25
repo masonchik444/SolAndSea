@@ -1,0 +1,7 @@
+# Конфиг для Cloudflare Workers: сайт без серверного кода, только статика.
+# Cloudflare берёт содержимое папки public/ и раздаёт её как сайт.
+name = "solandsea"
+compatibility_date = "2026-07-01"
+
+[assets]
+directory = "./public"

@@ -6,26 +6,37 @@
 
 ---
 
-## Шаг 1. Создать проект в Cloudflare Pages
+## Шаг 1. Создать проект в Cloudflare
 
-1. Зарегистрироваться на [dash.cloudflare.com](https://dash.cloudflare.com/)
-   (если аккаунта ещё нет).
-2. В меню слева: **Workers & Pages** → **Create** → вкладка **Pages** →
-   **Connect to Git**.
-3. Авторизовать GitHub и разрешить доступ к репозиторию
-   `masonchik444/SolAndSea`.
-4. Выбрать репозиторий, дальше настройки сборки:
+В новом дашборде Cloudflare импорт репозитория ведёт в мастер **Workers**
+(экран «Set up your application», команда `npx wrangler deploy`). Он рабочий —
+в корне репозитория лежит `wrangler.toml`, который говорит Cloudflare
+раздавать папку `public/` как статический сайт.
+
+**Вариант А — Workers (тот экран, что открывается по умолчанию)**
+
+1. Зарегистрироваться на [dash.cloudflare.com](https://dash.cloudflare.com/).
+2. Импортировать репозиторий `masonchik444/SolAndSea`, авторизовав GitHub.
+3. Поля оставить как есть:
 
    | Поле | Значение |
    |---|---|
-   | Production branch | `claude/b2b-tours-tilda-site-hpyn27` (основная ветка) |
-   | Framework preset | **None** |
-   | Build command | *оставить пустым* |
-   | Build output directory | `public` |
+   | Project name | `solandsea` (совпадает с `name` в `wrangler.toml`) |
+   | Build command | *пусто* |
+   | Deploy command | `npx wrangler deploy` |
 
-5. **Save and Deploy**. Через минуту сайт будет доступен по временному
-   адресу вида `solandsea.pages.dev` — на нём стоит всё проверить до
-   переключения домена.
+4. **Deploy**. Сайт поднимется на адресе вида `solandsea.<ваш>.workers.dev`.
+
+**Вариант Б — классический Pages**
+
+Если хочется привычного интерфейса Pages: **Workers & Pages** → **Create** →
+вкладка **Pages** → **Connect to Git**. Настройки: framework preset —
+**None**, build command — пусто, build output directory — **`public`**.
+`wrangler.toml` в этом случае просто не используется.
+
+В обоих вариантах production-веткой нужно выбрать основную ветку репозитория
+(`claude/b2b-tours-tilda-site-hpyn27`) и проверить сайт на временном адресе
+до переключения домена.
 
 ## Шаг 2. Добавить домен в Cloudflare
 
@@ -35,8 +46,11 @@ Cloudflare Pages требует, чтобы домен обслуживался 
    **Free**.
 2. Cloudflare просканирует текущие записи и покажет **два своих
    nameserver-адреса** вида `xxx.ns.cloudflare.com` — их нужно записать.
-3. В проекте Pages: **Custom domains** → **Set up a domain** →
-   `doremisolandsea.com`. Повторить для `www.doremisolandsea.com`.
+3. Привязать домен к проекту:
+   - в варианте Workers: проект → **Settings** → **Domains & Routes** →
+     **Add** → **Custom domain** → `doremisolandsea.com`, затем так же
+     `www.doremisolandsea.com`;
+   - в варианте Pages: проект → **Custom domains** → **Set up a domain**.
 
 ## Шаг 3. Переключить домен в Namecheap
 
