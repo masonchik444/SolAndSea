@@ -19,6 +19,25 @@
 <meta property="og:locale:alternate" content="ru_RU">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0d1a20">
+<link rel="preload" as="image" href="/assets/hero/01-alicante.jpg" fetchpriority="high">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script>
+  /* Язык выбирается до первой отрисовки: сохранённый выбор, иначе язык браузера. */
+  (function(){
+    try{
+      var saved = localStorage.getItem('lang');
+      var lang = saved;
+      if(!lang){
+        var nav = (navigator.languages && navigator.languages[0]) || navigator.language || 'es';
+        nav = nav.toLowerCase();
+        lang = nav.indexOf('ru') === 0 ? 'ru' : (nav.indexOf('es') === 0 ? 'es' : 'en');
+      }
+      if(lang !== 'es'){ document.documentElement.classList.add('lang-' + lang); }
+      document.documentElement.setAttribute('lang', lang);
+    }catch(e){}
+  })();
+</script>
 <title>Doremi | Sol&amp;Sea — B2B Excursions Alicante</title>
 <style>
   :root{
@@ -419,6 +438,21 @@
   .info-item a{ font-size:0.86rem; color:var(--ink-soft); text-decoration:none; }
   .info-item a:hover, .info-item a:focus-visible{ color:var(--accent); text-decoration:underline; }
 
+  /* плавающая кнопка WhatsApp: появляется, когда первый экран уже позади */
+  .wa-fab{
+    position:fixed; right:20px; bottom:20px; z-index:60;
+    width:56px; height:56px; border-radius:50%; background:#25d366;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 10px 26px -8px rgba(0,0,0,0.45);
+    opacity:0; visibility:hidden; transform:translateY(12px);
+    transition:opacity .25s, transform .25s, visibility .25s;
+  }
+  .wa-fab.is-visible{ opacity:1; visibility:visible; transform:none; }
+  .wa-fab:hover{ background:#1fbb59; }
+  .wa-fab:focus-visible{ outline:3px solid #fff; outline-offset:3px; }
+  .wa-fab svg{ width:30px; height:30px; fill:#fff; }
+  @media (max-width:620px){ .wa-fab{ right:16px; bottom:16px; width:52px; height:52px; } }
+
   /* всплывающее окно после отправки заявки */
   .modal-backdrop{
     position:fixed; inset:0; z-index:100; padding:24px;
@@ -463,9 +497,9 @@
      display:revert возвращает элементу его обычный тип отображения,
      поэтому одинаково работает и для span, и для h1/p/div. */
   [lang-en], [lang-ru]{ display:none; }
-  body.lang-en [lang-es], body.lang-ru [lang-es]{ display:none; }
-  body.lang-en [lang-en]{ display:revert; }
-  body.lang-ru [lang-ru]{ display:revert; }
+  html.lang-en [lang-es], html.lang-ru [lang-es]{ display:none; }
+  html.lang-en [lang-en]{ display:revert; }
+  html.lang-ru [lang-ru]{ display:revert; }
 
   /* con el nombre largo el menú necesita más sitio */
   @media (max-width:1150px){
@@ -512,6 +546,22 @@
     *{ transition:none !important; animation:none !important; }
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TravelAgency",
+  "name": "Doremi | Sol&Sea",
+  "url": "https://doremisolandsea.com/",
+  "logo": "https://doremisolandsea.com/apple-touch-icon.png",
+  "image": "https://doremisolandsea.com/og.jpg",
+  "email": "doremisolsea@gmail.com",
+  "telephone": "+34613544024",
+  "description": "Excursiones listas para vender: negociamos las tarifas con las atracciones y los hoteles las ofrecen a sus huéspedes.",
+  "address": { "@type": "PostalAddress", "addressLocality": "Alicante", "addressCountry": "ES" },
+  "areaServed": { "@type": "Place", "name": "Costa Blanca, Alicante" },
+  "availableLanguage": ["es", "en", "ru"]
+}
+</script>
 </head>
 <body>
 <header>
@@ -540,9 +590,9 @@
     </nav>
     <div class="header-actions">
       <div class="lang-toggle" role="group" aria-label="Language">
-        <button id="btn-es" type="button" aria-pressed="true" onclick="setLang('es')">ES</button>
-        <button id="btn-en" type="button" aria-pressed="false" onclick="setLang('en')">EN</button>
-        <button id="btn-ru" type="button" aria-pressed="false" onclick="setLang('ru')">RU</button>
+        <button id="btn-es" type="button" aria-pressed="true" onclick="setLang('es', true)">ES</button>
+        <button id="btn-en" type="button" aria-pressed="false" onclick="setLang('en', true)">EN</button>
+        <button id="btn-ru" type="button" aria-pressed="false" onclick="setLang('ru', true)">RU</button>
       </div>
       <a href="#contacto" class="btn btn-primary">
         <span lang-es>Solicitar información</span><span lang-en>Get in touch</span><span lang-ru>Оставить заявку</span>
@@ -557,11 +607,11 @@
     <div class="hero-slide is-active" data-place="Alicante"
          style="--photo:url('assets/hero/01-alicante.jpg'); --fallback:linear-gradient(160deg,#3c5a34 0%,#1d3a28 55%,#0d1a20 100%);"></div>
     <div class="hero-slide" data-place="Elche"
-         style="--photo:url('assets/hero/02-elche.jpg'); --fallback:linear-gradient(160deg,#4a93bd 0%,#2c6b4f 55%,#12301f 100%);"></div>
+         data-photo="assets/hero/02-elche.jpg" style="--fallback:linear-gradient(160deg,#4a93bd 0%,#2c6b4f 55%,#12301f 100%);"></div>
     <div class="hero-slide" data-place="Torrevieja"
-         style="--photo:url('assets/hero/03-torrevieja.jpg'); --fallback:linear-gradient(160deg,#f0a04b 0%,#c0466b 45%,#1d4d84 100%);"></div>
+         data-photo="assets/hero/03-torrevieja.jpg" style="--fallback:linear-gradient(160deg,#f0a04b 0%,#c0466b 45%,#1d4d84 100%);"></div>
     <div class="hero-slide" data-place="Mar Menor"
-         style="--photo:url('assets/hero/04-mar-menor.jpg'); --fallback:linear-gradient(160deg,#e0662f 0%,#8e2c3f 38%,#2b1526 72%,#0d1a20 100%);"></div>
+         data-photo="assets/hero/04-mar-menor.jpg" style="--fallback:linear-gradient(160deg,#e0662f 0%,#8e2c3f 38%,#2b1526 72%,#0d1a20 100%);"></div>
   </div>
   <div class="hero-scrim" aria-hidden="true"></div>
 
@@ -727,7 +777,7 @@
           </div>
         </div>
       </div>
-      <div class="tab-visual" style="--photo:url('assets/hero/hotel1.jpg');">
+      <div class="tab-visual" data-photo="assets/hero/hotel1.jpg">
         <span class="tab-visual-label"><span lang-es>Hoteles · Alicante</span><span lang-en>Hotels · Alicante</span><span lang-ru>Отели · Аликанте</span></span>
       </div>
     </div>
@@ -756,7 +806,7 @@
           </div>
         </div>
       </div>
-      <div class="tab-visual" style="--photo:url('assets/hero/atr1.jpg');">
+      <div class="tab-visual" data-photo="assets/hero/atr1.jpg">
         <span class="tab-visual-label"><span lang-es>Atracciones · Alicante</span><span lang-en>Attractions · Alicante</span><span lang-ru>Объекты · Аликанте</span></span>
       </div>
     </div>
@@ -771,7 +821,7 @@
     </div>
     <div class="cards">
       <div class="card">
-        <div class="card-media" style="--photo:url('assets/hero/exc1.jpg'); --fallback:linear-gradient(135deg,#c0466b,#e08a3f);"><span lang-es>Próximamente</span><span lang-en>Coming soon</span><span lang-ru>Скоро</span></div>
+        <div class="card-media" data-photo="assets/hero/exc1.jpg" style="--fallback:linear-gradient(135deg,#c0466b,#e08a3f);"><span lang-es>Próximamente</span><span lang-en>Coming soon</span><span lang-ru>Скоро</span></div>
         <div class="card-body">
           <h3>Castillo de Santa Bárbara</h3>
           <p><span lang-es>Visita guiada con vistas panorámicas de la bahía de Alicante.</span><span lang-en>Guided visit with panoramic views over Alicante bay.</span><span lang-ru>Экскурсия с гидом и панорамным видом на бухту Аликанте.</span></p>
@@ -779,7 +829,7 @@
         </div>
       </div>
       <div class="card">
-        <div class="card-media" style="--photo:url('assets/hero/exc2.jpg'); --fallback:linear-gradient(135deg,#e08a3f,#1c8a86);"><span lang-es>Próximamente</span><span lang-en>Coming soon</span><span lang-ru>Скоро</span></div>
+        <div class="card-media" data-photo="assets/hero/exc2.jpg" style="--fallback:linear-gradient(135deg,#e08a3f,#1c8a86);"><span lang-es>Próximamente</span><span lang-en>Coming soon</span><span lang-ru>Скоро</span></div>
         <div class="card-body">
           <h3><span lang-es>Casco Antiguo</span><span lang-en>Old Town Walk</span><span lang-ru>Старый город</span></h3>
           <p><span lang-es>Recorrido a pie por el Barrio de Santa Cruz y la Explanada.</span><span lang-en>Walking route through Santa Cruz quarter and the Explanada.</span><span lang-ru>Пешая прогулка по кварталу Санта-Крус и набережной Эспланада.</span></p>
@@ -787,7 +837,7 @@
         </div>
       </div>
       <div class="card">
-        <div class="card-media" style="--photo:url('assets/hero/exc3.jpg'); --fallback:linear-gradient(135deg,#1c8a86,#1d4d84);"><span lang-es>Próximamente</span><span lang-en>Coming soon</span><span lang-ru>Скоро</span></div>
+        <div class="card-media" data-photo="assets/hero/exc3.jpg" style="--fallback:linear-gradient(135deg,#1c8a86,#1d4d84);"><span lang-es>Próximamente</span><span lang-en>Coming soon</span><span lang-ru>Скоро</span></div>
         <div class="card-body">
           <h3>MARQ</h3>
           <p><span lang-es>Museo Arqueológico de Alicante, entrada y visita guiada.</span><span lang-en>Alicante Archaeological Museum, entry and guided tour.</span><span lang-ru>Археологический музей Аликанте: билет и экскурсия с гидом.</span></p>
@@ -831,6 +881,9 @@
         <input type="hidden" name="_next" value="https://doremisolandsea.com/">
         <!-- ловушка для спам-ботов: люди это поле не видят -->
         <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
+        <!-- письмо-подтверждение отправителю, текст на языке сайта -->
+        <input type="hidden" id="f-autoresponse" name="_autoresponse" value="Gracias por su solicitud. La hemos recibido y le responderemos en un plazo de 1–2 días laborables. Doremi | Sol&Sea, Alicante."
+               data-msg-es="Gracias por su solicitud. La hemos recibido y le responderemos en un plazo de 1–2 días laborables. Doremi | Sol&Sea, Alicante." data-msg-en="Thank you for your request. We have received it and will reply within 1–2 working days. Doremi | Sol&Sea, Alicante." data-msg-ru="Спасибо за заявку. Мы её получили и ответим в течение 1–2 рабочих дней. Doremi | Sol&Sea, Аликанте.">
         <div class="field">
           <label for="f-name"><span lang-es>Nombre</span><span lang-en>Name</span><span lang-ru>Имя</span></label>
           <input id="f-name" name="Nombre" type="text" placeholder="Ana García" required />
@@ -886,6 +939,15 @@
   </div>
 </footer>
 
+<a class="wa-fab" id="wa-link" href="https://wa.me/34613544024?text=Hola%2C%20me%20interesan%20las%20excursiones%20para%20nuestros%20hu%C3%A9spedes." target="_blank" rel="noopener"
+   aria-label="WhatsApp"
+   data-wa-es="https://wa.me/34613544024?text=Hola%2C%20me%20interesan%20las%20excursiones%20para%20nuestros%20hu%C3%A9spedes." data-wa-en="https://wa.me/34613544024?text=Hello%2C%20I%27m%20interested%20in%20excursions%20for%20our%20guests." data-wa-ru="https://wa.me/34613544024?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D1%8E%D1%82%20%D1%8D%D0%BA%D1%81%D0%BA%D1%83%D1%80%D1%81%D0%B8%D0%B8%20%D0%B4%D0%BB%D1%8F%20%D0%BD%D0%B0%D1%88%D0%B8%D1%85%20%D0%B3%D0%BE%D1%81%D1%82%D0%B5%D0%B9.">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47s1.06 2.86 1.21 3.06c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35z"/>
+    <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.02h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.17 8.17 0 0 1-1.25-4.35c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.83 2.41a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.2-8.24 8.2z"/>
+  </svg>
+</a>
+
 <div class="modal-backdrop" id="sent-modal" hidden>
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="sent-title">
     <button type="button" class="modal-close" id="sent-close" aria-label="Cerrar · Close · Закрыть">&times;</button>
@@ -911,16 +973,22 @@
 </div>
 
 <script>
-  function setLang(lang){
-    document.body.classList.toggle('lang-en', lang === 'en');
-    document.body.classList.toggle('lang-ru', lang === 'ru');
+  function setLang(lang, remember){
+    var root = document.documentElement;
+    root.classList.toggle('lang-en', lang === 'en');
+    root.classList.toggle('lang-ru', lang === 'ru');
     ['es', 'en', 'ru'].forEach(function(code){
       var btn = document.getElementById('btn-' + code);
       if(btn){ btn.setAttribute('aria-pressed', code === lang); }
     });
-    document.documentElement.setAttribute('lang', lang);
+    root.setAttribute('lang', lang);
     var q = document.getElementById('hero-q');
     if(q){ q.placeholder = q.getAttribute('data-ph-' + lang) || q.getAttribute('data-ph-es'); }
+    var wa = document.getElementById('wa-link');
+    if(wa){ wa.href = wa.getAttribute('data-wa-' + lang) || wa.getAttribute('data-wa-es'); }
+    var auto = document.getElementById('f-autoresponse');
+    if(auto){ auto.value = auto.getAttribute('data-msg-' + lang) || auto.getAttribute('data-msg-es'); }
+    if(remember){ try{ localStorage.setItem('lang', lang); }catch(e){} }
   }
   function setTab(name){
     document.querySelectorAll('.tab-btn').forEach(function(b, i){
@@ -963,6 +1031,29 @@
   window.addEventListener('pageshow', toTop);
   [50, 200, 500, 900, 1500].forEach(function(ms){ setTimeout(toTop, ms); });
 
+  /* ---------- Отложенная загрузка фотографий ----------
+     Сразу грузится только первый кадр галереи. Остальные подтягиваются,
+     когда до них доходит очередь: следующий слайд — заранее, фотографии
+     секций — при приближении к экрану. */
+  function loadPhoto(el){
+    if(!el || el.dataset.loaded) return;
+    var src = el.getAttribute('data-photo');
+    if(!src) return;
+    el.style.setProperty('--photo', "url('" + src + "')");
+    el.dataset.loaded = '1';
+  }
+  var lazyBelow = document.querySelectorAll('.card-media[data-photo], .tab-visual[data-photo]');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ loadPhoto(e.target); io.unobserve(e.target); }
+      });
+    }, { rootMargin: '400px' });
+    lazyBelow.forEach(function(el){ io.observe(el); });
+  } else {
+    lazyBelow.forEach(loadPhoto);
+  }
+
   /* ---------- Galería del hero / hero photo gallery ---------- */
   var SLIDE_MS = 5000;
   var slides = document.querySelectorAll('.hero-slide');
@@ -973,6 +1064,8 @@
 
   function setSlide(i, fromUser){
     slideIndex = (i + slides.length) % slides.length;
+    loadPhoto(slides[slideIndex]);
+    loadPhoto(slides[(slideIndex + 1) % slides.length]);
     slides.forEach(function(s, n){ s.classList.toggle('is-active', n === slideIndex); });
     places.forEach(function(p, n){ p.classList.toggle('is-active', n === slideIndex); });
     dots.forEach(function(d, n){ d.setAttribute('aria-current', n === slideIndex); });
@@ -986,6 +1079,7 @@
   }
 
   var heroEl = document.getElementById('hero');
+  loadPhoto(slides[1]);
   restartGallery();
 
   /* ---------- Buscador del hero / hero search ---------- */
@@ -1064,6 +1158,15 @@
   document.addEventListener('click', function(e){
     if(panel && !panel.hidden && !e.target.closest('.hero-search')){ closeSearch(); }
   });
+
+  /* ---------- Кнопка WhatsApp появляется ниже первого экрана ---------- */
+  var waFab = document.getElementById('wa-link');
+  function syncWa(){
+    if(!waFab || !heroEl) return;
+    waFab.classList.toggle('is-visible', window.scrollY > heroEl.offsetHeight * 0.6);
+  }
+  window.addEventListener('scroll', syncWa, { passive: true });
+  syncWa();
 
   /* ---------- Formulario: envío без перезагрузки + окно подтверждения ---------- */
   var sentModal = document.getElementById('sent-modal');
