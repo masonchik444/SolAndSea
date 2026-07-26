@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Doremi | Sol&amp;Sea — excursiones listas para vender: negociamos las tarifas con las atracciones y los hoteles las ofrecen a sus huéspedes.">
 <link rel="canonical" href="https://doremisolandsea.com/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -11,6 +16,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="es_ES">
 <meta property="og:locale:alternate" content="en_GB">
+<meta property="og:locale:alternate" content="ru_RU">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0d1a20">
 <title>Doremi | Sol&amp;Sea — B2B Excursions Alicante</title>
@@ -76,6 +82,7 @@
     overflow-x:hidden;
   }
   h1,h2,h3{
+    overflow-wrap:break-word;
     font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
     font-weight:600;
     letter-spacing:-0.01em;
@@ -349,8 +356,8 @@
     content:""; position:absolute; left:0; right:0; bottom:0; height:45%;
     background:linear-gradient(180deg, rgba(6,17,22,0) 0%, rgba(6,17,22,0.6) 100%);
   }
-  .tab-visual::before{
-    content:attr(data-label); position:absolute; left:20px; bottom:18px; z-index:1; color:#fff;
+  .tab-visual-label{
+    position:absolute; left:20px; bottom:18px; z-index:1; color:#fff;
     font-family:"Iowan Old Style",Georgia,serif; font-size:1.3rem; text-shadow:0 2px 10px rgba(0,0,0,0.35);
   }
 
@@ -414,12 +421,13 @@
   .footer-links a{ text-decoration:none; font-size:0.86rem; color:var(--ink-soft); }
   .footer-note{ font-size:0.78rem; color:var(--ink-soft); }
 
-  [lang-en]{ display:none; }
-  body.lang-en [lang-es]{ display:none; }
-  body.lang-en [lang-en]{ display:inline; }
-  body.lang-en h1[lang-en], body.lang-en h2[lang-en], body.lang-en h3[lang-en], body.lang-en p[lang-en], body.lang-en div[lang-en], body.lang-en span.block[lang-en]{ display:block; }
-  span[lang-en]{ display:none; }
-  body.lang-en span[lang-en]{ display:inline; }
+  /* Языки: ES по умолчанию, EN и RU — по классу на body.
+     display:revert возвращает элементу его обычный тип отображения,
+     поэтому одинаково работает и для span, и для h1/p/div. */
+  [lang-en], [lang-ru]{ display:none; }
+  body.lang-en [lang-es], body.lang-ru [lang-es]{ display:none; }
+  body.lang-en [lang-en]{ display:revert; }
+  body.lang-ru [lang-ru]{ display:revert; }
 
   /* con el nombre largo el menú necesita más sitio */
   @media (max-width:1150px){
@@ -454,16 +462,20 @@
     .search-go{ width:100%; justify-content:center; }
     .hero{ padding-bottom:150px; }
     .hero-caption{ bottom:64px; }
-    .header-actions .btn{ padding:8px 12px; font-size:0.76rem; }
-    .lang-toggle button{ padding:4px 8px; font-size:0.7rem; }
-    .brand-name{ font-size:0.95rem; }
+    .header-actions{ gap:8px; }
+    .header-actions .btn{ padding:7px 11px; font-size:0.72rem; }
+    .lang-toggle{ padding:2px; }
+    .lang-toggle button{ padding:4px 7px; font-size:0.66rem; letter-spacing:0; }
+    .brand-name{ font-size:0.9rem; }
+    .brand svg{ width:28px; height:28px; }
   }
 
   @media (prefers-reduced-motion: reduce){
     *{ transition:none !important; animation:none !important; }
   }
 </style>
-
+</head>
+<body>
 <header>
   <div class="wrap header-inner">
     <div class="brand">
@@ -483,18 +495,19 @@
       <span class="brand-name">Doremi | Sol&amp;Sea</span>
     </div>
     <nav>
-      <a href="#como-funciona"><span lang-es>Cómo funciona</span><span lang-en>How it works</span></a>
-      <a href="#audiencias"><span lang-es>Hoteles y atracciones</span><span lang-en>Hotels &amp; attractions</span></a>
-      <a href="#excursiones"><span lang-es>Excursiones</span><span lang-en>Excursions</span></a>
-      <a href="#contacto"><span lang-es>Contacto</span><span lang-en>Contact</span></a>
+      <a href="#como-funciona"><span lang-es>Cómo funciona</span><span lang-en>How it works</span><span lang-ru>Как это работает</span></a>
+      <a href="#audiencias"><span lang-es>Hoteles y atracciones</span><span lang-en>Hotels &amp; attractions</span><span lang-ru>Отелям и объектам</span></a>
+      <a href="#excursiones"><span lang-es>Excursiones</span><span lang-en>Excursions</span><span lang-ru>Экскурсии</span></a>
+      <a href="#contacto"><span lang-es>Contacto</span><span lang-en>Contact</span><span lang-ru>Контакты</span></a>
     </nav>
     <div class="header-actions">
       <div class="lang-toggle" role="group" aria-label="Language">
         <button id="btn-es" type="button" aria-pressed="true" onclick="setLang('es')">ES</button>
         <button id="btn-en" type="button" aria-pressed="false" onclick="setLang('en')">EN</button>
+        <button id="btn-ru" type="button" aria-pressed="false" onclick="setLang('ru')">RU</button>
       </div>
       <a href="#contacto" class="btn btn-primary">
-        <span lang-es>Solicitar información</span><span lang-en>Get in touch</span>
+        <span lang-es>Solicitar información</span><span lang-en>Get in touch</span><span lang-ru>Оставить заявку</span>
       </a>
     </div>
   </div>
@@ -517,7 +530,7 @@
   <div class="wrap hero-content">
     <h1>
       <span lang-es>Excursiones que dan ingresos a hoteles y visitantes a atracciones</span>
-      <span lang-en>Excursions that bring revenue to hotels and visitors to attractions</span>
+      <span lang-en>Excursions that bring revenue to hotels and visitors to attractions</span><span lang-ru>Экскурсии, которые приносят доход отелям и посетителей — объектам</span>
     </h1>
 
     <div class="hero-search" role="search">
@@ -531,52 +544,53 @@
                aria-expanded="false" aria-controls="search-panel" aria-autocomplete="list"
                data-ph-es="¿A dónde vamos?"
                data-ph-en="Where shall we go?"
+               data-ph-ru="Куда отправимся?"
                placeholder="¿A dónde vamos?"
                aria-label="Buscar destinos y excursiones"
                onfocus="openSearch()" onclick="openSearch()" oninput="filterSearch()" onkeydown="searchKeys(event)" />
         <button type="submit" class="btn btn-primary search-go">
-          <span lang-es>Buscar</span><span lang-en>Search</span>
+          <span lang-es>Buscar</span><span lang-en>Search</span><span lang-ru>Найти</span>
         </button>
       </form>
 
       <div class="search-panel" id="search-panel" role="listbox" hidden>
         <div class="search-group" data-group>
-          <div class="search-group-title"><span lang-es>Destinos</span><span lang-en>Destinations</span></div>
+          <div class="search-group-title"><span lang-es>Destinos</span><span lang-en>Destinations</span><span lang-ru>Направления</span></div>
           <button type="button" class="search-item" role="option" onclick="pickSearch(this)" data-target="#excursiones">
             <span class="pin" aria-hidden="true">◎</span>
-            <span>Alicante<small><span lang-es>Castillo, casco antiguo, bodegas</span><span lang-en>Castle, old town, wineries</span></small></span>
+            <span>Alicante<small><span lang-es>Castillo, casco antiguo, bodegas</span><span lang-en>Castle, old town, wineries</span><span lang-ru>Крепость, старый город, винодельни</span></small></span>
           </button>
           <button type="button" class="search-item" role="option" onclick="pickSearch(this)" data-target="#excursiones">
             <span class="pin" aria-hidden="true">◎</span>
-            <span>Elche<small><span lang-es>Palmeral y jardines</span><span lang-en>Palm grove and gardens</span></small></span>
+            <span>Elche<small><span lang-es>Palmeral y jardines</span><span lang-en>Palm grove and gardens</span><span lang-ru>Пальмовая роща и сады</span></small></span>
           </button>
           <button type="button" class="search-item" role="option" onclick="pickSearch(this)" data-target="#excursiones">
             <span class="pin" aria-hidden="true">◎</span>
-            <span>Torrevieja<small><span lang-es>Salinas y costa</span><span lang-en>Salt lakes and coast</span></small></span>
+            <span>Torrevieja<small><span lang-es>Salinas y costa</span><span lang-en>Salt lakes and coast</span><span lang-ru>Солёные озёра и побережье</span></small></span>
           </button>
           <button type="button" class="search-item" role="option" onclick="pickSearch(this)" data-target="#excursiones">
             <span class="pin" aria-hidden="true">◎</span>
-            <span>Mar Menor<small><span lang-es>Laguna y atardeceres</span><span lang-en>Lagoon and sunsets</span></small></span>
+            <span>Mar Menor<small><span lang-es>Laguna y atardeceres</span><span lang-en>Lagoon and sunsets</span><span lang-ru>Лагуна и закаты</span></small></span>
           </button>
         </div>
         <div class="search-group" data-group>
-          <div class="search-group-title"><span lang-es>Excursiones</span><span lang-en>Excursions</span></div>
+          <div class="search-group-title"><span lang-es>Excursiones</span><span lang-en>Excursions</span><span lang-ru>Экскурсии</span></div>
           <button type="button" class="search-item" role="option" onclick="pickSearch(this)" data-target="#excursiones">
             <span class="pin" aria-hidden="true">▲</span>
-            <span>Castillo de Santa Bárbara<small><span lang-es>Visita guiada · ~2h</span><span lang-en>Guided visit · ~2h</span></small></span>
+            <span>Castillo de Santa Bárbara<small><span lang-es>Visita guiada · ~2h</span><span lang-en>Guided visit · ~2h</span><span lang-ru>Экскурсия с гидом · ~2 ч</span></small></span>
           </button>
           <button type="button" class="search-item" role="option" onclick="pickSearch(this)" data-target="#excursiones">
             <span class="pin" aria-hidden="true">▲</span>
-            <span>Casco Antiguo<small><span lang-es>Ruta a pie · ~1.5h</span><span lang-en>Walking route · ~1.5h</span></small></span>
+            <span>Casco Antiguo<small><span lang-es>Ruta a pie · ~1.5h</span><span lang-en>Walking route · ~1.5h</span><span lang-ru>Пешеходный маршрут · ~1,5 ч</span></small></span>
           </button>
           <button type="button" class="search-item" role="option" onclick="pickSearch(this)" data-target="#excursiones">
             <span class="pin" aria-hidden="true">▲</span>
-            <span>MARQ<small><span lang-es>Museo Arqueológico · ~1h</span><span lang-en>Archaeological Museum · ~1h</span></small></span>
+            <span>MARQ<small><span lang-es>Museo Arqueológico · ~1h</span><span lang-en>Archaeological Museum · ~1h</span><span lang-ru>Археологический музей · ~1 ч</span></small></span>
           </button>
         </div>
         <div class="search-empty" hidden>
           <span lang-es>Nada encontrado todavía — escríbanos y lo preparamos.</span>
-          <span lang-en>Nothing found yet — write to us and we'll put it together.</span>
+          <span lang-en>Nothing found yet — write to us and we'll put it together.</span><span lang-ru>Пока ничего не нашлось — напишите нам, и мы это подготовим.</span>
         </div>
       </div>
     </div>
@@ -584,17 +598,17 @@
     <!-- dos puertas: cada público entra por la suya / two doors, one per audience -->
     <div class="hero-doors">
       <a href="#audiencias" class="door" onclick="setTab('hoteles')">
-        <span lang-es>Soy hotel</span><span lang-en>I'm a hotel</span>
+        <span lang-es>Soy hotel</span><span lang-en>I'm a hotel</span><span lang-ru>Я отель</span>
       </a>
       <a href="#audiencias" class="door" onclick="setTab('atracciones')">
-        <span lang-es>Soy atracción</span><span lang-en>I'm an attraction</span>
+        <span lang-es>Soy atracción</span><span lang-en>I'm an attraction</span><span lang-ru>Я объект</span>
       </a>
     </div>
   </div>
 
   <!-- Nombre del lugar de la foto actual / place name of the current photo -->
   <div class="hero-caption">
-    <p class="eyebrow"><span lang-es>En la foto</span><span lang-en>In this photo</span></p>
+    <p class="eyebrow"><span lang-es>En la foto</span><span lang-en>In this photo</span><span lang-ru>На фото</span></p>
     <span class="hero-place" aria-live="polite">
       <b class="is-active">Alicante</b>
       <b>Elche</b>
@@ -617,24 +631,24 @@
 <section id="como-funciona">
   <div class="wrap">
     <div class="section-head">
-      <p class="eyebrow"><span lang-es>El modelo</span><span lang-en>The model</span></p>
-      <h2><span lang-es>Cómo funciona SolAndSea</span><span lang-en>How SolAndSea works</span></h2>
+      <p class="eyebrow"><span lang-es>El modelo</span><span lang-en>The model</span><span lang-ru>Модель</span></p>
+      <h2><span lang-es>Cómo funciona Doremi | Sol&amp;Sea</span><span lang-en>How Doremi | Sol&amp;Sea works</span><span lang-ru>Как мы работаем</span></h2>
     </div>
     <div class="steps">
       <div class="step">
         <div class="step-num">1</div>
-        <h3><span lang-es>Negociamos con las atracciones</span><span lang-en>We negotiate with attractions</span></h3>
-        <p><span lang-es>Acordamos precios y condiciones directamente con museos, castillos y rutas de Alicante.</span><span lang-en>We agree prices and terms directly with Alicante's museums, castles and routes.</span></p>
+        <h3><span lang-es>Negociamos con las atracciones</span><span lang-en>We negotiate with attractions</span><span lang-ru>Договариваемся с объектами</span></h3>
+        <p><span lang-es>Acordamos precios y condiciones directamente con museos, castillos y rutas de Alicante.</span><span lang-en>We agree prices and terms directly with Alicante's museums, castles and routes.</span><span lang-ru>Согласуем цены и условия напрямую с музеями, крепостями и маршрутами Аликанте.</span></p>
       </div>
       <div class="step">
         <div class="step-num">2</div>
-        <h3><span lang-es>Diseñamos programas</span><span lang-en>We design programs</span></h3>
-        <p><span lang-es>Convertimos esas tarifas en excursiones completas, listas para vender.</span><span lang-en>We turn those rates into complete excursions, ready to sell.</span></p>
+        <h3><span lang-es>Diseñamos programas</span><span lang-en>We design programs</span><span lang-ru>Собираем программы</span></h3>
+        <p><span lang-es>Convertimos esas tarifas en excursiones completas, listas para vender.</span><span lang-en>We turn those rates into complete excursions, ready to sell.</span><span lang-ru>Превращаем эти тарифы в готовые экскурсии, которые можно продавать.</span></p>
       </div>
       <div class="step">
         <div class="step-num">3</div>
-        <h3><span lang-es>Los hoteles los ofrecen</span><span lang-en>Hotels offer them</span></h3>
-        <p><span lang-es>El hotel los presenta al huésped y gana comisión, sin gestionar nada.</span><span lang-en>The hotel presents them to guests and earns commission, with zero logistics.</span></p>
+        <h3><span lang-es>Los hoteles los ofrecen</span><span lang-en>Hotels offer them</span><span lang-ru>Отели их предлагают</span></h3>
+        <p><span lang-es>El hotel los presenta al huésped y gana comisión, sin gestionar nada.</span><span lang-en>The hotel presents them to guests and earns commission, with zero logistics.</span><span lang-ru>Отель показывает программу гостю и получает комиссию, ничего не организуя.</span></p>
       </div>
     </div>
   </div>
@@ -643,12 +657,12 @@
 <section class="section-alt" id="audiencias">
   <div class="wrap">
     <div class="section-head">
-      <p class="eyebrow"><span lang-es>Dos públicos, una red</span><span lang-en>Two audiences, one network</span></p>
-      <h2><span lang-es>Para quién trabajamos</span><span lang-en>Who we work with</span></h2>
+      <p class="eyebrow"><span lang-es>Dos públicos, una red</span><span lang-en>Two audiences, one network</span><span lang-ru>Две аудитории, одна сеть</span></p>
+      <h2><span lang-es>Para quién trabajamos</span><span lang-en>Who we work with</span><span lang-ru>Для кого мы работаем</span></h2>
     </div>
     <div class="tabs-head" role="tablist">
-      <button class="tab-btn" role="tab" aria-selected="true" onclick="setTab('hoteles')"><span lang-es>Para hoteles</span><span lang-en>For hotels</span></button>
-      <button class="tab-btn" role="tab" aria-selected="false" onclick="setTab('atracciones')"><span lang-es>Para atracciones</span><span lang-en>For attractions</span></button>
+      <button class="tab-btn" role="tab" aria-selected="true" onclick="setTab('hoteles')"><span lang-es>Para hoteles</span><span lang-en>For hotels</span><span lang-ru>Для отелей</span></button>
+      <button class="tab-btn" role="tab" aria-selected="false" onclick="setTab('atracciones')"><span lang-es>Para atracciones</span><span lang-en>For attractions</span><span lang-ru>Для объектов</span></button>
     </div>
 
     <div class="tab-panel active" data-panel="hoteles">
@@ -656,27 +670,28 @@
         <div class="benefit">
           <span class="benefit-dot"></span>
           <div>
-            <strong><span lang-es>Ingresos adicionales sin inversión</span><span lang-en>Extra revenue, no investment</span></strong>
-            <span><span lang-es>Comisión por cada excursión reservada por sus huéspedes.</span><span lang-en>Commission on every excursion your guests book.</span></span>
+            <strong><span lang-es>Ingresos adicionales sin inversión</span><span lang-en>Extra revenue, no investment</span><span lang-ru>Дополнительный доход без вложений</span></strong>
+            <span><span lang-es>Comisión por cada excursión reservada por sus huéspedes.</span><span lang-en>Commission on every excursion your guests book.</span><span lang-ru>Комиссия с каждой экскурсии, забронированной вашими гостями.</span></span>
           </div>
         </div>
         <div class="benefit">
           <span class="benefit-dot"></span>
           <div>
-            <strong><span lang-es>Rutas ya verificadas</span><span lang-en>Pre-vetted routes</span></strong>
-            <span><span lang-es>Precios cerrados y calidad comprobada de antemano.</span><span lang-en>Fixed pricing and quality checked in advance.</span></span>
+            <strong><span lang-es>Rutas ya verificadas</span><span lang-en>Pre-vetted routes</span><span lang-ru>Проверенные маршруты</span></strong>
+            <span><span lang-es>Precios cerrados y calidad comprobada de antemano.</span><span lang-en>Fixed pricing and quality checked in advance.</span><span lang-ru>Фиксированные цены и заранее проверенное качество.</span></span>
           </div>
         </div>
         <div class="benefit">
           <span class="benefit-dot"></span>
           <div>
-            <strong><span lang-es>Cero logística</span><span lang-en>Zero logistics</span></strong>
-            <span><span lang-es>Nosotros coordinamos con cada atracción, no usted.</span><span lang-en>We coordinate with each attraction, not you.</span></span>
+            <strong><span lang-es>Cero logística</span><span lang-en>Zero logistics</span><span lang-ru>Ноль логистики</span></strong>
+            <span><span lang-es>Nosotros coordinamos con cada atracción, no usted.</span><span lang-en>We coordinate with each attraction, not you.</span><span lang-ru>Мы координируем работу с каждым объектом, а не вы.</span></span>
           </div>
         </div>
       </div>
-      <div class="tab-visual" data-label="Hoteles · Alicante"
-           style="--photo:url('assets/hero/hotel1.jpg');"></div>
+      <div class="tab-visual" style="--photo:url('assets/hero/hotel1.jpg');">
+        <span class="tab-visual-label"><span lang-es>Hoteles · Alicante</span><span lang-en>Hotels · Alicante</span><span lang-ru>Отели · Аликанте</span></span>
+      </div>
     </div>
 
     <div class="tab-panel" data-panel="atracciones">
@@ -684,27 +699,28 @@
         <div class="benefit">
           <span class="benefit-dot"></span>
           <div>
-            <strong><span lang-es>Flujo constante de visitantes</span><span lang-en>Steady visitor flow</span></strong>
-            <span><span lang-es>Acceso a la red de hoteles socios de la región.</span><span lang-en>Access to our network of partner hotels in the region.</span></span>
+            <strong><span lang-es>Flujo constante de visitantes</span><span lang-en>Steady visitor flow</span><span lang-ru>Постоянный поток посетителей</span></strong>
+            <span><span lang-es>Acceso a la red de hoteles socios de la región.</span><span lang-en>Access to our network of partner hotels in the region.</span><span lang-ru>Доступ к сети отелей-партнёров региона.</span></span>
           </div>
         </div>
         <div class="benefit">
           <span class="benefit-dot"></span>
           <div>
-            <strong><span lang-es>Sin coste de marketing</span><span lang-en>No marketing cost</span></strong>
-            <span><span lang-es>Nosotros promocionamos la excursión ante los hoteles.</span><span lang-en>We promote the excursion to hotels on your behalf.</span></span>
+            <strong><span lang-es>Sin coste de marketing</span><span lang-en>No marketing cost</span><span lang-ru>Без затрат на маркетинг</span></strong>
+            <span><span lang-es>Nosotros promocionamos la excursión ante los hoteles.</span><span lang-en>We promote the excursion to hotels on your behalf.</span><span lang-ru>Мы сами продвигаем экскурсию среди отелей.</span></span>
           </div>
         </div>
         <div class="benefit">
           <span class="benefit-dot"></span>
           <div>
-            <strong><span lang-es>Condiciones transparentes</span><span lang-en>Transparent terms</span></strong>
-            <span><span lang-es>Un único acuerdo, sin intermediarios ocultos.</span><span lang-en>One clear agreement, no hidden intermediaries.</span></span>
+            <strong><span lang-es>Condiciones transparentes</span><span lang-en>Transparent terms</span><span lang-ru>Прозрачные условия</span></strong>
+            <span><span lang-es>Un único acuerdo, sin intermediarios ocultos.</span><span lang-en>One clear agreement, no hidden intermediaries.</span><span lang-ru>Один договор, без скрытых посредников.</span></span>
           </div>
         </div>
       </div>
-      <div class="tab-visual" data-label="Atracciones · Alicante"
-           style="--photo:url('assets/hero/atr1.jpg');"></div>
+      <div class="tab-visual" style="--photo:url('assets/hero/atr1.jpg');">
+        <span class="tab-visual-label"><span lang-es>Atracciones · Alicante</span><span lang-en>Attractions · Alicante</span><span lang-ru>Объекты · Аликанте</span></span>
+      </div>
     </div>
   </div>
 </section>
@@ -712,32 +728,32 @@
 <section id="excursiones">
   <div class="wrap">
     <div class="section-head">
-      <p class="eyebrow"><span lang-es>Catálogo</span><span lang-en>Catalogue</span></p>
-      <h2><span lang-es>Excursiones en preparación</span><span lang-en>Excursions in the pipeline</span></h2>
+      <p class="eyebrow"><span lang-es>Catálogo</span><span lang-en>Catalogue</span><span lang-ru>Каталог</span></p>
+      <h2><span lang-es>Excursiones en preparación</span><span lang-en>Excursions in the pipeline</span><span lang-ru>Экскурсии в подготовке</span></h2>
     </div>
     <div class="cards">
       <div class="card">
-        <div class="card-media" style="--photo:url('assets/hero/exc1.jpg'); --fallback:linear-gradient(135deg,#c0466b,#e08a3f);"><span lang-es>Próximamente</span><span lang-en>Coming soon</span></div>
+        <div class="card-media" style="--photo:url('assets/hero/exc1.jpg'); --fallback:linear-gradient(135deg,#c0466b,#e08a3f);"><span lang-es>Próximamente</span><span lang-en>Coming soon</span><span lang-ru>Скоро</span></div>
         <div class="card-body">
           <h3>Castillo de Santa Bárbara</h3>
-          <p><span lang-es>Visita guiada con vistas panorámicas de la bahía de Alicante.</span><span lang-en>Guided visit with panoramic views over Alicante bay.</span></p>
-          <div class="card-meta"><span>~2h</span><span lang-es>Precio a confirmar</span><span lang-en>Price TBC</span></div>
+          <p><span lang-es>Visita guiada con vistas panorámicas de la bahía de Alicante.</span><span lang-en>Guided visit with panoramic views over Alicante bay.</span><span lang-ru>Экскурсия с гидом и панорамным видом на бухту Аликанте.</span></p>
+          <div class="card-meta"><span>~2h</span><span lang-es>Precio a confirmar</span><span lang-en>Price TBC</span><span lang-ru>Цена уточняется</span></div>
         </div>
       </div>
       <div class="card">
-        <div class="card-media" style="--photo:url('assets/hero/exc2.jpg'); --fallback:linear-gradient(135deg,#e08a3f,#1c8a86);"><span lang-es>Próximamente</span><span lang-en>Coming soon</span></div>
+        <div class="card-media" style="--photo:url('assets/hero/exc2.jpg'); --fallback:linear-gradient(135deg,#e08a3f,#1c8a86);"><span lang-es>Próximamente</span><span lang-en>Coming soon</span><span lang-ru>Скоро</span></div>
         <div class="card-body">
-          <h3><span lang-es>Casco Antiguo</span><span lang-en>Old Town Walk</span></h3>
-          <p><span lang-es>Recorrido a pie por el Barrio de Santa Cruz y la Explanada.</span><span lang-en>Walking route through Santa Cruz quarter and the Explanada.</span></p>
-          <div class="card-meta"><span>~1.5h</span><span lang-es>Precio a confirmar</span><span lang-en>Price TBC</span></div>
+          <h3><span lang-es>Casco Antiguo</span><span lang-en>Old Town Walk</span><span lang-ru>Старый город</span></h3>
+          <p><span lang-es>Recorrido a pie por el Barrio de Santa Cruz y la Explanada.</span><span lang-en>Walking route through Santa Cruz quarter and the Explanada.</span><span lang-ru>Пешая прогулка по кварталу Санта-Крус и набережной Эспланада.</span></p>
+          <div class="card-meta"><span>~1.5h</span><span lang-es>Precio a confirmar</span><span lang-en>Price TBC</span><span lang-ru>Цена уточняется</span></div>
         </div>
       </div>
       <div class="card">
-        <div class="card-media" style="--photo:url('assets/hero/exc3.jpg'); --fallback:linear-gradient(135deg,#1c8a86,#1d4d84);"><span lang-es>Próximamente</span><span lang-en>Coming soon</span></div>
+        <div class="card-media" style="--photo:url('assets/hero/exc3.jpg'); --fallback:linear-gradient(135deg,#1c8a86,#1d4d84);"><span lang-es>Próximamente</span><span lang-en>Coming soon</span><span lang-ru>Скоро</span></div>
         <div class="card-body">
           <h3>MARQ</h3>
-          <p><span lang-es>Museo Arqueológico de Alicante, entrada y visita guiada.</span><span lang-en>Alicante Archaeological Museum, entry and guided tour.</span></p>
-          <div class="card-meta"><span>~1h</span><span lang-es>Precio a confirmar</span><span lang-en>Price TBC</span></div>
+          <p><span lang-es>Museo Arqueológico de Alicante, entrada y visita guiada.</span><span lang-en>Alicante Archaeological Museum, entry and guided tour.</span><span lang-ru>Археологический музей Аликанте: билет и экскурсия с гидом.</span></p>
+          <div class="card-meta"><span>~1h</span><span lang-es>Precio a confirmar</span><span lang-en>Price TBC</span><span lang-ru>Цена уточняется</span></div>
         </div>
       </div>
     </div>
@@ -747,19 +763,19 @@
 <section class="section-alt">
   <div class="wrap">
     <div class="section-head">
-      <p class="eyebrow"><span lang-es>Primeros pasos</span><span lang-en>Getting started</span></p>
-      <h2><span lang-es>Cómo empezar a colaborar</span><span lang-en>How to start working together</span></h2>
+      <p class="eyebrow"><span lang-es>Primeros pasos</span><span lang-en>Getting started</span><span lang-ru>Первые шаги</span></p>
+      <h2><span lang-es>Cómo empezar a colaborar</span><span lang-en>How to start working together</span><span lang-ru>Как начать сотрудничество</span></h2>
     </div>
     <div class="start-grid">
       <div class="start-card">
-        <h3><span lang-es>Soy un hotel</span><span lang-en>I'm a hotel</span></h3>
-        <p><span lang-es>Déjenos sus datos y le proponemos excursiones en un plazo de 3 días.</span><span lang-en>Leave your details and we'll propose excursions within 3 days.</span></p>
-        <a href="#contacto" class="btn btn-ghost btn-block"><span lang-es>Solicitar excursiones</span><span lang-en>Request excursions</span></a>
+        <h3><span lang-es>Soy un hotel</span><span lang-en>I'm a hotel</span><span lang-ru>Я отель</span></h3>
+        <p><span lang-es>Déjenos sus datos y le proponemos excursiones en un plazo de 3 días.</span><span lang-en>Leave your details and we'll propose excursions within 3 days.</span><span lang-ru>Оставьте контакты — предложим экскурсии в течение 3 дней.</span></p>
+        <a href="#contacto" class="btn btn-ghost btn-block"><span lang-es>Solicitar excursiones</span><span lang-en>Request excursions</span><span lang-ru>Запросить экскурсии</span></a>
       </div>
       <div class="start-card">
-        <h3><span lang-es>Soy una atracción turística</span><span lang-en>I'm a tourist attraction</span></h3>
-        <p><span lang-es>Únase como socio y le incluimos en nuestras rutas para hoteles.</span><span lang-en>Join as a partner and we'll include you in our hotel routes.</span></p>
-        <a href="#contacto" class="btn btn-ghost btn-block"><span lang-es>Convertirse en socio</span><span lang-en>Become a partner</span></a>
+        <h3><span lang-es>Soy una atracción turística</span><span lang-en>I'm a tourist attraction</span><span lang-ru>Я туристический объект</span></h3>
+        <p><span lang-es>Únase como socio y le incluimos en nuestras rutas para hoteles.</span><span lang-en>Join as a partner and we'll include you in our hotel routes.</span><span lang-ru>Станьте партнёром, и мы включим вас в маршруты для отелей.</span></p>
+        <a href="#contacto" class="btn btn-ghost btn-block"><span lang-es>Convertirse en socio</span><span lang-en>Become a partner</span><span lang-ru>Стать партнёром</span></a>
       </div>
     </div>
   </div>
@@ -768,33 +784,33 @@
 <section class="section-alt" id="contacto">
   <div class="wrap contact-grid">
     <div>
-      <p class="eyebrow"><span lang-es>Hablemos</span><span lang-en>Let's talk</span></p>
-      <h2 style="margin-top:10px; margin-bottom:24px;"><span lang-es>Envíenos su solicitud</span><span lang-en>Send us your request</span></h2>
+      <p class="eyebrow"><span lang-es>Hablemos</span><span lang-en>Let's talk</span><span lang-ru>Поговорим</span></p>
+      <h2 style="margin-top:10px; margin-bottom:24px;"><span lang-es>Envíenos su solicitud</span><span lang-en>Send us your request</span><span lang-ru>Отправьте заявку</span></h2>
       <form onsubmit="return false;">
         <div class="field">
-          <label for="f-name"><span lang-es>Nombre</span><span lang-en>Name</span></label>
+          <label for="f-name"><span lang-es>Nombre</span><span lang-en>Name</span><span lang-ru>Имя</span></label>
           <input id="f-name" type="text" placeholder="Ana García" />
         </div>
         <div class="field">
-          <label><span lang-es>Soy…</span><span lang-en>I am…</span></label>
+          <label><span lang-es>Soy…</span><span lang-en>I am…</span><span lang-ru>Я…</span></label>
           <div class="radio-row">
-            <label><input type="radio" name="tipo" checked /> <span lang-es>Hotel</span><span lang-en>Hotel</span></label>
-            <label><input type="radio" name="tipo" /> <span lang-es>Atracción</span><span lang-en>Attraction</span></label>
+            <label><input type="radio" name="tipo" checked /> <span lang-es>Hotel</span><span lang-en>Hotel</span><span lang-ru>Отель</span></label>
+            <label><input type="radio" name="tipo" /> <span lang-es>Atracción</span><span lang-en>Attraction</span><span lang-ru>Объект</span></label>
           </div>
         </div>
         <div class="field">
-          <label for="f-empresa"><span lang-es>Empresa</span><span lang-en>Company</span></label>
+          <label for="f-empresa"><span lang-es>Empresa</span><span lang-en>Company</span><span lang-ru>Компания</span></label>
           <input id="f-empresa" type="text" placeholder="Hotel Alicante Palace" />
         </div>
         <div class="field">
-          <label for="f-email"><span lang-es>Correo electrónico</span><span lang-en>Email</span></label>
+          <label for="f-email"><span lang-es>Correo electrónico</span><span lang-en>Email</span><span lang-ru>Электронная почта</span></label>
           <input id="f-email" type="email" placeholder="ana@hotel.com" />
         </div>
         <div class="field">
-          <label for="f-msg"><span lang-es>Mensaje</span><span lang-en>Message</span></label>
+          <label for="f-msg"><span lang-es>Mensaje</span><span lang-en>Message</span><span lang-ru>Сообщение</span></label>
           <textarea id="f-msg" rows="3" placeholder="…"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary btn-block"><span lang-es>Enviar solicitud</span><span lang-en>Send request</span></button>
+        <button type="submit" class="btn btn-primary btn-block"><span lang-es>Enviar solicitud</span><span lang-en>Send request</span><span lang-ru>Отправить заявку</span></button>
       </form>
     </div>
     <div class="contact-info">
@@ -804,11 +820,11 @@
       </div>
       <div class="info-item">
         <div class="info-icon">✆</div>
-        <div><strong><span lang-es>Teléfono / WhatsApp</span><span lang-en>Phone / WhatsApp</span></strong><a href="tel:+34613544024">+34 613 54 40 24</a></div>
+        <div><strong><span lang-es>Teléfono / WhatsApp</span><span lang-en>Phone / WhatsApp</span><span lang-ru>Телефон / WhatsApp</span></strong><a href="tel:+34613544024">+34 613 54 40 24</a></div>
       </div>
       <div class="info-item">
         <div class="info-icon">◎</div>
-        <div><strong><span lang-es>Ubicación</span><span lang-en>Location</span></strong><span>Alicante, España</span></div>
+        <div><strong><span lang-es>Ubicación</span><span lang-en>Location</span><span lang-ru>Расположение</span></strong><span lang-es>Alicante, España</span><span lang-en>Alicante, Spain</span><span lang-ru>Аликанте, Испания</span></div>
       </div>
     </div>
   </div>
@@ -818,22 +834,25 @@
   <div class="wrap footer-inner">
     <span class="brand-name">Doremi | Sol&amp;Sea</span>
     <div class="footer-links">
-      <a href="#como-funciona"><span lang-es>Cómo funciona</span><span lang-en>How it works</span></a>
-      <a href="#excursiones"><span lang-es>Excursiones</span><span lang-en>Excursions</span></a>
-      <a href="#contacto"><span lang-es>Contacto</span><span lang-en>Contact</span></a>
+      <a href="#como-funciona"><span lang-es>Cómo funciona</span><span lang-en>How it works</span><span lang-ru>Как это работает</span></a>
+      <a href="#excursiones"><span lang-es>Excursiones</span><span lang-en>Excursions</span><span lang-ru>Экскурсии</span></a>
+      <a href="#contacto"><span lang-es>Contacto</span><span lang-en>Contact</span><span lang-ru>Контакты</span></a>
     </div>
-    <span class="footer-note">© 2026 SolAndSea · Alicante</span>
+    <span class="footer-note">© 2026 Doremi | Sol&amp;Sea · Alicante</span>
   </div>
 </footer>
 
 <script>
   function setLang(lang){
     document.body.classList.toggle('lang-en', lang === 'en');
-    document.getElementById('btn-es').setAttribute('aria-pressed', lang === 'es');
-    document.getElementById('btn-en').setAttribute('aria-pressed', lang === 'en');
+    document.body.classList.toggle('lang-ru', lang === 'ru');
+    ['es', 'en', 'ru'].forEach(function(code){
+      var btn = document.getElementById('btn-' + code);
+      if(btn){ btn.setAttribute('aria-pressed', code === lang); }
+    });
     document.documentElement.setAttribute('lang', lang);
     var q = document.getElementById('hero-q');
-    if(q){ q.placeholder = q.getAttribute(lang === 'en' ? 'data-ph-en' : 'data-ph-es'); }
+    if(q){ q.placeholder = q.getAttribute('data-ph-' + lang) || q.getAttribute('data-ph-es'); }
   }
   function setTab(name){
     document.querySelectorAll('.tab-btn').forEach(function(b, i){
@@ -844,6 +863,8 @@
       p.classList.toggle('active', p.getAttribute('data-panel') === name);
     });
   }
+
+  setLang(document.documentElement.getAttribute('lang') || 'es');
 
   /* ---------- Galería del hero / hero photo gallery ---------- */
   var SLIDE_MS = 5000;
@@ -960,3 +981,5 @@
   window.addEventListener('scroll', syncHeader, { passive:true });
   window.addEventListener('resize', function(){ measureHeader(); syncHeader(); });
 </script>
+</body>
+</html>
