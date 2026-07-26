@@ -198,7 +198,7 @@
   }
 
   .hero-content{
-    position:relative; z-index:2;
+    position:relative; z-index:3;
     display:flex; flex-direction:column; align-items:center; text-align:center;
   }
   .hero-content .eyebrow{ color:rgba(255,255,255,0.82); text-shadow:0 1px 10px rgba(0,0,0,0.4); }
@@ -285,6 +285,10 @@
   .hero-place b.is-active{ opacity:1; transform:translateY(0); }
 
   .hero-dots{ display:flex; gap:8px; justify-content:flex-end; margin-top:18px; pointer-events:auto; }
+  .hero-caption{ transition:opacity .2s ease; }
+  @media (max-width:620px){
+    body.search-open .hero-caption{ opacity:0; pointer-events:none; }
+  }
   .hero-dots button{
     width:26px; height:4px; border-radius:999px; border:none; padding:0; cursor:pointer;
     background:rgba(255,255,255,0.38); transition:background .2s, width .2s;
@@ -866,6 +870,20 @@
 
   setLang(document.documentElement.getAttribute('lang') || 'es');
 
+  /* Браузеры (особенно встроенные в WhatsApp и Telegram) восстанавливают
+     прокрутку с прошлого визита, и человек попадает в середину страницы.
+     Открываем всегда с начала — кроме перехода по якорю вида #contacto. */
+  function toTop(){
+    if(location.hash) return;
+    var root = document.documentElement, prev = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    window.scrollTo(0, 0);
+    root.style.scrollBehavior = prev;
+  }
+  if('scrollRestoration' in history){ history.scrollRestoration = 'manual'; }
+  toTop();
+  window.addEventListener('load', toTop);
+
   /* ---------- Galería del hero / hero photo gallery ---------- */
   var SLIDE_MS = 5000;
   var slides = document.querySelectorAll('.hero-slide');
@@ -902,11 +920,13 @@
     if(!panel || !panel.hidden) return;
     panel.hidden = false;
     input.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('search-open');
   }
   function closeSearch(){
     if(!panel || panel.hidden) return;
     panel.hidden = true;
     input.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('search-open');
     clearCursor();
   }
   function filterSearch(){
