@@ -939,6 +939,13 @@
      Причём делают это уже после загрузки, поэтому одного сброса мало:
      повторяем несколько раз в первые полторы секунды и сразу прекращаем,
      как только человек сам коснулся экрана или прокрутил страницу. */
+  /* Ссылка могла уехать в мессенджер с якорем в конце (#contacto и т.п.) —
+     тогда браузер сразу уносит к этой секции. Убираем якорь при открытии:
+     переходы по меню внутри сайта это не затрагивает. */
+  if(location.hash){
+    history.replaceState(null, '', location.pathname + location.search);
+  }
+
   var userMoved = false;
   ['touchstart', 'touchmove', 'wheel', 'keydown', 'pointerdown'].forEach(function(ev){
     window.addEventListener(ev, function(){ userMoved = true; }, { passive: true, once: true });
