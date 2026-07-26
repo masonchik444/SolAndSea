@@ -936,9 +936,15 @@
 
   /* Браузеры (особенно встроенные в WhatsApp и Telegram) восстанавливают
      прокрутку с прошлого визита, и человек попадает в середину страницы.
-     Открываем всегда с начала — кроме перехода по якорю вида #contacto. */
+     Причём делают это уже после загрузки, поэтому одного сброса мало:
+     повторяем несколько раз в первые полторы секунды и сразу прекращаем,
+     как только человек сам коснулся экрана или прокрутил страницу. */
+  var userMoved = false;
+  ['touchstart', 'touchmove', 'wheel', 'keydown', 'pointerdown'].forEach(function(ev){
+    window.addEventListener(ev, function(){ userMoved = true; }, { passive: true, once: true });
+  });
   function toTop(){
-    if(location.hash) return;
+    if(location.hash || userMoved || window.scrollY === 0) return;
     var root = document.documentElement, prev = root.style.scrollBehavior;
     root.style.scrollBehavior = 'auto';
     window.scrollTo(0, 0);
@@ -947,6 +953,8 @@
   if('scrollRestoration' in history){ history.scrollRestoration = 'manual'; }
   toTop();
   window.addEventListener('load', toTop);
+  window.addEventListener('pageshow', toTop);
+  [50, 200, 500, 900, 1500].forEach(function(ms){ setTimeout(toTop, ms); });
 
   /* ---------- Galería del hero / hero photo gallery ---------- */
   var SLIDE_MS = 5000;
