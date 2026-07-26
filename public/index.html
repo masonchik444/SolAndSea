@@ -419,6 +419,40 @@
   .info-item a{ font-size:0.86rem; color:var(--ink-soft); text-decoration:none; }
   .info-item a:hover, .info-item a:focus-visible{ color:var(--accent); text-decoration:underline; }
 
+  /* всплывающее окно после отправки заявки */
+  .modal-backdrop{
+    position:fixed; inset:0; z-index:100; padding:24px;
+    display:flex; align-items:center; justify-content:center;
+    background:rgba(6,17,22,0.62); backdrop-filter:blur(4px);
+  }
+  .modal-backdrop[hidden]{ display:none; }
+  .modal{
+    position:relative; width:min(440px, 100%); text-align:center;
+    background:var(--paper-raised); border:1px solid var(--line); border-radius:var(--radius);
+    padding:44px 32px 28px; box-shadow:0 30px 70px -30px rgba(0,0,0,0.6);
+    animation:modal-in .22s ease-out;
+  }
+  @keyframes modal-in{ from{ opacity:0; transform:translateY(10px) scale(0.98); } to{ opacity:1; transform:none; } }
+  .modal-close{
+    position:absolute; top:10px; right:10px; width:38px; height:38px; border:none; padding:0;
+    border-radius:50%; background:none; color:var(--rose); font-size:1.6rem; line-height:1;
+    cursor:pointer; transition:background .15s;
+  }
+  .modal-close:hover{ background:color-mix(in srgb, var(--rose) 16%, transparent); }
+  .modal-close:focus-visible{ outline:2px solid var(--rose); outline-offset:2px; }
+  .modal-mark{
+    width:60px; height:60px; margin:0 auto 20px; border-radius:50%;
+    background:var(--wave-gradient); display:flex; align-items:center; justify-content:center;
+    color:#fff; font-size:1.6rem;
+  }
+  .modal h2{ font-size:1.4rem; margin-bottom:10px; }
+  .modal p{ font-size:0.95rem; }
+  .modal .btn{ margin-top:26px; }
+  .modal-error{ display:none; }
+  .modal.is-error .modal-ok{ display:none; }
+  .modal.is-error .modal-error{ display:block; }
+  .modal.is-error .modal-mark{ background:var(--rose); }
+
   footer{ border-top:1px solid var(--line); padding:40px 0; }
   .footer-inner{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
   .footer-links{ display:flex; gap:22px; }
@@ -790,29 +824,35 @@
     <div>
       <p class="eyebrow"><span lang-es>Hablemos</span><span lang-en>Let's talk</span><span lang-ru>Поговорим</span></p>
       <h2 style="margin-top:10px; margin-bottom:24px;"><span lang-es>Envíenos su solicitud</span><span lang-en>Send us your request</span><span lang-ru>Отправьте заявку</span></h2>
-      <form onsubmit="return false;">
+      <form action="https://formsubmit.co/doremisolsea@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="Nueva solicitud — doremisolandsea.com">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://doremisolandsea.com/">
+        <!-- ловушка для спам-ботов: люди это поле не видят -->
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
         <div class="field">
           <label for="f-name"><span lang-es>Nombre</span><span lang-en>Name</span><span lang-ru>Имя</span></label>
-          <input id="f-name" type="text" placeholder="Ana García" />
+          <input id="f-name" name="Nombre" type="text" placeholder="Ana García" required />
         </div>
         <div class="field">
           <label><span lang-es>Soy…</span><span lang-en>I am…</span><span lang-ru>Я…</span></label>
           <div class="radio-row">
-            <label><input type="radio" name="tipo" checked /> <span lang-es>Hotel</span><span lang-en>Hotel</span><span lang-ru>Отель</span></label>
-            <label><input type="radio" name="tipo" /> <span lang-es>Atracción</span><span lang-en>Attraction</span><span lang-ru>Объект</span></label>
+            <label><input type="radio" name="Tipo" value="Hotel" checked /> <span lang-es>Hotel</span><span lang-en>Hotel</span><span lang-ru>Отель</span></label>
+            <label><input type="radio" name="Tipo" value="Atracción" /> <span lang-es>Atracción</span><span lang-en>Attraction</span><span lang-ru>Объект</span></label>
           </div>
         </div>
         <div class="field">
           <label for="f-empresa"><span lang-es>Empresa</span><span lang-en>Company</span><span lang-ru>Компания</span></label>
-          <input id="f-empresa" type="text" placeholder="Hotel Alicante Palace" />
+          <input id="f-empresa" name="Empresa" type="text" placeholder="Hotel Alicante Palace" />
         </div>
         <div class="field">
           <label for="f-email"><span lang-es>Correo electrónico</span><span lang-en>Email</span><span lang-ru>Электронная почта</span></label>
-          <input id="f-email" type="email" placeholder="ana@hotel.com" />
+          <input id="f-email" name="email" type="email" placeholder="ana@hotel.com" required />
         </div>
         <div class="field">
           <label for="f-msg"><span lang-es>Mensaje</span><span lang-en>Message</span><span lang-ru>Сообщение</span></label>
-          <textarea id="f-msg" rows="3" placeholder="…"></textarea>
+          <textarea id="f-msg" name="Mensaje" rows="3" placeholder="…"></textarea>
         </div>
         <button type="submit" class="btn btn-primary btn-block"><span lang-es>Enviar solicitud</span><span lang-en>Send request</span><span lang-ru>Отправить заявку</span></button>
       </form>
@@ -820,7 +860,7 @@
     <div class="contact-info">
       <div class="info-item">
         <div class="info-icon">@</div>
-        <div><strong>Email</strong><a href="mailto:doremisolandsea@gmail.com">doremisolandsea@gmail.com</a></div>
+        <div><strong>Email</strong><a href="mailto:doremisolsea@gmail.com">doremisolsea@gmail.com</a></div>
       </div>
       <div class="info-item">
         <div class="info-icon">✆</div>
@@ -845,6 +885,30 @@
     <span class="footer-note">© 2026 Doremi | Sol&amp;Sea · Alicante</span>
   </div>
 </footer>
+
+<div class="modal-backdrop" id="sent-modal" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="sent-title">
+    <button type="button" class="modal-close" id="sent-close" aria-label="Cerrar · Close · Закрыть">&times;</button>
+    <div class="modal-mark" aria-hidden="true"><span class="modal-ok">✓</span><span class="modal-error">!</span></div>
+    <h2 id="sent-title">
+      <span class="modal-ok"><span lang-es>Solicitud enviada</span><span lang-en>Request sent</span><span lang-ru>Заявка отправлена</span></span>
+      <span class="modal-error"><span lang-es>No se ha podido enviar</span><span lang-en>Could not send</span><span lang-ru>Не удалось отправить</span></span>
+    </h2>
+    <p class="modal-ok">
+      <span lang-es>Gracias. Le responderemos en un plazo de 1–2 días laborables.</span>
+      <span lang-en>Thank you. We will reply within 1–2 working days.</span>
+      <span lang-ru>Спасибо. Мы ответим в течение 1–2 рабочих дней.</span>
+    </p>
+    <p class="modal-error">
+      <span lang-es>Escríbanos a doremisolsea@gmail.com o al +34 613 54 40 24.</span>
+      <span lang-en>Please write to doremisolsea@gmail.com or call +34 613 54 40 24.</span>
+      <span lang-ru>Напишите на doremisolsea@gmail.com или позвоните +34 613 54 40 24.</span>
+    </p>
+    <button type="button" class="btn btn-primary btn-block" id="sent-continue">
+      <span lang-es>Continuar</span><span lang-en>Continue</span><span lang-ru>Продолжить</span>
+    </button>
+  </div>
+</div>
 
 <script>
   function setLang(lang){
@@ -985,6 +1049,51 @@
   document.addEventListener('click', function(e){
     if(panel && !panel.hidden && !e.target.closest('.hero-search')){ closeSearch(); }
   });
+
+  /* ---------- Formulario: envío без перезагрузки + окно подтверждения ---------- */
+  var sentModal = document.getElementById('sent-modal');
+  var sentDialog = sentModal.querySelector('.modal');
+  var contactForm = document.querySelector('#contacto form');
+  var lastFocused = null;
+
+  function openSent(ok){
+    lastFocused = document.activeElement;
+    sentDialog.classList.toggle('is-error', !ok);
+    sentModal.hidden = false;
+    document.getElementById('sent-continue').focus();
+  }
+  function closeSent(){
+    sentModal.hidden = true;
+    if(lastFocused && lastFocused.focus){ lastFocused.focus(); }
+  }
+  document.getElementById('sent-close').addEventListener('click', closeSent);
+  document.getElementById('sent-continue').addEventListener('click', closeSent);
+  sentModal.addEventListener('click', function(e){ if(e.target === sentModal){ closeSent(); } });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && !sentModal.hidden){ closeSent(); }
+  });
+
+  if(contactForm){
+    contactForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      var btn = contactForm.querySelector('button[type="submit"]');
+      var payload = Object.fromEntries(new FormData(contactForm).entries());
+      btn.disabled = true;
+      fetch('https://formsubmit.co/ajax/doremisolsea@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+        .then(function(r){ return r.json(); })
+        .then(function(d){
+          var ok = d && (d.success === true || d.success === 'true');
+          if(ok){ contactForm.reset(); }
+          openSent(ok);
+        })
+        .catch(function(){ openSent(false); })
+        .then(function(){ btn.disabled = false; });
+    });
+  }
 
   /* ---------- Header transparente sobre la foto / transparent header over the photo ---------- */
   var headerEl = document.querySelector('header');
