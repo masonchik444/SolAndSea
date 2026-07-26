@@ -140,7 +140,7 @@ cada atracción.
 *(botón)* Enviar solicitud / Send request
 
 **Datos de contacto**
-- Email: doremisolandsea@gmail.com
+- Email: doremisolsea@gmail.com
 - Teléfono / WhatsApp: +34 613 54 40 24
 - Ubicación / Location: Alicante, España / Alicante, Spain
 

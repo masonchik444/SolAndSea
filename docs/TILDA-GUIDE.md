@@ -106,7 +106,7 @@ Tilda не переключает язык на одной странице та
    (текстовая область), выбор Hotel/Atracción (radio или select).
 3. В настройках формы подключить получение заявок на email
    (**Content → Form settings → Send to email**) — адрес
-   `doremisolandsea@gmail.com`.
+   `doremisolsea@gmail.com`.
 
 ## 7. Проверка перед публикацией
 
