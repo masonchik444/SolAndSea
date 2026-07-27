@@ -137,9 +137,18 @@ cada atracción.
 
 ## Contacto / Contact
 
-**Formulario:** Nombre / Name · Soy… (Hotel / Atracción · Hotel / Attraction)
-· Empresa / Company · Correo electrónico / Email · Mensaje / Message ·
-*(botón)* Enviar solicitud / Send request
+**Formulario:** Nombre / Name · Soy… (Hotel / Atracción) · Empresa /
+Company · Correo electrónico / Email · Teléfono (opcional) / Phone
+(optional) · Mensaje / Message · **чекбокс согласия** · *(botón)* Enviar
+solicitud / Send request
+
+**Чекбокс согласия** (обязательный, без него форма не отправляется)
+- ES: He leído y acepto la Política de privacidad y el tratamiento de mis
+  datos para responder a esta solicitud.
+- EN: I have read and accept the Privacy policy and the processing of my
+  data to respond to this request.
+- RU: Я прочитал(а) и принимаю Политику конфиденциальности и обработку
+  моих данных для ответа на эту заявку.
 
 **Datos de contacto**
 - Email: doremisolsea@gmail.com
@@ -226,3 +235,20 @@ cada atracción.
 Yaroslav Tyutyunikov — Autónomo · NIE Z1513422G · Actividad IAE 844 ·
 Calle Escritor Ferrándiz Torremocha, 14 · 03011 Alicante, España ·
 doremisolsea@gmail.com
+
+
+---
+
+## Юридические страницы
+
+Три отдельные страницы в `public/`, каждая на трёх языках с тем же
+переключателем, что и главная. Юридическую силу имеет испанская версия —
+об этом сказано в рамке вверху каждой страницы.
+
+| Файл | Содержание |
+|---|---|
+| `aviso-legal.html` | Данные владельца по ст. 10 LSSI-CE, назначение сайта (посредничество, не турагентство), условия использования, интеллектуальная собственность, ответственность, подсудность — Аликанте |
+| `privacidad.html` | Ответственный, какие данные собираются, цель и правовое основание, срок хранения, обработчики (FormSubmit, Cloudflare, Google, WhatsApp), международная передача, права субъекта и жалоба в AEPD |
+| `cookies.html` | Сайт не использует аналитических и рекламных куки; `localStorage` для языка и технические куки Cloudflare; почему нет баннера согласия |
+
+Ссылки на все три — в подвале главной и в подвале самих страниц.

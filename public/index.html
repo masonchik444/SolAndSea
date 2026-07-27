@@ -427,6 +427,12 @@
     flex:1; border:1px solid var(--line); border-radius:12px; padding:10px 12px;
     font-size:0.86rem; display:flex; align-items:center; gap:8px; cursor:pointer;
   }
+  .consent{
+    display:flex; align-items:flex-start; gap:10px; margin:4px 0 18px;
+    font-size:0.84rem; line-height:1.5; color:var(--ink-soft); cursor:pointer;
+  }
+  .consent input{ flex:none; margin-top:3px; width:16px; height:16px; accent-color:var(--accent); }
+  .consent a{ color:var(--accent); }
   .contact-info{ display:flex; flex-direction:column; gap:22px; }
   .info-item{ display:flex; gap:14px; }
   .info-icon{
@@ -492,8 +498,9 @@
   .footer-links{ display:flex; gap:22px; }
   .footer-links a{ text-decoration:none; font-size:0.86rem; color:var(--ink-soft); }
   .footer-note{ font-size:0.78rem; color:var(--ink-soft); }
+  .footer-links-legal{ margin-top:20px; flex-wrap:wrap; }
   .footer-legal{
-    border-top:1px solid var(--line); margin-top:22px; padding-top:18px;
+    border-top:1px solid var(--line); margin-top:14px; padding-top:18px;
     font-size:0.76rem; line-height:1.6; color:var(--ink-soft);
   }
   .footer-legal span{ white-space:nowrap; }
@@ -909,9 +916,21 @@
           <input id="f-email" name="email" type="email" placeholder="ana@hotel.com" required />
         </div>
         <div class="field">
+          <label for="f-phone"><span lang-es>Teléfono (opcional)</span><span lang-en>Phone (optional)</span><span lang-ru>Телефон (необязательно)</span></label>
+          <input id="f-phone" name="Teléfono" type="tel" placeholder="+34 600 00 00 00" />
+        </div>
+        <div class="field">
           <label for="f-msg"><span lang-es>Mensaje</span><span lang-en>Message</span><span lang-ru>Сообщение</span></label>
           <textarea id="f-msg" name="Mensaje" rows="3" placeholder="…"></textarea>
         </div>
+        <label class="consent">
+          <input type="checkbox" id="f-consent" name="Consentimiento" value="Sí" required>
+          <span>
+            <span lang-es>He leído y acepto la <a href="/privacidad.html" target="_blank" rel="noopener">Política de privacidad</a> y el tratamiento de mis datos para responder a esta solicitud.</span>
+            <span lang-en>I have read and accept the <a href="/privacidad.html" target="_blank" rel="noopener">Privacy policy</a> and the processing of my data to respond to this request.</span>
+            <span lang-ru>Я прочитал(а) и принимаю <a href="/privacidad.html" target="_blank" rel="noopener">Политику конфиденциальности</a> и обработку моих данных для ответа на эту заявку.</span>
+          </span>
+        </label>
         <button type="submit" class="btn btn-primary btn-block"><span lang-es>Enviar solicitud</span><span lang-en>Send request</span><span lang-ru>Отправить заявку</span></button>
       </form>
     </div>
@@ -941,6 +960,11 @@
       <a href="#contacto"><span lang-es>Contacto</span><span lang-en>Contact</span><span lang-ru>Контакты</span></a>
     </div>
     <span class="footer-note">© 2026 Doremi | Sol&amp;Sea · Alicante</span>
+  </div>
+  <div class="wrap footer-links footer-links-legal">
+    <a href="/aviso-legal.html"><span lang-es>Aviso legal</span><span lang-en>Legal notice</span><span lang-ru>Правовая информация</span></a>
+    <a href="/privacidad.html"><span lang-es>Política de privacidad</span><span lang-en>Privacy policy</span><span lang-ru>Политика конфиденциальности</span></a>
+    <a href="/cookies.html"><span lang-es>Política de cookies</span><span lang-en>Cookie policy</span><span lang-ru>Политика cookie</span></a>
   </div>
   <div class="wrap footer-legal">
     <span>Yaroslav Tyutyunikov</span> — <span>Autónomo</span> ·
