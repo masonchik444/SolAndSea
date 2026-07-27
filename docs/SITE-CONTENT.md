@@ -68,14 +68,16 @@ Blanca», ссылки «Convertirse en socio / Ver cómo funciona» и стро
    directamente con museos, castillos y rutas de Alicante.
    **EN:** We negotiate with attractions — We agree prices and terms directly
    with Alicante's museums, castles and routes.
-2. **ES:** Diseñamos programas — Convertimos esas tarifas en excursiones
-   completas, listas para vender.
-   **EN:** We design programs — We turn those rates into complete excursions,
-   ready to sell.
-3. **ES:** Los hoteles los ofrecen — El hotel los presenta al huésped y gana
-   comisión, sin gestionar nada.
-   **EN:** Hotels offer them — The hotel presents them to guests and earns
-   commission, with zero logistics.
+2. **ES:** Diseñamos programas — Convertimos esas tarifas en programas
+   completos, listos para ofrecer a sus huéspedes.
+   **EN:** We design programs — We turn those rates into complete programs,
+   ready to offer to your guests.
+3. **ES:** Los hoteles los ofrecen — El hotel presenta el programa al huésped
+   y gana comisión. La venta y el cobro los realiza el hotel o el propio
+   proveedor; nosotros coordinamos.
+   **EN:** Hotels offer them — The hotel presents the program to the guest and
+   earns commission. The sale and payment are handled by the hotel or the
+   provider; we coordinate.
 
 ---
 
@@ -122,10 +124,10 @@ cada atracción.
 
 ## Cómo empezar / Getting started
 
-- **ES:** Soy un hotel — Déjenos sus datos y le proponemos excursiones en un
-  plazo de 3 días. *(botón: Solicitar excursiones)*
-  **EN:** I'm a hotel — Leave your details and we'll propose excursions
-  within 3 days. *(button: Request excursions)*
+- **ES:** Soy un hotel — Déjenos sus datos y le enviamos propuestas de
+  programas en un plazo de 3 días. *(botón: Solicitar propuestas)*
+  **EN:** I'm a hotel — Leave your details and we'll send you program
+  proposals within 3 days. *(button: Request proposals)*
 - **ES:** Soy una atracción turística — Únase como socio y le incluimos en
   nuestras rutas para hoteles. *(botón: Convertirse en socio)*
   **EN:** I'm a tourist attraction — Join as a partner and we'll include you
@@ -199,3 +201,28 @@ cada atracción.
 **Контакты:** Поговорим · Отправьте заявку · поля Имя, Я… (Отель /
 Объект), Компания, Электронная почта, Сообщение · кнопка Отправить
 заявку · Телефон / WhatsApp · Расположение: Аликанте, Испания.
+
+
+---
+
+## Позиционирование: B2B-посредничество
+
+Ключевое правило для всех текстов: **Doremi не продаёт экскурсии
+туристу**. Формулировки вида «listas para vender», «закажите экскурсию»,
+«booking» недопустимы — они читаются как деятельность турагентства,
+которая в Comunidad Valenciana подлежит отдельной регистрации.
+
+| Нельзя | Нужно |
+|---|---|
+| listas para vender | listas para ofrecer a sus huéspedes |
+| Solicitar excursiones | Solicitar propuestas |
+| мы продаём экскурсии | мы даём отелю готовый инструмент |
+
+Продажу и приём оплаты всегда выполняет отель или сам поставщик услуги —
+это прямо сказано в третьем шаге секции «Как мы работаем».
+
+## Данные владельца (подвал, Aviso Legal)
+
+Yaroslav Tyutyunikov — Autónomo · NIE Z1513422G · Actividad IAE 844 ·
+Calle Escritor Ferrándiz Torremocha, 14 · 03011 Alicante, España ·
+doremisolsea@gmail.com
