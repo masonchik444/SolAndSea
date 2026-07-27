@@ -3,19 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Doremi | Sol&amp;Sea — intermediación B2B: negociamos las tarifas con las atracciones y preparamos programas listos para que los hoteles los ofrezcan a sus huéspedes.">
+<meta name="description" content="Doremi | Sol&amp;Sea — intermediación B2B en la Comunidad Valenciana: negociamos las tarifas con las atracciones y preparamos programas listos para que los hoteles los ofrezcan a sus huéspedes.">
 <link rel="canonical" href="https://doremisolandsea.com/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Doremi | Sol&amp;Sea">
 <meta property="og:title" content="Doremi | Sol&amp;Sea — intermediación B2B para hoteles y atracciones">
-<meta property="og:description" content="Intermediación B2B: negociamos las tarifas con las atracciones y preparamos programas listos para que los hoteles los ofrezcan a sus huéspedes.">
+<meta property="og:description" content="Intermediación B2B en la Comunidad Valenciana: negociamos las tarifas con las atracciones y preparamos programas listos para que los hoteles los ofrezcan a sus huéspedes.">
 <meta property="og:url" content="https://doremisolandsea.com/">
 <meta property="og:image" content="https://doremisolandsea.com/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="es_ES">
-<meta property="og:locale:alternate" content="en_GB">
+<meta property="og:locale:alternate" content="en_US">
 <meta property="og:locale:alternate" content="ru_RU">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0d1a20">
@@ -404,6 +404,17 @@
   .card-body h3{ font-size:1.05rem; margin-bottom:6px; }
   .card-body p{ font-size:0.88rem; }
   .card-meta{ display:flex; justify-content:space-between; margin-top:14px; font-size:0.82rem; color:var(--ink-soft); }
+  .card-price{
+    display:block; margin-top:12px; font-family:"Iowan Old Style",Georgia,serif;
+    font-size:1.15rem; color:var(--ink);
+  }
+  .card-price small{ font-family:inherit; font-size:0.8rem; color:var(--ink-soft); font-weight:400; }
+  .card-commission{
+    display:inline-block; margin-top:10px; padding:4px 10px; border-radius:999px;
+    font-size:0.75rem; font-weight:700; letter-spacing:0.02em;
+    background:color-mix(in srgb, var(--accent) 14%, transparent); color:var(--accent);
+  }
+  .cards-note{ margin-top:24px; font-size:0.84rem; color:var(--ink-soft); max-width:60ch; }
 
   /* start / contact */
   .start-grid{ display:grid; grid-template-columns:1fr 1fr; gap:24px; }
@@ -570,7 +581,7 @@
   "telephone": "+34613544024",
   "description": "Intermediación B2B entre atracciones turísticas y hoteles: negociamos tarifas y preparamos programas que el hotel ofrece a sus huéspedes. No vendemos paquetes turísticos al viajero final.",
   "address": { "@type": "PostalAddress", "addressLocality": "Alicante", "addressCountry": "ES" },
-  "areaServed": { "@type": "Place", "name": "Costa Blanca, Alicante" },
+  "areaServed": { "@type": "Place", "name": "Comunidad Valenciana (Alicante, Valencia, Castellón), España" },
   "availableLanguage": ["es", "en", "ru"]
 }
 </script>
@@ -672,6 +683,18 @@
             <span class="pin" aria-hidden="true">◎</span>
             <span>Mar Menor<small><span lang-es>Laguna y atardeceres</span><span lang-en>Lagoon and sunsets</span><span lang-ru>Лагуна и закаты</span></small></span>
           </button>
+          <button type="button" class="search-item" role="option" onclick="pickSearch(this)" data-target="#excursiones">
+            <span class="pin" aria-hidden="true">◎</span>
+            <span>Valencia<small><span lang-es>Ciudad de las Artes, casco histórico</span><span lang-en>City of Arts, historic centre</span><span lang-ru>Город искусств, старый центр</span></small></span>
+          </button>
+          <button type="button" class="search-item" role="option" onclick="pickSearch(this)" data-target="#excursiones">
+            <span class="pin" aria-hidden="true">◎</span>
+            <span>Castellón<small><span lang-es>Peñíscola y costa del Azahar</span><span lang-en>Peñíscola and Costa del Azahar</span><span lang-ru>Пеньискола и побережье Асаар</span></small></span>
+          </button>
+          <button type="button" class="search-item" role="option" onclick="pickSearch(this)" data-target="#excursiones">
+            <span class="pin" aria-hidden="true">◎</span>
+            <span>Utiel-Requena<small><span lang-es>Bodegas y enoturismo</span><span lang-en>Wineries and wine tourism</span><span lang-ru>Винодельни и энотуризм</span></small></span>
+          </button>
         </div>
         <div class="search-group" data-group>
           <div class="search-group-title"><span lang-es>Excursiones</span><span lang-en>Excursions</span><span lang-ru>Экскурсии</span></div>
@@ -738,7 +761,7 @@
       <div class="step">
         <div class="step-num">1</div>
         <h3><span lang-es>Negociamos con las atracciones</span><span lang-en>We negotiate with attractions</span><span lang-ru>Договариваемся с объектами</span></h3>
-        <p><span lang-es>Acordamos precios y condiciones directamente con museos, castillos y rutas de Alicante.</span><span lang-en>We agree prices and terms directly with Alicante's museums, castles and routes.</span><span lang-ru>Согласуем цены и условия напрямую с музеями, крепостями и маршрутами Аликанте.</span></p>
+        <p><span lang-es>Acordamos precios y condiciones directamente con museos, castillos, bodegas y rutas de toda la Comunidad Valenciana.</span><span lang-en>We agree prices and terms directly with museums, castles, wineries and routes across the whole Comunidad Valenciana.</span><span lang-ru>Согласуем цены и условия напрямую с музеями, крепостями, винодельнями и маршрутами по всей Валенсийской автономии.</span></p>
       </div>
       <div class="step">
         <div class="step-num">2</div>
@@ -790,7 +813,7 @@
         </div>
       </div>
       <div class="tab-visual" data-photo="assets/hero/hotel1.jpg">
-        <span class="tab-visual-label"><span lang-es>Hoteles · Alicante</span><span lang-en>Hotels · Alicante</span><span lang-ru>Отели · Аликанте</span></span>
+        <span class="tab-visual-label"><span lang-es>Hoteles · Comunidad Valenciana</span><span lang-en>Hotels · Comunidad Valenciana</span><span lang-ru>Отели · Валенсийская автономия</span></span>
       </div>
     </div>
 
@@ -819,7 +842,7 @@
         </div>
       </div>
       <div class="tab-visual" data-photo="assets/hero/atr1.jpg">
-        <span class="tab-visual-label"><span lang-es>Atracciones · Alicante</span><span lang-en>Attractions · Alicante</span><span lang-ru>Объекты · Аликанте</span></span>
+        <span class="tab-visual-label"><span lang-es>Atracciones · Comunidad Valenciana</span><span lang-en>Attractions · Comunidad Valenciana</span><span lang-ru>Объекты · Валенсийская автономия</span></span>
       </div>
     </div>
   </div>
@@ -829,34 +852,39 @@
   <div class="wrap">
     <div class="section-head">
       <p class="eyebrow"><span lang-es>Catálogo</span><span lang-en>Catalogue</span><span lang-ru>Каталог</span></p>
-      <h2><span lang-es>Excursiones en preparación</span><span lang-en>Excursions in the pipeline</span><span lang-ru>Экскурсии в подготовке</span></h2>
+      <h2><span lang-es>Programas listos para ofrecer</span><span lang-en>Programs ready to offer</span><span lang-ru>Готовые программы</span></h2>
     </div>
     <div class="cards">
       <div class="card">
-        <div class="card-media" data-photo="assets/hero/exc1.jpg" style="--fallback:linear-gradient(135deg,#c0466b,#e08a3f);"><span lang-es>Próximamente</span><span lang-en>Coming soon</span><span lang-ru>Скоро</span></div>
+        <div class="card-media" data-photo="assets/hero/exc1.jpg" style="--fallback:linear-gradient(135deg,#c0466b,#e08a3f);"><span lang-es>desde 18 € / persona</span><span lang-en>from €18 / person</span><span lang-ru>от 18 € / чел.</span></div>
         <div class="card-body">
           <h3>Castillo de Santa Bárbara</h3>
           <p><span lang-es>Visita guiada con vistas panorámicas de la bahía de Alicante.</span><span lang-en>Guided visit with panoramic views over Alicante bay.</span><span lang-ru>Экскурсия с гидом и панорамным видом на бухту Аликанте.</span></p>
-          <div class="card-meta"><span>~2h</span><span lang-es>Precio a confirmar</span><span lang-en>Price TBC</span><span lang-ru>Цена уточняется</span></div>
+          <span class="card-price"><span lang-es>desde 18 € <small>por persona · grupo desde 10</small></span><span lang-en>from €18 <small>per person · groups from 10</small></span><span lang-ru>от 18 € <small>с человека · группа от 10</small></span></span><div class="card-meta"><span>~2h</span><span lang-es>ES · EN · RU</span><span lang-en>ES · EN · RU</span><span lang-ru>ES · EN · RU</span></div><span class="card-commission"><span lang-es>Comisión del hotel 15–30%</span><span lang-en>Hotel commission 15–30%</span><span lang-ru>Комиссия отеля 15–30%</span></span>
         </div>
       </div>
       <div class="card">
-        <div class="card-media" data-photo="assets/hero/exc2.jpg" style="--fallback:linear-gradient(135deg,#e08a3f,#1c8a86);"><span lang-es>Próximamente</span><span lang-en>Coming soon</span><span lang-ru>Скоро</span></div>
+        <div class="card-media" data-photo="assets/hero/exc2.jpg" style="--fallback:linear-gradient(135deg,#e08a3f,#1c8a86);"><span lang-es>desde 15 € / persona</span><span lang-en>from €15 / person</span><span lang-ru>от 15 € / чел.</span></div>
         <div class="card-body">
           <h3><span lang-es>Casco Antiguo</span><span lang-en>Old Town Walk</span><span lang-ru>Старый город</span></h3>
           <p><span lang-es>Recorrido a pie por el Barrio de Santa Cruz y la Explanada.</span><span lang-en>Walking route through Santa Cruz quarter and the Explanada.</span><span lang-ru>Пешая прогулка по кварталу Санта-Крус и набережной Эспланада.</span></p>
-          <div class="card-meta"><span>~1.5h</span><span lang-es>Precio a confirmar</span><span lang-en>Price TBC</span><span lang-ru>Цена уточняется</span></div>
+          <span class="card-price"><span lang-es>desde 15 € <small>por persona · grupo desde 10</small></span><span lang-en>from €15 <small>per person · groups from 10</small></span><span lang-ru>от 15 € <small>с человека · группа от 10</small></span></span><div class="card-meta"><span>~1.5h</span><span lang-es>ES · EN · RU</span><span lang-en>ES · EN · RU</span><span lang-ru>ES · EN · RU</span></div><span class="card-commission"><span lang-es>Comisión del hotel 15–30%</span><span lang-en>Hotel commission 15–30%</span><span lang-ru>Комиссия отеля 15–30%</span></span>
         </div>
       </div>
       <div class="card">
-        <div class="card-media" data-photo="assets/hero/exc3.jpg" style="--fallback:linear-gradient(135deg,#1c8a86,#1d4d84);"><span lang-es>Próximamente</span><span lang-en>Coming soon</span><span lang-ru>Скоро</span></div>
+        <div class="card-media" data-photo="assets/hero/exc3.jpg" style="--fallback:linear-gradient(135deg,#1c8a86,#1d4d84);"><span lang-es>desde 12 € / persona</span><span lang-en>from €12 / person</span><span lang-ru>от 12 € / чел.</span></div>
         <div class="card-body">
           <h3>MARQ</h3>
           <p><span lang-es>Museo Arqueológico de Alicante, entrada y visita guiada.</span><span lang-en>Alicante Archaeological Museum, entry and guided tour.</span><span lang-ru>Археологический музей Аликанте: билет и экскурсия с гидом.</span></p>
-          <div class="card-meta"><span>~1h</span><span lang-es>Precio a confirmar</span><span lang-en>Price TBC</span><span lang-ru>Цена уточняется</span></div>
+          <span class="card-price"><span lang-es>desde 12 € <small>por persona · entrada incluida</small></span><span lang-en>from €12 <small>per person · entry included</small></span><span lang-ru>от 12 € <small>с человека · вход включён</small></span></span><div class="card-meta"><span>~1h</span><span lang-es>ES · EN · RU</span><span lang-en>ES · EN · RU</span><span lang-ru>ES · EN · RU</span></div><span class="card-commission"><span lang-es>Comisión del hotel 15–30%</span><span lang-en>Hotel commission 15–30%</span><span lang-ru>Комиссия отеля 15–30%</span></span>
         </div>
       </div>
     </div>
+    <p class="cards-note">
+      <span lang-es>Precios orientativos por persona para grupos, con entradas y guía incluidos según el programa. La tarifa final y la comisión se confirman por escrito con cada establecimiento.</span>
+      <span lang-en>Indicative per-person prices for groups, including entry tickets and guide depending on the program. Final rates and commission are confirmed in writing with each establishment.</span>
+      <span lang-ru>Ориентировочные цены с человека для групп, входные билеты и гид включены в зависимости от программы. Итоговый тариф и комиссия подтверждаются письменно с каждым партнёром.</span>
+    </p>
   </div>
 </section>
 
@@ -894,8 +922,8 @@
         <!-- ловушка для спам-ботов: люди это поле не видят -->
         <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
         <!-- письмо-подтверждение отправителю, текст на языке сайта -->
-        <input type="hidden" id="f-autoresponse" name="_autoresponse" value="Gracias por su solicitud. La hemos recibido y le responderemos en un plazo de 1–2 días laborables. Doremi | Sol&Sea, Alicante."
-               data-msg-es="Gracias por su solicitud. La hemos recibido y le responderemos en un plazo de 1–2 días laborables. Doremi | Sol&Sea, Alicante." data-msg-en="Thank you for your request. We have received it and will reply within 1–2 working days. Doremi | Sol&Sea, Alicante." data-msg-ru="Спасибо за заявку. Мы её получили и ответим в течение 1–2 рабочих дней. Doremi | Sol&Sea, Аликанте.">
+        <input type="hidden" id="f-autoresponse" name="_autoresponse" value="Gracias por su solicitud. La hemos recibido y le responderemos en un plazo de 1–2 días laborables. Doremi | Sol&Sea, Comunidad Valenciana."
+               data-msg-es="Gracias por su solicitud. La hemos recibido y le responderemos en un plazo de 1–2 días laborables. Doremi | Sol&Sea, Comunidad Valenciana." data-msg-en="Thank you for your request. We have received it and will reply within 1–2 working days. Doremi | Sol&Sea, Comunidad Valenciana." data-msg-ru="Спасибо за заявку. Мы её получили и ответим в течение 1–2 рабочих дней. Doremi | Sol&Sea, Валенсийская автономия.">
         <div class="field">
           <label for="f-name"><span lang-es>Nombre</span><span lang-en>Name</span><span lang-ru>Имя</span></label>
           <input id="f-name" name="Nombre" type="text" placeholder="Ana García" required />
@@ -945,7 +973,7 @@
       </div>
       <div class="info-item">
         <div class="info-icon">◎</div>
-        <div><strong><span lang-es>Ubicación</span><span lang-en>Location</span><span lang-ru>Расположение</span></strong><span lang-es>Alicante, España</span><span lang-en>Alicante, Spain</span><span lang-ru>Аликанте, Испания</span></div>
+        <div><strong><span lang-es>Ubicación</span><span lang-en>Location</span><span lang-ru>Расположение</span></strong><span lang-es>Comunidad Valenciana, España</span><span lang-en>Comunidad Valenciana, Spain</span><span lang-ru>Валенсийская автономия, Испания</span></div>
       </div>
     </div>
   </div>
@@ -959,7 +987,7 @@
       <a href="#excursiones"><span lang-es>Excursiones</span><span lang-en>Excursions</span><span lang-ru>Экскурсии</span></a>
       <a href="#contacto"><span lang-es>Contacto</span><span lang-en>Contact</span><span lang-ru>Контакты</span></a>
     </div>
-    <span class="footer-note">© 2026 Doremi | Sol&amp;Sea · Alicante</span>
+    <span class="footer-note">© 2026 Doremi | Sol&amp;Sea · Comunidad Valenciana</span>
   </div>
   <div class="wrap footer-links footer-links-legal">
     <a href="/aviso-legal.html"><span lang-es>Aviso legal</span><span lang-en>Legal notice</span><span lang-ru>Правовая информация</span></a>

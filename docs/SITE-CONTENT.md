@@ -117,8 +117,18 @@ Blanca», ссылки «Convertirse en socio / Ver cómo funciona» и стро
 | Casco Antiguo / Old Town Walk | Recorrido a pie por el Barrio de Santa Cruz y la Explanada. | Walking route through Santa Cruz quarter and the Explanada. | ~1.5h |
 | MARQ | Museo Arqueológico de Alicante, entrada y visita guiada. | Alicante Archaeological Museum, entry and guided tour. | ~1h |
 
-Precio: `Precio a confirmar` / `Price TBC` hasta cerrar tarifas reales con
-cada atracción.
+**Ориентировочные цены** (публикуются на карточках, комиссия отеля 15–30%):
+
+| Программа | Цена | Уточнение |
+|---|---|---|
+| Castillo de Santa Bárbara | desde 18 €/persona | grupo desde 10 |
+| Casco Antiguo | desde 15 €/persona | grupo desde 10 |
+| MARQ | desde 12 €/persona | entrada incluida |
+
+Под карточками — оговорка: цены ориентировочные, итоговый тариф и комиссия
+подтверждаются письменно с каждым партнёром. Цены рассчитаны от известной
+себестоимости (MARQ: вход 4,50 € + гид 1,50 €) с наценкой, покрывающей
+комиссию отеля; при появлении реальных договорённостей их нужно заменить.
 
 ---
 
@@ -213,6 +223,14 @@ solicitud / Send request
 
 
 ---
+
+## География
+
+Работа по всей **Comunidad Valenciana** — Аликанте, Валенсия, Кастельон.
+В текстах не «de Alicante», а «de la Comunidad Valenciana». В подсказках
+поиска семь направлений: Alicante, Elche, Torrevieja, Mar Menor, Valencia,
+Castellón, Utiel-Requena. Галерея на первом экране пока показывает четыре
+фотографии Аликанте — для новых направлений нужны кадры.
 
 ## Позиционирование: B2B-посредничество
 
