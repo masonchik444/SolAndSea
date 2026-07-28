@@ -469,9 +469,12 @@
   .start-card{
     background:var(--paper-raised); border:1px solid var(--line); border-radius:var(--radius);
     padding:32px; box-shadow:var(--shadow);
+    /* карточки одной высоты, кнопки — на одном уровне независимо от длины текста */
+    display:flex; flex-direction:column;
   }
   .start-card h3{ font-size:1.2rem; margin-bottom:10px; }
   .start-card p{ margin-bottom:20px; font-size:0.94rem; }
+  .start-card .btn{ margin-top:auto; }
 
   .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:56px; }
   .field{ display:flex; flex-direction:column; gap:6px; margin-bottom:16px; }
