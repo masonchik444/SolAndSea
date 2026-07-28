@@ -148,6 +148,18 @@
   }
   nav a:hover, nav a:focus-visible{ color:var(--ink); border-color:var(--accent); outline:none; }
   .header-actions{ display:flex; align-items:center; gap:14px; }
+  /* Кнопка в шапке держит ширину самого длинного перевода, поэтому при
+     переключении языка не прыгает. Все три надписи лежат в одной ячейке
+     сетки: невидимые скрыты через visibility, а не display, и продолжают
+     задавать ширину. */
+  .header-actions .btn{ display:inline-grid; justify-items:center; }
+  .header-actions .btn > span{ grid-area:1 / 1; }
+  .header-actions .btn > [lang-en],
+  .header-actions .btn > [lang-ru]{ display:block; visibility:hidden; }
+  html.lang-en .header-actions .btn > [lang-es],
+  html.lang-ru .header-actions .btn > [lang-es]{ display:block; visibility:hidden; }
+  html.lang-en .header-actions .btn > [lang-en],
+  html.lang-ru .header-actions .btn > [lang-ru]{ visibility:visible; }
 
   /* header sobre la foto del hero / header over the hero photo */
   header.over-hero{
