@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Cartel QR para recepción — Doremi | Sol&amp;Sea</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+  :root{
+    --ink:#122029; --ink-soft:#3c4d55; --paper:#eef2f1; --line:#d7dedb; --accent:#1c8a86;
+    --wave-gradient: linear-gradient(160deg, #c0466b 0%, #e08a3f 32%, #1c8a86 68%, #1d4d84 100%);
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    background:var(--paper); color:var(--ink);
+    font-family:"Avenir Next","Segoe UI","Helvetica Neue",Arial,sans-serif;
+    -webkit-font-smoothing:antialiased; padding:28px 16px 60px;
+  }
+  .hint{
+    max-width:640px; margin:0 auto 24px; font-size:0.9rem; color:var(--ink-soft); line-height:1.6;
+  }
+  .hint b{ color:var(--ink); }
+  .hint button{
+    margin-top:12px; padding:11px 22px; border:none; border-radius:999px; cursor:pointer;
+    background:var(--wave-gradient); color:#fff; font-family:inherit; font-weight:700; font-size:0.92rem;
+  }
+
+  /* сама табличка — A5 книжной ориентации */
+  .cartel{
+    width:148mm; height:210mm; margin:0 auto; background:#fff; color:#122029;
+    border:1px solid var(--line); border-radius:14px; overflow:hidden;
+    display:flex; flex-direction:column; align-items:center; text-align:center;
+    padding:16mm 12mm 12mm;
+  }
+  .cartel .logo{ display:flex; align-items:center; gap:9px; margin-bottom:9mm; }
+  .cartel .logo span{ font-family:"Iowan Old Style",Palatino,Georgia,serif; font-size:15pt; font-weight:700; }
+  .cartel h1{
+    font-family:"Iowan Old Style",Palatino,Georgia,serif; font-weight:600;
+    font-size:23pt; line-height:1.16; margin:0 0 3mm; letter-spacing:-0.01em;
+  }
+  .cartel h2{
+    font-family:"Iowan Old Style",Palatino,Georgia,serif; font-weight:600;
+    font-size:14pt; line-height:1.3; margin:0 0 1.5mm; color:#3c4d55;
+  }
+  .cartel .qr{ margin:8mm 0 6mm; }
+  .cartel .qr img{ width:62mm; height:62mm; display:block; }
+  .cartel .scan{
+    font-size:11pt; color:#3c4d55; line-height:1.55; margin-bottom:6mm;
+  }
+  .cartel .prices{
+    display:flex; gap:6mm; justify-content:center; flex-wrap:wrap;
+    font-size:10.5pt; color:#122029; margin-bottom:auto;
+  }
+  .cartel .prices div{ display:flex; flex-direction:column; }
+  .cartel .prices b{ font-family:"Iowan Old Style",Georgia,serif; font-size:13pt; }
+  .cartel .prices small{ color:#3c4d55; font-size:8.5pt; }
+  .cartel footer{
+    width:100%; border-top:1px solid #d7dedb; padding-top:4mm; margin-top:8mm;
+    font-size:9pt; color:#3c4d55;
+  }
+  .cartel .wave{ width:100%; height:6mm; background:var(--wave-gradient); border-radius:3mm; margin-top:4mm; }
+
+  @media print{
+    @page{ size:A5 portrait; margin:0; }
+    body{ background:#fff; padding:0; }
+    .hint{ display:none; }
+    .cartel{ width:148mm; height:210mm; border:none; border-radius:0; margin:0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hint">
+  <b>Табличка для стойки отеля.</b> Нажмите «Распечатать» и выберите формат <b>A5</b>,
+  поля — «нет», масштаб — 100%. QR ведёт на страницу с экскурсиями для гостя
+  (<code>doremisolandsea.com/guest.html</code>). Если печатаете на A4, выберите
+  «2 страницы на листе» или увеличьте масштаб до 141%.
+  <br>
+  <button type="button" onclick="window.print()">Распечатать</button>
+</div>
+
+<div class="cartel">
+  <div class="logo">
+    <svg width="34" height="34" viewBox="0 0 100 100" aria-hidden="true">
+      <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#c0466b"/><stop offset="32%" stop-color="#e08a3f"/>
+        <stop offset="68%" stop-color="#1c8a86"/><stop offset="100%" stop-color="#1d4d84"/>
+      </linearGradient></defs>
+      <circle cx="50" cy="50" r="46" fill="url(#g)" stroke="#122029" stroke-width="6"/>
+      <path d="M20 62 C34 62 34 40 50 40 C62 40 62 55 72 55" fill="none" stroke="#122029" stroke-width="7" stroke-linecap="round"/>
+      <path d="M28 68 C40 68 40 50 54 50 C64 50 64 62 78 62" fill="none" stroke="#122029" stroke-width="7" stroke-linecap="round"/>
+    </svg>
+    <span>Doremi | Sol&amp;Sea</span>
+  </div>
+
+  <h1>¿Qué ver cerca?</h1>
+  <h2>What to see nearby · Что посмотреть рядом</h2>
+
+  <div class="qr">
+    <img src="assets/qr-guest.svg" alt="QR: doremisolandsea.com/guest.html" width="234" height="234">
+  </div>
+
+  <p class="scan">
+    Escanee el código con la cámara del móvil<br>
+    Scan the code with your phone camera · Наведите камеру телефона
+  </p>
+
+  <div class="prices">
+    <div><b>desde 18 €</b><span>Castillo de Santa Bárbara</span><small>~2 h</small></div>
+    <div><b>desde 15 €</b><span>Casco Antiguo</span><small>~1,5 h</small></div>
+    <div><b>desde 12 €</b><span>MARQ</span><small>~1 h</small></div>
+  </div>
+
+  <footer>
+    Reserve en recepción · Book at reception · Бронирование на ресепшене<br>
+    doremisolandsea.com · +34 613 54 40 24
+  </footer>
+  <div class="wave"></div>
+</div>
+
+</body>
+</html>
