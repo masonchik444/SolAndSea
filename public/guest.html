@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Qué ver cerca — Doremi | Sol&amp;Sea</title>
+<meta name="description" content="Excursiones y visitas guiadas cerca de su hotel en la Comunidad Valenciana: castillo, casco antiguo, museo. Precios por persona y reserva en recepción.">
+<link rel="canonical" href="https://doremisolandsea.com/guest.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Qué ver cerca de su hotel — Doremi | Sol&amp;Sea">
+<meta property="og:description" content="Excursiones y visitas guiadas en la Comunidad Valenciana. Pregunte en recepción de su hotel.">
+<meta property="og:url" content="https://doremisolandsea.com/guest.html">
+<meta property="og:image" content="https://doremisolandsea.com/og.jpg">
+<meta name="theme-color" content="#0d1a20">
+<script>
+  (function(){
+    try{
+      var saved = localStorage.getItem('lang'), lang = saved;
+      if(!lang){
+        var nav = ((navigator.languages && navigator.languages[0]) || navigator.language || 'es').toLowerCase();
+        lang = nav.indexOf('ru') === 0 ? 'ru' : (nav.indexOf('es') === 0 ? 'es' : 'en');
+      }
+      if(lang !== 'es'){ document.documentElement.classList.add('lang-' + lang); }
+      document.documentElement.setAttribute('lang', lang);
+    }catch(e){}
+  })();
+</script>
+<style>
+  :root{
+    --ink:#122029; --ink-soft:#3c4d55; --paper:#eef2f1; --paper-raised:#ffffff;
+    --line:#d7dedb; --accent:#1c8a86; --rose:#c0466b;
+    --wave-gradient: linear-gradient(160deg, #c0466b 0%, #e08a3f 32%, #1c8a86 68%, #1d4d84 100%);
+    --shadow: 0 12px 32px -16px rgba(18,32,41,0.28);
+    --radius: 22px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --ink:#eef2f1; --ink-soft:#aab8bd; --paper:#0d1a20; --paper-raised:#132530;
+      --line:#22383f; --accent:#3fb6ae; --shadow: 0 12px 36px -16px rgba(0,0,0,0.6);
+    }
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    background:var(--paper); color:var(--ink); line-height:1.65;
+    font-family:"Avenir Next","Segoe UI","Helvetica Neue",Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  [lang-en], [lang-ru]{ display:none; }
+  html.lang-en [lang-es], html.lang-ru [lang-es]{ display:none; }
+  html.lang-en [lang-en]{ display:revert; }
+  html.lang-ru [lang-ru]{ display:revert; }
+
+  .wrap{ max-width:920px; margin:0 auto; padding:0 22px; }
+  h1,h2,h3{
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    font-weight:600; letter-spacing:-0.01em; margin:0; overflow-wrap:break-word;
+  }
+  p{ margin:0; color:var(--ink-soft); }
+
+  /* шапка */
+  header{ background:var(--paper-raised); border-bottom:1px solid var(--line); }
+  .header-inner{ display:flex; align-items:center; justify-content:space-between; gap:14px; padding:12px 0; }
+  .brand{ display:flex; align-items:center; gap:9px; text-decoration:none; color:var(--ink); }
+  .brand-name{ font-family:"Iowan Old Style",Palatino,Georgia,serif; font-size:1rem; font-weight:700; white-space:nowrap; }
+  .lang-toggle{ display:flex; border:1px solid var(--line); border-radius:999px; padding:3px; background:var(--paper); gap:2px; }
+  .lang-toggle button{
+    border:none; background:none; padding:5px 10px; border-radius:999px; font-family:inherit;
+    font-size:0.74rem; font-weight:700; color:var(--ink-soft); cursor:pointer;
+  }
+  .lang-toggle button[aria-pressed="true"]{ background:var(--accent); color:#fff; }
+
+  /* первый экран */
+  .hero{
+    position:relative; padding:64px 0 56px; color:#fff; text-align:center; isolation:isolate;
+  }
+  .hero::before{
+    content:""; position:absolute; inset:0; z-index:-2;
+    background:url('assets/hero/01-alicante.jpg') center/cover, #0b1519;
+  }
+  .hero::after{
+    content:""; position:absolute; inset:0; z-index:-1;
+    background:linear-gradient(180deg, rgba(6,17,22,0.6), rgba(6,17,22,0.42) 45%, rgba(6,17,22,0.82));
+  }
+  .hero h1{ font-size:clamp(1.9rem,4.4vw,2.7rem); line-height:1.12; max-width:20ch; margin:0 auto; text-shadow:0 2px 22px rgba(0,0,0,0.45); }
+  .hero p{ margin:16px auto 0; max-width:44ch; color:rgba(255,255,255,0.9); font-size:1.02rem; text-shadow:0 1px 14px rgba(0,0,0,0.45); }
+
+  /* программы */
+  main{ padding:48px 0 12px; }
+  .eyebrow{ font-size:0.7rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent); font-weight:700; margin:0 0 8px; }
+  .section-head{ margin-bottom:26px; }
+  .section-head h2{ font-size:clamp(1.4rem,3vw,1.9rem); }
+  .tours{ display:grid; gap:18px; }
+  .tour{
+    display:grid; grid-template-columns:180px 1fr; gap:20px; align-items:center;
+    background:var(--paper-raised); border:1px solid var(--line); border-radius:var(--radius);
+    overflow:hidden; box-shadow:var(--shadow);
+  }
+  .tour-photo{ background-size:cover; background-position:center; min-height:150px; height:100%; }
+  .tour-body{ padding:18px 22px 18px 0; }
+  .tour h3{ font-size:1.1rem; margin-bottom:5px; }
+  .tour p{ font-size:0.92rem; }
+  .tour-meta{
+    display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; margin-top:12px;
+    font-size:0.86rem; color:var(--ink-soft);
+  }
+  .tour-price{ font-family:"Iowan Old Style",Georgia,serif; font-size:1.2rem; color:var(--ink); }
+
+  /* как забронировать */
+  .booking{
+    margin:44px 0 8px; background:var(--paper-raised); border:1px solid var(--line);
+    border-radius:var(--radius); padding:30px 28px; box-shadow:var(--shadow);
+  }
+  .booking h2{ font-size:1.25rem; margin-bottom:14px; }
+  .steps{ display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:8px; }
+  .step-num{
+    width:34px; height:34px; border-radius:50%; background:var(--wave-gradient); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.9rem; margin-bottom:10px;
+  }
+  .step p{ font-size:0.92rem; }
+  .wa-btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:10px; margin-top:16px;
+    padding:13px 24px; border-radius:999px; background:#25d366; color:#fff;
+    text-decoration:none; font-weight:700; font-size:0.95rem; box-shadow:var(--shadow);
+  }
+  .wa-btn svg{ width:20px; height:20px; fill:#fff; }
+  .call{ display:inline-block; margin-top:12px; margin-left:14px; font-size:0.92rem; color:var(--accent); text-decoration:none; }
+  .note{ margin-top:18px; font-size:0.85rem; color:var(--ink-soft); }
+
+  footer{ border-top:1px solid var(--line); margin-top:48px; padding:24px 0 38px; }
+  .footer-links{ display:flex; gap:16px; flex-wrap:wrap; margin-bottom:12px; }
+  .footer-links a{ font-size:0.84rem; color:var(--accent); text-decoration:none; }
+  .footer-legal{ font-size:0.74rem; color:var(--ink-soft); line-height:1.6; }
+
+  @media (max-width:640px){
+    .tour{ grid-template-columns:1fr; }
+    .tour-photo{ min-height:170px; }
+    .tour-body{ padding:0 20px 20px; }
+    .steps{ grid-template-columns:1fr; }
+    .call{ margin-left:0; display:block; }
+  }
+  @media (prefers-reduced-motion: reduce){ *{ transition:none !important; animation:none !important; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-inner">
+    <a class="brand" href="/">
+      <svg width="28" height="28" viewBox="0 0 100 100" aria-hidden="true">
+        <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#c0466b"/><stop offset="32%" stop-color="#e08a3f"/>
+          <stop offset="68%" stop-color="#1c8a86"/><stop offset="100%" stop-color="#1d4d84"/>
+        </linearGradient></defs>
+        <circle cx="50" cy="50" r="46" fill="url(#g)" stroke="currentColor" stroke-width="6"/>
+        <path d="M20 62 C34 62 34 40 50 40 C62 40 62 55 72 55" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
+        <path d="M28 68 C40 68 40 50 54 50 C64 50 64 62 78 62" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
+      </svg>
+      <span class="brand-name">Doremi | Sol&amp;Sea</span>
+    </a>
+    <div class="lang-toggle" role="group" aria-label="Idioma">
+      <button id="btn-es" type="button" aria-pressed="true" onclick="setLang('es')">ES</button>
+      <button id="btn-en" type="button" aria-pressed="false" onclick="setLang('en')">EN</button>
+      <button id="btn-ru" type="button" aria-pressed="false" onclick="setLang('ru')">RU</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <h1>
+      <span lang-es>Qué ver cerca de su hotel</span>
+      <span lang-en>What to see near your hotel</span>
+      <span lang-ru>Что посмотреть рядом с отелем</span>
+    </h1>
+    <p>
+      <span lang-es>Visitas guiadas por la Comunidad Valenciana con guía en español, inglés y ruso. Precio cerrado, sin sorpresas.</span>
+      <span lang-en>Guided visits across the Comunidad Valenciana with a guide in Spanish, English and Russian. Fixed price, no surprises.</span>
+      <span lang-ru>Экскурсии по Валенсийской автономии с гидом на испанском, английском и русском. Фиксированная цена, без сюрпризов.</span>
+    </p>
+  </div>
+</section>
+
+<main class="wrap">
+  <div class="section-head">
+    <p class="eyebrow"><span lang-es>Programas</span><span lang-en>Programs</span><span lang-ru>Программы</span></p>
+    <h2><span lang-es>Excursiones disponibles</span><span lang-en>Available excursions</span><span lang-ru>Доступные экскурсии</span></h2>
+  </div>
+
+  <div class="tours">
+    <article class="tour">
+      <div class="tour-photo" style="background-image:url('assets/hero/exc1.jpg')" role="img" aria-label="Castillo de Santa Bárbara"></div>
+      <div class="tour-body">
+        <h3>Castillo de Santa Bárbara</h3>
+        <p>
+          <span lang-es>Visita guiada a la fortaleza sobre la bahía, con vistas panorámicas de la ciudad y el mar.</span>
+          <span lang-en>Guided visit to the fortress above the bay, with panoramic views over the city and the sea.</span>
+          <span lang-ru>Экскурсия по крепости над бухтой с панорамным видом на город и море.</span>
+        </p>
+        <div class="tour-meta">
+          <span class="tour-price"><span lang-es>desde 18 €</span><span lang-en>from €18</span><span lang-ru>от 18 €</span></span>
+          <span><span lang-es>por persona</span><span lang-en>per person</span><span lang-ru>с человека</span></span>
+          <span>~2 h</span>
+          <span>ES · EN · RU</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="tour">
+      <div class="tour-photo" style="background-image:url('assets/hero/exc2.jpg')" role="img" aria-label="Casco Antiguo"></div>
+      <div class="tour-body">
+        <h3><span lang-es>Casco Antiguo</span><span lang-en>Old Town Walk</span><span lang-ru>Старый город</span></h3>
+        <p>
+          <span lang-es>Paseo a pie por el barrio de Santa Cruz y la Explanada, con las historias de la ciudad.</span>
+          <span lang-en>Walking tour through the Santa Cruz quarter and the Explanada, with the city's stories.</span>
+          <span lang-ru>Пешая прогулка по кварталу Санта-Крус и набережной Эспланада с историями города.</span>
+        </p>
+        <div class="tour-meta">
+          <span class="tour-price"><span lang-es>desde 15 €</span><span lang-en>from €15</span><span lang-ru>от 15 €</span></span>
+          <span><span lang-es>por persona</span><span lang-en>per person</span><span lang-ru>с человека</span></span>
+          <span>~1,5 h</span>
+          <span>ES · EN · RU</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="tour">
+      <div class="tour-photo" style="background-image:url('assets/hero/exc3.jpg')" role="img" aria-label="MARQ"></div>
+      <div class="tour-body">
+        <h3>MARQ</h3>
+        <p>
+          <span lang-es>Museo Arqueológico de Alicante: entrada incluida y visita guiada por sus salas.</span>
+          <span lang-en>Alicante Archaeological Museum: entry included and a guided tour of its halls.</span>
+          <span lang-ru>Археологический музей Аликанте: билет включён, экскурсия по залам.</span>
+        </p>
+        <div class="tour-meta">
+          <span class="tour-price"><span lang-es>desde 12 €</span><span lang-en>from €12</span><span lang-ru>от 12 €</span></span>
+          <span><span lang-es>por persona</span><span lang-en>per person</span><span lang-ru>с человека</span></span>
+          <span>~1 h</span>
+          <span>ES · EN · RU</span>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <section class="booking">
+    <h2><span lang-es>Cómo reservar</span><span lang-en>How to book</span><span lang-ru>Как забронировать</span></h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <p>
+          <span lang-es><strong>Pregunte en la recepción de su hotel.</strong> El personal conoce los programas y le apunta a la salida que prefiera.</span>
+          <span lang-en><strong>Ask at your hotel reception.</strong> The staff know the programs and will sign you up for the departure you prefer.</span>
+          <span lang-ru><strong>Спросите на ресепшене отеля.</strong> Сотрудники знают программы и запишут вас на удобное время.</span>
+        </p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <p>
+          <span lang-es><strong>¿Dudas sobre horarios o idioma?</strong> Escríbanos por WhatsApp y le respondemos.</span>
+          <span lang-en><strong>Questions about times or language?</strong> Write to us on WhatsApp and we'll reply.</span>
+          <span lang-ru><strong>Вопросы о времени или языке?</strong> Напишите нам в WhatsApp — ответим.</span>
+        </p>
+      </div>
+    </div>
+
+    <a class="wa-btn" id="wa-link" href="#" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47s1.06 2.86 1.21 3.06c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35z"/>
+        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.02h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.17 8.17 0 0 1-1.25-4.35c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.83 2.41a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.2-8.24 8.2z"/>
+      </svg>
+      <span lang-es>Preguntar por WhatsApp</span><span lang-en>Ask on WhatsApp</span><span lang-ru>Спросить в WhatsApp</span>
+    </a>
+    <a class="call" href="tel:+34613544024">+34 613 54 40 24</a>
+
+    <p class="note">
+      <span lang-es>Precios orientativos por persona para grupos; la reserva y el pago se realizan en su hotel. Los horarios dependen de la disponibilidad de cada atracción.</span>
+      <span lang-en>Indicative per-person prices for groups; booking and payment are handled by your hotel. Times depend on each attraction's availability.</span>
+      <span lang-ru>Ориентировочные цены с человека для групп; бронирование и оплата — через ваш отель. Время зависит от доступности каждого объекта.</span>
+    </p>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-links">
+      <a href="/"><span lang-es>Para hoteles y atracciones</span><span lang-en>For hotels and attractions</span><span lang-ru>Отелям и объектам</span></a>
+      <a href="/aviso-legal.html"><span lang-es>Aviso legal</span><span lang-en>Legal notice</span><span lang-ru>Правовая информация</span></a>
+      <a href="/privacidad.html"><span lang-es>Privacidad</span><span lang-en>Privacy</span><span lang-ru>Конфиденциальность</span></a>
+    </div>
+    <div class="footer-legal">
+      Yaroslav Tyutyunikov — Autónomo · NIE Z1513422G · Actividad IAE 844 ·
+      Calle Escritor Ferrándiz Torremocha, 14 · 03011 Alicante, España
+    </div>
+  </div>
+</footer>
+
+<script>
+  var WA = {
+    es: 'https://wa.me/34613544024?text=' + encodeURIComponent('Hola, estoy en un hotel de la zona y me interesan las excursiones.'),
+    en: 'https://wa.me/34613544024?text=' + encodeURIComponent("Hello, I'm staying at a hotel nearby and I'm interested in the excursions."),
+    ru: 'https://wa.me/34613544024?text=' + encodeURIComponent('Здравствуйте, я в отеле поблизости, интересуют экскурсии.')
+  };
+  function setLang(lang){
+    var root = document.documentElement;
+    root.classList.toggle('lang-en', lang === 'en');
+    root.classList.toggle('lang-ru', lang === 'ru');
+    ['es','en','ru'].forEach(function(code){
+      var b = document.getElementById('btn-' + code);
+      if(b){ b.setAttribute('aria-pressed', code === lang); }
+    });
+    root.setAttribute('lang', lang);
+    document.getElementById('wa-link').href = WA[lang] || WA.es;
+    try{ localStorage.setItem('lang', lang); }catch(e){}
+  }
+  setLang(document.documentElement.getAttribute('lang') || 'es');
+</script>
+</body>
+</html>
