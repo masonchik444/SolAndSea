@@ -416,6 +416,54 @@
   }
   .cards-note{ margin-top:24px; font-size:0.84rem; color:var(--ink-soft); max-width:60ch; }
 
+  /* сколько зарабатывает отель */
+  .calc{
+    display:grid; grid-template-columns:1.05fr 0.95fr; gap:32px; align-items:center;
+    background:var(--paper-raised); border:1px solid var(--line); border-radius:var(--radius);
+    padding:32px; box-shadow:var(--shadow);
+  }
+  .calc-field{ margin-bottom:26px; }
+  .calc-label{
+    display:flex; align-items:baseline; justify-content:space-between; gap:12px;
+    font-size:0.9rem; color:var(--ink-soft); margin-bottom:10px;
+  }
+  .calc-label b{ font-family:"Iowan Old Style",Georgia,serif; font-size:1.25rem; color:var(--ink); }
+  .calc input[type="range"]{ width:100%; accent-color:var(--accent); }
+  .calc-rates{ display:flex; gap:8px; flex-wrap:wrap; }
+  .calc-rates button{
+    border:1px solid var(--line); background:var(--paper); color:var(--ink-soft);
+    border-radius:999px; padding:7px 15px; font-family:inherit; font-size:0.85rem;
+    font-weight:700; cursor:pointer; transition:background .15s, color .15s, border-color .15s;
+  }
+  .calc-rates button[aria-pressed="true"]{ background:var(--accent); border-color:var(--accent); color:#fff; }
+  .calc-rates button:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+  .calc-result{
+    background:var(--wave-gradient); color:#fff; border-radius:18px; padding:28px 26px; text-align:center;
+  }
+  .calc-result .sum{
+    display:block; font-family:"Iowan Old Style",Georgia,serif; font-size:2.6rem; line-height:1.1;
+    margin:4px 0 2px;
+  }
+  .calc-result .cap{ font-size:0.8rem; letter-spacing:0.12em; text-transform:uppercase; opacity:0.85; }
+  .calc-result .year{ margin-top:16px; padding-top:14px; border-top:1px solid rgba(255,255,255,0.25); font-size:0.95rem; }
+  .calc-note{ margin-top:18px; font-size:0.84rem; color:var(--ink-soft); max-width:62ch; }
+
+  /* партнёры */
+  .partners{ display:flex; gap:20px; flex-wrap:wrap; align-items:center; }
+  .partner{
+    display:flex; align-items:center; justify-content:center;
+    min-width:180px; height:96px; padding:16px 22px;
+    background:var(--paper-raised); border:1px solid var(--line); border-radius:16px;
+    box-shadow:var(--shadow);
+  }
+  .partner img{ max-height:64px; max-width:150px; width:auto; height:auto; }
+  /* пока файла логотипа нет — показываем название в фирменном стиле */
+  .partner-name{
+    font-family:"Iowan Old Style",Palatino,Georgia,serif; font-size:1.25rem;
+    font-weight:600; color:var(--ink); letter-spacing:-0.01em;
+  }
+  .partners-note{ margin-top:20px; font-size:0.86rem; color:var(--ink-soft); max-width:60ch; }
+
   /* start / contact */
   .start-grid{ display:grid; grid-template-columns:1fr 1fr; gap:24px; }
   .start-card{
@@ -537,7 +585,7 @@
   }
 
   @media (max-width:880px){
-    .steps, .tab-panel, .cards, .start-grid, .contact-grid{
+    .steps, .tab-panel, .cards, .start-grid, .contact-grid, .calc{
       grid-template-columns:1fr;
     }
     .step{ padding-right:0; margin-bottom:28px; }
@@ -888,6 +936,71 @@
   </div>
 </section>
 
+<section class="section-alt" id="ingresos">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow"><span lang-es>Ingresos del hotel</span><span lang-en>Hotel revenue</span><span lang-ru>Доход отеля</span></p>
+      <h2><span lang-es>Cuánto puede ganar su hotel</span><span lang-en>How much your hotel can earn</span><span lang-ru>Сколько зарабатывает отель</span></h2>
+    </div>
+    <div class="calc">
+      <div>
+        <div class="calc-field">
+          <div class="calc-label">
+            <span><span lang-es>Huéspedes que reservan al mes</span><span lang-en>Guests booking per month</span><span lang-ru>Гостей бронируют в месяц</span></span>
+            <b id="calc-guests-out">20</b>
+          </div>
+          <input type="range" id="calc-guests" min="5" max="100" step="5" value="20"
+                 aria-label="Huéspedes al mes">
+        </div>
+        <div class="calc-field">
+          <div class="calc-label">
+            <span><span lang-es>Comisión del hotel</span><span lang-en>Hotel commission</span><span lang-ru>Комиссия отеля</span></span>
+          </div>
+          <div class="calc-rates" id="calc-rates" role="group" aria-label="Comisión">
+            <button type="button" data-rate="15" aria-pressed="false">15%</button>
+            <button type="button" data-rate="20" aria-pressed="false">20%</button>
+            <button type="button" data-rate="25" aria-pressed="true">25%</button>
+            <button type="button" data-rate="30" aria-pressed="false">30%</button>
+          </div>
+        </div>
+      </div>
+      <div class="calc-result">
+        <span class="cap"><span lang-es>Comisión al mes</span><span lang-en>Commission per month</span><span lang-ru>Комиссия в месяц</span></span>
+        <strong class="sum" id="calc-month">75 €</strong>
+        <div class="year">
+          <span lang-es>Al año:</span><span lang-en>Per year:</span><span lang-ru>За год:</span>
+          <strong id="calc-year">900 €</strong>
+        </div>
+      </div>
+    </div>
+    <p class="calc-note">
+      <span lang-es>Cálculo con un precio medio de 15 € por persona. El hotel no invierte nada: nosotros negociamos las tarifas y coordinamos con cada atracción. La comisión final se fija por escrito en el acuerdo.</span>
+      <span lang-en>Based on an average price of €15 per person. The hotel invests nothing: we negotiate the rates and coordinate with each attraction. The final commission is set in writing in the agreement.</span>
+      <span lang-ru>Расчёт при средней цене 15 € с человека. Отель не вкладывает ничего: тарифы согласуем мы и мы же координируем работу с объектами. Итоговая комиссия фиксируется письменно в договоре.</span>
+    </p>
+  </div>
+</section>
+
+<section id="socios">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow"><span lang-es>Confían en nosotros</span><span lang-en>They work with us</span><span lang-ru>С нами работают</span></p>
+      <h2><span lang-es>Nuestros socios</span><span lang-en>Our partners</span><span lang-ru>Наши партнёры</span></h2>
+    </div>
+    <div class="partners">
+      <div class="partner">
+        <img src="assets/partners/jazz-house.png" alt="Jazz House" loading="lazy" width="150" height="64"
+             onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'partner-name',textContent:'Jazz House'}))">
+      </div>
+    </div>
+    <p class="partners-note">
+      <span lang-es>Jazz House · Alicante — música en directo y eventos para grupos.</span>
+      <span lang-en>Jazz House · Alicante — live music and events for groups.</span>
+      <span lang-ru>Jazz House · Аликанте — живая музыка и мероприятия для групп.</span>
+    </p>
+  </div>
+</section>
+
 <section class="section-alt">
   <div class="wrap">
     <div class="section-head">
@@ -1220,6 +1333,37 @@
   document.addEventListener('click', function(e){
     if(panel && !panel.hidden && !e.target.closest('.hero-search')){ closeSearch(); }
   });
+
+  /* ---------- Сколько зарабатывает отель ---------- */
+  var AVG_TICKET = 15;
+  var calcGuests = document.getElementById('calc-guests');
+  var calcRates = document.getElementById('calc-rates');
+  function money(v){
+    try{ return new Intl.NumberFormat('es-ES').format(Math.round(v)) + ' €'; }
+    catch(e){ return Math.round(v) + ' €'; }
+  }
+  function updateCalc(){
+    if(!calcGuests) return;
+    var guests = Number(calcGuests.value);
+    var pressed = calcRates.querySelector('[aria-pressed="true"]');
+    var rate = Number(pressed ? pressed.getAttribute('data-rate') : 25) / 100;
+    var month = guests * AVG_TICKET * rate;
+    document.getElementById('calc-guests-out').textContent = guests;
+    document.getElementById('calc-month').textContent = money(month);
+    document.getElementById('calc-year').textContent = money(month * 12);
+  }
+  if(calcGuests){
+    calcGuests.addEventListener('input', updateCalc);
+    calcRates.addEventListener('click', function(e){
+      var btn = e.target.closest('button[data-rate]');
+      if(!btn) return;
+      calcRates.querySelectorAll('button').forEach(function(b){
+        b.setAttribute('aria-pressed', b === btn);
+      });
+      updateCalc();
+    });
+    updateCalc();
+  }
 
   /* ---------- Кнопка WhatsApp появляется ниже первого экрана ---------- */
   var waFab = document.getElementById('wa-link');
