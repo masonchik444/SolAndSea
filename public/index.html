@@ -321,7 +321,20 @@
     display:flex; align-items:center; justify-content:center; color:#fff; font-size:0.8rem;
   }
   .search-item small{ display:block; color:var(--ink-soft); font-size:0.78rem; margin-top:1px; }
-  .search-empty{ padding:18px 12px; font-size:0.9rem; color:var(--ink-soft); }
+  /* «ничего не нашлось» — такая же строка списка, но ведёт к форме */
+  .search-empty{
+    display:flex; align-items:center; gap:12px; width:100%;
+    background:none; border:none; cursor:pointer; text-align:left;
+    padding:10px 12px; border-radius:14px; color:var(--ink); font-size:0.95rem;
+  }
+  .search-empty:hover, .search-empty:focus-visible{
+    background:color-mix(in srgb, var(--accent) 12%, transparent); outline:none;
+  }
+  .search-empty .pin{
+    flex:none; width:30px; height:30px; border-radius:9px; background:var(--wave-gradient);
+    display:flex; align-items:center; justify-content:center; color:#fff; font-size:0.8rem;
+  }
+  .search-empty small{ display:block; color:var(--ink-soft); font-size:0.78rem; margin-top:1px; }
 
   .hero-doors{ display:flex; gap:12px; margin-top:20px; flex-wrap:wrap; justify-content:center; }
   .door{
@@ -909,10 +922,20 @@
             <span>MARQ<small><span lang-es>Museo Arqueológico · ~1h</span><span lang-en>Archaeological Museum · ~1h</span><span lang-ru>Археологический музей · ~1 ч</span></small></span>
           </button>
         </div>
-        <div class="search-empty" hidden>
-          <span lang-es>Nada encontrado todavía — escríbanos y lo preparamos.</span>
-          <span lang-en>Nothing found yet — write to us and we'll put it together.</span><span lang-ru>Пока ничего не нашлось — напишите нам, и мы это подготовим.</span>
-        </div>
+        <!-- Тупик превращаем в заявку: запрос уезжает в форму -->
+        <button type="button" class="search-empty" onclick="askForQuery()" hidden>
+          <span class="pin" aria-hidden="true">✎</span>
+          <span>
+            <span lang-es>Todavía no está en el catálogo</span>
+            <span lang-en>Not in the catalogue yet</span>
+            <span lang-ru>Этого пока нет в каталоге</span>
+            <small>
+              <span lang-es>Escríbanos y lo preparamos para su hotel</span>
+              <span lang-en>Write to us and we'll put it together for your hotel</span>
+              <span lang-ru>Напишите — подготовим для вашего отеля</span>
+            </small>
+          </span>
+        </button>
       </div>
     </div>
 
@@ -1576,12 +1599,33 @@
     closeSearch();
     document.querySelector(item.getAttribute('data-target')).scrollIntoView({ behavior:'smooth' });
   }
+  /* Запрос, которого нет в каталоге, уходит в форму заявки: для нас это
+     лид с готовым текстом, для отеля — ответ вместо пустого экрана. */
+  function askForQuery(){
+    var q = input.value.trim();
+    closeSearch();
+    var msg = document.getElementById('f-msg');
+    if(msg && !msg.value.trim() && q){
+      var cls = document.documentElement.classList;
+      if(cls.contains('lang-ru')){
+        msg.value = 'Интересует: «' + q + '». Сможете подготовить для наших гостей?';
+      } else if(cls.contains('lang-en')){
+        msg.value = 'We are interested in: "' + q + '". Could you put this together for our guests?';
+      } else {
+        msg.value = 'Nos interesa: «' + q + '». ¿Pueden prepararlo para nuestros huéspedes?';
+      }
+    }
+    document.getElementById('contacto').scrollIntoView({ behavior:'smooth' });
+  }
   function submitSearch(){
     var cursor = document.querySelector('.search-item.is-cursor');
     if(cursor){ pickSearch(cursor); return false; }
+    var items = visibleItems();
+    /* один точный ответ — сразу к нему; ничего не нашлось — к форме;
+       пустой запрос — просто в каталог */
+    if(input.value.trim() && items.length === 1){ pickSearch(items[0]); return false; }
+    if(input.value.trim() && items.length === 0){ askForQuery(); return false; }
     closeSearch();
-    /* Maqueta: la búsqueda lleva al catálogo. En producción — a la página de resultados.
-       Mockup: search jumps to the catalogue. In production — to a results page. */
     document.getElementById('excursiones').scrollIntoView({ behavior:'smooth' });
     return false;
   }
