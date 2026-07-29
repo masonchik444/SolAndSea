@@ -417,6 +417,8 @@
   }
   .benefit strong{ display:block; font-size:0.98rem; margin-bottom:2px; color:var(--ink); }
   .benefit span{ font-size:0.9rem; color:var(--ink-soft); }
+  /* кнопка внизу вкладки: не растягивается по колонке */
+  .tab-cta{ align-self:flex-start; margin-top:8px; }
 
   .tab-visual{
     border-radius:var(--radius);
@@ -496,7 +498,12 @@
   }
   .calc-result .cap{ font-size:0.8rem; letter-spacing:0.12em; text-transform:uppercase; opacity:0.85; }
   .calc-result .year{ margin-top:16px; padding-top:14px; border-top:1px solid rgba(255,255,255,0.25); font-size:0.95rem; }
-  .calc-note{ margin-top:18px; font-size:0.84rem; color:var(--ink-soft); max-width:62ch; }
+  .calc-foot{
+    margin-top:18px; display:flex; align-items:flex-end; justify-content:space-between;
+    gap:28px; flex-wrap:wrap;
+  }
+  .calc-note{ font-size:0.84rem; color:var(--ink-soft); max-width:62ch; }
+  .calc-cta{ flex:none; }
 
   /* партнёры */
   .partners{ display:flex; gap:20px; flex-wrap:wrap; align-items:center; }
@@ -685,6 +692,8 @@
     .hero-caption{ bottom:64px; }
     .wrap{ padding:0 20px; }
     .mobile-menu{ padding-left:20px; padding-right:20px; }
+    /* на телефоне кнопки-действия во всю ширину — больше площадь нажатия */
+    .tab-cta, .calc-cta{ width:100%; justify-content:center; }
     /* на узком экране кнопку заменяет пункт в выпадающем меню */
     .header-actions > .btn{ display:none; }
     .header-actions{ gap:8px; }
@@ -997,6 +1006,9 @@
             <span><span lang-es>Nosotros coordinamos con cada atracción, no usted.</span><span lang-en>We coordinate with each attraction, not you.</span><span lang-ru>Мы координируем работу с каждым объектом, а не вы.</span></span>
           </div>
         </div>
+        <a href="#contacto" class="btn btn-primary tab-cta">
+          <span lang-es>Solicitar propuestas</span><span lang-en>Request proposals</span><span lang-ru>Запросить предложения</span>
+        </a>
       </div>
       <div class="tab-visual" data-photo="assets/hero/hotel1.jpg">
         <span class="tab-visual-label"><span lang-es>Hoteles · Comunidad Valenciana</span><span lang-en>Hotels · Comunidad Valenciana</span><span lang-ru>Отели · Валенсийская автономия</span></span>
@@ -1026,6 +1038,9 @@
             <span><span lang-es>Un único acuerdo, sin intermediarios ocultos.</span><span lang-en>One clear agreement, no hidden intermediaries.</span><span lang-ru>Один договор, без скрытых посредников.</span></span>
           </div>
         </div>
+        <a href="#contacto" class="btn btn-primary tab-cta">
+          <span lang-es>Convertirse en socio</span><span lang-en>Become a partner</span><span lang-ru>Стать партнёром</span>
+        </a>
       </div>
       <div class="tab-visual" data-photo="assets/hero/atr1.jpg">
         <span class="tab-visual-label"><span lang-es>Atracciones · Comunidad Valenciana</span><span lang-en>Attractions · Comunidad Valenciana</span><span lang-ru>Объекты · Валенсийская автономия</span></span>
@@ -1111,11 +1126,16 @@
         </div>
       </div>
     </div>
-    <p class="calc-note">
-      <span lang-es>Cálculo con un precio medio de 15 € por persona. El hotel no invierte nada: nosotros negociamos las tarifas y coordinamos con cada atracción. La comisión final se fija por escrito en el acuerdo.</span>
-      <span lang-en>Based on an average price of €15 per person. The hotel invests nothing: we negotiate the rates and coordinate with each attraction. The final commission is set in writing in the agreement.</span>
-      <span lang-ru>Расчёт при средней цене 15 € с человека. Отель не вкладывает ничего: тарифы согласуем мы и мы же координируем работу с объектами. Итоговая комиссия фиксируется письменно в договоре.</span>
-    </p>
+    <div class="calc-foot">
+      <p class="calc-note">
+        <span lang-es>Cálculo con un precio medio de 15 € por persona. El hotel no invierte nada: nosotros negociamos las tarifas y coordinamos con cada atracción. La comisión final se fija por escrito en el acuerdo.</span>
+        <span lang-en>Based on an average price of €15 per person. The hotel invests nothing: we negotiate the rates and coordinate with each attraction. The final commission is set in writing in the agreement.</span>
+        <span lang-ru>Расчёт при средней цене 15 € с человека. Отель не вкладывает ничего: тарифы согласуем мы и мы же координируем работу с объектами. Итоговая комиссия фиксируется письменно в договоре.</span>
+      </p>
+      <a href="#contacto" class="btn btn-primary calc-cta" id="calc-cta">
+        <span lang-es>Cálculo para mi hotel</span><span lang-en>A calculation for my hotel</span><span lang-ru>Расчёт для моего отеля</span>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -1593,13 +1613,48 @@
     updateCalc();
   }
 
+  /* Кнопка под калькулятором подставляет расчёт в сообщение формы —
+     заявка приходит сразу с цифрами, которые крутил сам отель.
+     Уже написанный текст не трогаем. */
+  var calcCta = document.getElementById('calc-cta');
+  if(calcCta && calcGuests){
+    calcCta.addEventListener('click', function(){
+      var msg = document.getElementById('f-msg');
+      if(!msg || msg.value.trim()) return;
+      var guests = Number(calcGuests.value);
+      var pressed = calcRates.querySelector('[aria-pressed="true"]');
+      var rate = Number(pressed ? pressed.getAttribute('data-rate') : 25);
+      var month = money(guests * AVG_TICKET * rate / 100);
+      var year = money(guests * AVG_TICKET * rate / 100 * 12);
+      var cls = document.documentElement.classList;
+      if(cls.contains('lang-ru')){
+        msg.value = 'Расчёт с сайта: ' + guests + ' гостей в месяц, комиссия ' + rate + '% → ' + month + ' в месяц (' + year + ' в год).';
+      } else if(cls.contains('lang-en')){
+        msg.value = 'Calculation from the site: ' + guests + ' guests per month, ' + rate + '% commission → ' + month + ' per month (' + year + ' per year).';
+      } else {
+        msg.value = 'Cálculo desde la web: ' + guests + ' huéspedes al mes, comisión del ' + rate + '% → ' + month + ' al mes (' + year + ' al año).';
+      }
+    });
+  }
+
   /* ---------- Кнопка WhatsApp появляется ниже первого экрана ---------- */
+  /* и прячется на блоке контактов: там она накрывала правый край кнопки
+     «Отправить заявку», а сами контакты и так на виду. */
   var waFab = document.getElementById('wa-link');
+  var atContact = false;
   function syncWa(){
     if(!waFab || !heroEl) return;
-    waFab.classList.toggle('is-visible', window.scrollY > heroEl.offsetHeight * 0.6);
+    var pastHero = window.scrollY > heroEl.offsetHeight * 0.6;
+    waFab.classList.toggle('is-visible', pastHero && !atContact);
   }
   window.addEventListener('scroll', syncWa, { passive: true });
+  var contactSection = document.getElementById('contacto');
+  if(contactSection && 'IntersectionObserver' in window){
+    new IntersectionObserver(function(entries){
+      atContact = entries[0].isIntersecting;
+      syncWa();
+    }, { rootMargin: '-25% 0px -10% 0px' }).observe(contactSection);
+  }
   syncWa();
 
   /* ---------- Formulario: envío без перезагрузки + окно подтверждения ---------- */
