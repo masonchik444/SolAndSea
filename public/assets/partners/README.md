@@ -4,7 +4,7 @@
 
 | Файл | Партнёр | Статус |
 |---|---|---|
-| `jazz-house.png` | Jazz House · Alicante | **ждём файл** |
+| `jazz-house.png` | Jazz House · Torrevieja | **ждём файл** |
 
 ## Требования
 
