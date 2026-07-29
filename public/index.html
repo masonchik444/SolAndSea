@@ -130,9 +130,11 @@
     backdrop-filter:blur(10px);
     border-bottom:1px solid var(--line);
   }
+  /* Только вертикальные отступы: горизонтальные поля приходят от .wrap,
+     иначе на узких экранах шапка прилипает к краям экрана. */
   .header-inner{
     display:flex; align-items:center; justify-content:space-between;
-    padding:14px 0;
+    padding-top:14px; padding-bottom:14px;
   }
   .brand{ display:flex; align-items:center; gap:10px; }
   .brand{ flex:none; }
@@ -161,6 +163,41 @@
   html.lang-en .header-actions .btn > [lang-en],
   html.lang-ru .header-actions .btn > [lang-ru]{ visibility:visible; }
 
+  /* burger: появляется там, где прячется горизонтальное меню */
+  .menu-btn{
+    display:none; flex:none; width:40px; height:40px; padding:0;
+    align-items:center; justify-content:center; cursor:pointer;
+    background:transparent; color:var(--ink);
+    border:1px solid var(--line); border-radius:13px;
+  }
+  .menu-btn:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+  .menu-btn i{ display:block; position:relative; width:18px; height:2px; border-radius:2px; background:currentColor; }
+  .menu-btn i::before, .menu-btn i::after{
+    content:""; position:absolute; left:0; width:18px; height:2px; border-radius:2px;
+    background:currentColor; transition:top .18s, transform .18s;
+  }
+  .menu-btn i::before{ top:-6px; }
+  .menu-btn i::after{ top:6px; }
+  .menu-btn[aria-expanded="true"] i{ background:transparent; }
+  .menu-btn[aria-expanded="true"] i::before{ top:0; transform:rotate(45deg); }
+  .menu-btn[aria-expanded="true"] i::after{ top:0; transform:rotate(-45deg); }
+
+  .mobile-menu{
+    display:none; position:absolute; left:0; right:0; top:100%;
+    background:var(--paper-raised); border-bottom:1px solid var(--line);
+    box-shadow:0 22px 44px -26px rgba(8,24,32,0.6);
+    padding:6px 32px 20px;
+  }
+  .mobile-menu.is-open{ display:block; }
+  .mobile-menu a:not(.btn){
+    display:block; text-decoration:none; color:var(--ink);
+    font-size:1rem; padding:14px 0; border-bottom:1px solid var(--line);
+  }
+  .mobile-menu a:not(.btn):hover,
+  .mobile-menu a:not(.btn):focus-visible{ color:var(--accent); outline:none; }
+  .mobile-menu .menu-guest{ color:var(--ink-soft); font-size:0.92rem; }
+  .mobile-menu .btn{ display:flex; width:100%; margin-top:16px; justify-content:center; }
+
   /* header sobre la foto del hero / header over the hero photo */
   header.over-hero{
     background:transparent; backdrop-filter:none; border-bottom-color:transparent;
@@ -173,6 +210,7 @@
   header.over-hero .lang-toggle button[aria-pressed="true"]{ background:#fff; color:#122029; }
   header.over-hero .brand svg circle,
   header.over-hero .brand svg path{ stroke:#fff; }
+  header.over-hero .menu-btn{ color:#fff; border-color:rgba(255,255,255,0.34); background:rgba(255,255,255,0.16); }
 
   .lang-toggle{
     display:flex; border:1px solid var(--line); border-radius:999px; padding:3px;
@@ -597,6 +635,7 @@
   }
   @media (max-width:980px){
     nav{ display:none; }
+    .menu-btn{ display:inline-flex; }
   }
 
   @media (max-width:880px){
@@ -620,8 +659,11 @@
     .search-go{ width:100%; justify-content:center; }
     .hero{ padding-bottom:150px; }
     .hero-caption{ bottom:64px; }
+    .wrap{ padding:0 20px; }
+    .mobile-menu{ padding-left:20px; padding-right:20px; }
+    /* на узком экране кнопку заменяет пункт в выпадающем меню */
+    .header-actions > .btn{ display:none; }
     .header-actions{ gap:8px; }
-    .header-actions .btn{ padding:7px 11px; font-size:0.72rem; }
     .lang-toggle{ padding:2px; }
     .lang-toggle button{ padding:4px 7px; font-size:0.66rem; letter-spacing:0; }
     .brand-name{ font-size:0.9rem; }
@@ -683,7 +725,22 @@
       <a href="#contacto" class="btn btn-primary">
         <span lang-es>Solicitar información</span><span lang-en>Get in touch</span><span lang-ru>Оставить заявку</span>
       </a>
+      <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false"
+              aria-controls="mobile-menu" aria-label="Menú · Menu · Меню"><i></i></button>
     </div>
+  </div>
+
+  <!-- Меню для узких экранов: то же, что в nav, плюс кнопка заявки -->
+  <div class="mobile-menu wrap" id="mobile-menu">
+    <a href="#como-funciona"><span lang-es>Cómo funciona</span><span lang-en>How it works</span><span lang-ru>Как это работает</span></a>
+    <a href="#audiencias"><span lang-es>Hoteles y atracciones</span><span lang-en>Hotels &amp; attractions</span><span lang-ru>Отелям и объектам</span></a>
+    <a href="#excursiones"><span lang-es>Excursiones</span><span lang-en>Excursions</span><span lang-ru>Экскурсии</span></a>
+    <a href="#ingresos"><span lang-es>Ingresos del hotel</span><span lang-en>Hotel revenue</span><span lang-ru>Доход отеля</span></a>
+    <a href="#contacto"><span lang-es>Contacto</span><span lang-en>Contact</span><span lang-ru>Контакты</span></a>
+    <a class="menu-guest" href="guest.html"><span lang-es>Para huéspedes del hotel</span><span lang-en>For hotel guests</span><span lang-ru>Для гостей отеля</span></a>
+    <a href="#contacto" class="btn btn-primary">
+      <span lang-es>Solicitar información</span><span lang-en>Get in touch</span><span lang-ru>Оставить заявку</span>
+    </a>
   </div>
 </header>
 
@@ -1432,6 +1489,32 @@
         })
         .catch(function(){ openSent(false); })
         .then(function(){ btn.disabled = false; });
+    });
+  }
+
+  /* ---------- Меню для узких экранов ---------- */
+  var menuBtn = document.getElementById('menu-btn');
+  var mobileMenu = document.getElementById('mobile-menu');
+  function setMenu(open){
+    if(!menuBtn) return;
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    mobileMenu.classList.toggle('is-open', open);
+  }
+  if(menuBtn){
+    menuBtn.addEventListener('click', function(){
+      setMenu(menuBtn.getAttribute('aria-expanded') !== 'true');
+    });
+    mobileMenu.addEventListener('click', function(e){
+      if(e.target.closest('a')){ setMenu(false); }
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape'){ setMenu(false); }
+    });
+    document.addEventListener('click', function(e){
+      if(!e.target.closest('header')){ setMenu(false); }
+    });
+    window.addEventListener('resize', function(){
+      if(window.innerWidth > 980){ setMenu(false); }
     });
   }
 

@@ -63,7 +63,8 @@
 
   /* шапка */
   header{ background:var(--paper-raised); border-bottom:1px solid var(--line); }
-  .header-inner{ display:flex; align-items:center; justify-content:space-between; gap:14px; padding:12px 0; }
+  /* только вертикальные отступы — поля по бокам приходят от .wrap */
+  .header-inner{ display:flex; align-items:center; justify-content:space-between; gap:14px; padding-top:12px; padding-bottom:12px; }
   .brand{ display:flex; align-items:center; gap:9px; text-decoration:none; color:var(--ink); }
   .brand-name{ font-family:"Iowan Old Style",Palatino,Georgia,serif; font-size:1rem; font-weight:700; white-space:nowrap; }
   .lang-toggle{ display:flex; border:1px solid var(--line); border-radius:999px; padding:3px; background:var(--paper); gap:2px; }
