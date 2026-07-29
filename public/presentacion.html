@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Presentación para hoteles — Doremi | Sol&amp;Sea</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<script>
+  (function(){
+    try{
+      var saved = localStorage.getItem('lang'), lang = saved;
+      if(!lang){
+        var nav = ((navigator.languages && navigator.languages[0]) || navigator.language || 'es').toLowerCase();
+        lang = nav.indexOf('ru') === 0 ? 'ru' : (nav.indexOf('es') === 0 ? 'es' : 'en');
+      }
+      if(lang !== 'es'){ document.documentElement.classList.add('lang-' + lang); }
+      document.documentElement.setAttribute('lang', lang);
+    }catch(e){}
+  })();
+</script>
+<style>
+  :root{
+    --ink:#122029; --ink-soft:#3c4d55; --paper:#eef2f1; --line:#d7dedb; --accent:#1c8a86;
+    --wave-gradient: linear-gradient(160deg, #c0466b 0%, #e08a3f 32%, #1c8a86 68%, #1d4d84 100%);
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    background:var(--paper); color:var(--ink);
+    font-family:"Avenir Next","Segoe UI","Helvetica Neue",Arial,sans-serif;
+    -webkit-font-smoothing:antialiased; padding:26px 16px 60px;
+  }
+
+  /* панель управления — на печать не идёт */
+  .hint{ max-width:210mm; margin:0 auto 20px; font-size:0.9rem; color:var(--ink-soft); line-height:1.6; }
+  .hint b{ color:var(--ink); }
+  .hint-row{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-top:12px; }
+  .hint button{
+    padding:11px 22px; border:none; border-radius:999px; cursor:pointer;
+    background:var(--wave-gradient); color:#fff; font-family:inherit; font-weight:700; font-size:0.92rem;
+  }
+  .lang-toggle{ display:inline-flex; gap:2px; background:#fff; border:1px solid var(--line); border-radius:999px; padding:3px; }
+  .lang-toggle button{
+    background:none; color:var(--ink-soft); border:none; border-radius:999px;
+    padding:6px 12px; font-size:0.78rem; font-weight:700; letter-spacing:0.04em; cursor:pointer;
+  }
+  .lang-toggle button[aria-pressed="true"]{ background:var(--accent); color:#fff; }
+
+  /* лист A4 */
+  .sheet{
+    width:210mm; min-height:297mm; margin:0 auto; background:#fff; color:#122029;
+    border:1px solid var(--line); border-radius:12px; overflow:hidden;
+    padding:12mm 14mm 10mm; display:flex; flex-direction:column;
+  }
+  .sheet header{ display:flex; align-items:flex-start; justify-content:space-between; gap:8mm; }
+  .logo{ display:flex; align-items:center; gap:8px; }
+  .logo span{ font-family:"Iowan Old Style",Palatino,Georgia,serif; font-size:14pt; font-weight:700; }
+  .tagline{ font-size:8.5pt; color:#3c4d55; text-align:right; line-height:1.5; max-width:66mm; }
+
+  .sheet h1{
+    font-family:"Iowan Old Style",Palatino,Georgia,serif; font-weight:600;
+    font-size:18.5pt; line-height:1.16; margin:3.5mm 0 1.5mm; letter-spacing:-0.01em;
+  }
+  .lede{ margin:0; font-size:9.5pt; line-height:1.5; color:#3c4d55; max-width:150mm; }
+
+  h2{
+    font-family:"Iowan Old Style",Georgia,serif; font-size:11pt; font-weight:600;
+    margin:4mm 0 2mm; padding-bottom:1.2mm; border-bottom:1px solid #d7dedb;
+  }
+
+  .steps{ display:grid; grid-template-columns:repeat(3,1fr); gap:5mm; }
+  .step b{ display:block; font-size:9pt; margin-bottom:0.8mm; }
+  .step span{ font-size:8pt; color:#3c4d55; line-height:1.45; }
+  .step i{
+    display:flex; align-items:center; justify-content:center; font-style:normal;
+    width:6mm; height:6mm; border-radius:50%; background:var(--wave-gradient);
+    color:#fff; font-size:8.5pt; font-weight:700; margin-bottom:1.5mm;
+  }
+
+  table{ width:100%; border-collapse:collapse; font-size:9pt; }
+  th{ text-align:left; font-size:7.5pt; letter-spacing:0.08em; text-transform:uppercase; color:#3c4d55; padding:0 0 2mm; font-weight:700; }
+  td{ padding:1.9mm 0; border-top:1px solid #e6ebe9; vertical-align:top; }
+  td.num{ text-align:right; white-space:nowrap; font-family:"Iowan Old Style",Georgia,serif; font-size:10pt; }
+  td small{ display:block; color:#3c4d55; font-size:7.5pt; }
+
+  .money{
+    display:grid; grid-template-columns:1.25fr 1fr; gap:6mm; align-items:center;
+    background:#f4f7f6; border:1px solid #e2e8e6; border-radius:8px; padding:3mm 5mm;
+  }
+  .money ul{ margin:0; padding-left:4.5mm; font-size:8.5pt; line-height:1.55; color:#3c4d55; }
+  .money ul b{ color:#122029; }
+  .example{ background:var(--wave-gradient); color:#fff; border-radius:8px; padding:4mm 5mm; text-align:center; }
+  .example .cap{ font-size:7pt; letter-spacing:0.1em; text-transform:uppercase; opacity:0.9; }
+  .example .sum{ font-family:"Iowan Old Style",Georgia,serif; font-size:17pt; line-height:1.15; display:block; margin:1mm 0; }
+  .example small{ font-size:7.5pt; opacity:0.92; display:block; line-height:1.45; }
+
+  .sheet footer{
+    margin-top:auto; padding-top:4mm; border-top:1px solid #d7dedb;
+    display:flex; justify-content:space-between; align-items:flex-end; gap:8mm;
+  }
+  .contacts{ font-size:8.5pt; line-height:1.6; }
+  .contacts b{ font-size:10pt; }
+  .contacts .legal{ font-size:7pt; color:#3c4d55; margin-top:2.5mm; line-height:1.5; }
+  .qr{ text-align:center; flex:none; }
+  .qr img{ width:23mm; height:23mm; display:block; }
+  /* только внешний span: иначе display:block перебьёт скрытие языков */
+  .qr > span{ display:block; font-size:7pt; color:#3c4d55; margin-top:1.5mm; }
+  .wave{ height:3.5mm; background:var(--wave-gradient); border-radius:2mm; margin-top:3mm; }
+
+  /* языки */
+  [lang-en], [lang-ru]{ display:none; }
+  html.lang-en [lang-es], html.lang-ru [lang-es]{ display:none; }
+  html.lang-en [lang-en]{ display:revert; }
+  html.lang-ru [lang-ru]{ display:revert; }
+
+  @media print{
+    @page{ size:A4 portrait; margin:0; }
+    body{ background:#fff; padding:0; }
+    .hint{ display:none; }
+    .sheet{ width:210mm; min-height:297mm; border:none; border-radius:0; margin:0; }
+  }
+  @media (max-width:230mm){
+    .sheet{ width:100%; min-height:0; padding:8mm; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hint">
+  <b>Презентация для отеля.</b> Выберите язык, нажмите «Сохранить в PDF» и в окне печати
+  укажите «Сохранить как PDF», формат <b>A4</b>, поля — «нет», масштаб — 100%.
+  Готовый файл можно отправить в WhatsApp или почтой. Страница закрыта от индексации.
+  <div class="hint-row">
+    <div class="lang-toggle" role="group" aria-label="Idioma">
+      <button id="btn-es" type="button" aria-pressed="true" onclick="setLang('es')">ES</button>
+      <button id="btn-en" type="button" aria-pressed="false" onclick="setLang('en')">EN</button>
+      <button id="btn-ru" type="button" aria-pressed="false" onclick="setLang('ru')">RU</button>
+    </div>
+    <button type="button" onclick="window.print()">Сохранить в PDF</button>
+  </div>
+</div>
+
+<div class="sheet">
+  <header>
+    <div class="logo">
+      <svg width="34" height="34" viewBox="0 0 100 100" aria-hidden="true">
+        <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#c0466b"/><stop offset="32%" stop-color="#e08a3f"/>
+          <stop offset="68%" stop-color="#1c8a86"/><stop offset="100%" stop-color="#1d4d84"/>
+        </linearGradient></defs>
+        <circle cx="50" cy="50" r="46" fill="url(#g)" stroke="#122029" stroke-width="6"/>
+        <path d="M20 62 C34 62 34 40 50 40 C62 40 62 55 72 55" fill="none" stroke="#122029" stroke-width="7" stroke-linecap="round"/>
+        <path d="M28 68 C40 68 40 50 54 50 C64 50 64 62 78 62" fill="none" stroke="#122029" stroke-width="7" stroke-linecap="round"/>
+      </svg>
+      <span>Doremi | Sol&amp;Sea</span>
+    </div>
+    <p class="tagline">
+      <span lang-es>Intermediación entre atracciones turísticas y hoteles<br>Comunidad Valenciana · ES · EN · RU</span>
+      <span lang-en>Intermediation between tourist attractions and hotels<br>Comunidad Valenciana · ES · EN · RU</span>
+      <span lang-ru>Посредничество между туристическими объектами и отелями<br>Валенсийская автономия · ES · EN · RU</span>
+    </p>
+  </header>
+
+  <h1>
+    <span lang-es>Excursiones que dan ingresos<br>al hotel, sin inversión</span>
+    <span lang-en>Excursions that earn the hotel<br>money, with no investment</span>
+    <span lang-ru>Экскурсии, которые приносят отелю<br>доход без вложений</span>
+  </h1>
+
+  <p class="lede">
+    <span lang-es>Negociamos las tarifas con museos, castillos, bodegas y rutas de la Comunidad Valenciana y las convertimos en programas listos. El hotel se los ofrece a sus huéspedes y cobra comisión por cada reserva. Nosotros coordinamos con cada atracción; el hotel no organiza nada y no arriesga nada.</span>
+    <span lang-en>We negotiate rates with museums, castles, wineries and routes across the Comunidad Valenciana and turn them into ready-made programs. The hotel offers them to its guests and earns a commission on every booking. We coordinate with each attraction: the hotel organises nothing and risks nothing.</span>
+    <span lang-ru>Мы договариваемся о тарифах с музеями, крепостями, винодельнями и маршрутами Валенсийской автономии и собираем из них готовые программы. Отель предлагает их гостям и получает комиссию с каждого бронирования. Координируем работу с объектами мы: отель ничего не организует и ничем не рискует.</span>
+  </p>
+
+  <h2><span lang-es>Cómo funciona</span><span lang-en>How it works</span><span lang-ru>Как это работает</span></h2>
+  <div class="steps">
+    <div class="step">
+      <i>1</i>
+      <b><span lang-es>Acordamos las tarifas</span><span lang-en>We agree the rates</span><span lang-ru>Договариваемся о тарифах</span></b>
+      <span lang-es>Precios y condiciones directamente con cada atracción, por escrito.</span>
+      <span lang-en>Prices and terms directly with each attraction, in writing.</span>
+      <span lang-ru>Цены и условия — напрямую с каждым объектом, письменно.</span>
+    </div>
+    <div class="step">
+      <i>2</i>
+      <b><span lang-es>Preparamos el programa</span><span lang-en>We build the program</span><span lang-ru>Готовим программу</span></b>
+      <span lang-es>Duración, idiomas, traslado y precio final por persona.</span>
+      <span lang-en>Duration, languages, transfer and final per-person price.</span>
+      <span lang-ru>Длительность, языки, трансфер и итоговая цена с человека.</span>
+    </div>
+    <div class="step">
+      <i>3</i>
+      <b><span lang-es>El hotel lo ofrece</span><span lang-en>The hotel offers it</span><span lang-ru>Отель предлагает гостю</span></b>
+      <span lang-es>En recepción o con un cartel QR. La comisión es del hotel.</span>
+      <span lang-en>At reception or via a QR sign. The commission is the hotel's.</span>
+      <span lang-ru>На ресепшене или через табличку с QR. Комиссия — отелю.</span>
+    </div>
+  </div>
+
+  <h2><span lang-es>Programas listos para ofrecer</span><span lang-en>Programs ready to offer</span><span lang-ru>Готовые программы</span></h2>
+  <table>
+    <thead>
+      <tr>
+        <th><span lang-es>Programa</span><span lang-en>Program</span><span lang-ru>Программа</span></th>
+        <th><span lang-es>Duración</span><span lang-en>Duration</span><span lang-ru>Длительность</span></th>
+        <th style="text-align:right"><span lang-es>Desde, por persona</span><span lang-en>From, per person</span><span lang-ru>От, с человека</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Castillo de Santa Bárbara
+          <small><span lang-es>Visita guiada con vistas de la bahía · ES · EN · RU</span><span lang-en>Guided visit with bay views · ES · EN · RU</span><span lang-ru>Экскурсия с видом на бухту · ES · EN · RU</span></small>
+        </td>
+        <td>~2 h</td>
+        <td class="num">18 €<small><span lang-es>grupo desde 10</span><span lang-en>groups from 10</span><span lang-ru>группа от 10</span></small></td>
+      </tr>
+      <tr>
+        <td><span lang-es>Casco Antiguo</span><span lang-en>Old Town Walk</span><span lang-ru>Старый город</span>
+          <small><span lang-es>Barrio de Santa Cruz y la Explanada · ES · EN · RU</span><span lang-en>Santa Cruz quarter and the Explanada · ES · EN · RU</span><span lang-ru>Квартал Санта-Крус и набережная · ES · EN · RU</span></small>
+        </td>
+        <td>~1,5 h</td>
+        <td class="num">15 €<small><span lang-es>grupo desde 10</span><span lang-en>groups from 10</span><span lang-ru>группа от 10</span></small></td>
+      </tr>
+      <tr>
+        <td>MARQ
+          <small><span lang-es>Museo Arqueológico, entrada incluida · ES · EN · RU</span><span lang-en>Archaeological Museum, entry included · ES · EN · RU</span><span lang-ru>Археологический музей, вход включён · ES · EN · RU</span></small>
+        </td>
+        <td>~1 h</td>
+        <td class="num">12 €<small><span lang-es>entrada incluida</span><span lang-en>entry included</span><span lang-ru>вход включён</span></small></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2><span lang-es>Qué gana el hotel</span><span lang-en>What the hotel earns</span><span lang-ru>Что получает отель</span></h2>
+  <div class="money">
+    <ul>
+      <li><span lang-es><b>Comisión del 15% al 30%</b> de cada reserva, fijada por escrito antes de empezar.</span><span lang-en><b>A 15–30% commission</b> on every booking, agreed in writing before we start.</span><span lang-ru><b>Комиссия 15–30%</b> с каждого бронирования, зафиксирована письменно до старта.</span></li>
+      <li><span lang-es><b>Sin coste ni exclusividad:</b> no hay cuota de alta ni permanencia.</span><span lang-en><b>No cost, no exclusivity:</b> no sign-up fee and no lock-in.</span><span lang-ru><b>Без платы и эксклюзива:</b> ни взноса за подключение, ни обязательного срока.</span></li>
+      <li><span lang-es><b>Sin riesgo:</b> el hotel no asume el coste de una cancelación.</span><span lang-en><b>No risk:</b> the hotel never bears the cost of a cancellation.</span><span lang-ru><b>Без риска:</b> расходы по отмене отель не несёт.</span></li>
+      <li><span lang-es><b>Un solo interlocutor:</b> coordinamos con cada atracción nosotros.</span><span lang-en><b>A single point of contact:</b> we coordinate with each attraction.</span><span lang-ru><b>Один собеседник:</b> с объектами работаем мы.</span></li>
+    </ul>
+    <div class="example">
+      <span class="cap"><span lang-es>Ejemplo</span><span lang-en>Example</span><span lang-ru>Пример</span></span>
+      <span class="sum">75 €</span>
+      <small>
+        <span lang-es>al mes con 20 huéspedes<br>y una comisión del 25%<br><b>900 € al año</b></span>
+        <span lang-en>per month with 20 guests<br>and a 25% commission<br><b>€900 per year</b></span>
+        <span lang-ru>в месяц при 20 гостях<br>и комиссии 25%<br><b>900 € в год</b></span>
+      </small>
+    </div>
+  </div>
+
+  <h2><span lang-es>Cómo empezar</span><span lang-en>How to start</span><span lang-ru>Как начать</span></h2>
+  <div class="steps">
+    <div class="step">
+      <i>1</i>
+      <b><span lang-es>Una llamada</span><span lang-en>One call</span><span lang-ru>Один звонок</span></b>
+      <span lang-es>15 minutos para entender qué huéspedes tiene y qué les encaja.</span>
+      <span lang-en>15 minutes to understand your guests and what suits them.</span>
+      <span lang-ru>15 минут, чтобы понять ваших гостей и что им подойдёт.</span>
+    </div>
+    <div class="step">
+      <i>2</i>
+      <b><span lang-es>Propuesta en 3 días</span><span lang-en>Proposal in 3 days</span><span lang-ru>Предложение за 3 дня</span></b>
+      <span lang-es>Programas, precios y su comisión, por escrito.</span>
+      <span lang-en>Programs, prices and your commission, in writing.</span>
+      <span lang-ru>Программы, цены и ваша комиссия — письменно.</span>
+    </div>
+    <div class="step">
+      <i>3</i>
+      <b><span lang-es>Materiales para recepción</span><span lang-en>Materials for reception</span><span lang-ru>Материалы на ресепшен</span></b>
+      <span lang-es>Cartel con QR y página para el huésped en tres idiomas.</span>
+      <span lang-en>A QR sign and a guest page in three languages.</span>
+      <span lang-ru>Табличка с QR и страница для гостя на трёх языках.</span>
+    </div>
+  </div>
+
+  <footer>
+    <div class="contacts">
+      <b>Yaroslav Tyutyunikov</b><br>
+      +34 613 54 40 24 · doremisolsea@gmail.com<br>
+      doremisolandsea.com
+      <div class="legal">
+        Autónomo · NIE Z1513422G · Actividad IAE 844 · Calle Escritor Ferrándiz Torremocha, 14 · 03011 Alicante, España
+      </div>
+    </div>
+    <div class="qr">
+      <img src="assets/qr-site.svg" alt="QR: doremisolandsea.com" width="98" height="98">
+      <span><span lang-es>Catálogo y precios</span><span lang-en>Catalogue and prices</span><span lang-ru>Каталог и цены</span></span>
+    </div>
+  </footer>
+  <div class="wave"></div>
+</div>
+
+<script>
+  function setLang(lang){
+    var root = document.documentElement;
+    root.classList.remove('lang-en', 'lang-ru');
+    if(lang !== 'es'){ root.classList.add('lang-' + lang); }
+    root.setAttribute('lang', lang);
+    ['es','en','ru'].forEach(function(l){
+      document.getElementById('btn-' + l).setAttribute('aria-pressed', l === lang);
+    });
+    try{ localStorage.setItem('lang', lang); }catch(e){}
+  }
+  (function(){
+    var cls = document.documentElement.classList;
+    setLang(cls.contains('lang-ru') ? 'ru' : (cls.contains('lang-en') ? 'en' : 'es'));
+  })();
+</script>
+
+</body>
+</html>
