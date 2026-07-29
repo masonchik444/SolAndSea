@@ -142,7 +142,7 @@
     font-family:"Iowan Old Style", Palatino, Georgia, serif; font-size:1.18rem;
     font-weight:700; letter-spacing:-0.01em; white-space:nowrap;
   }
-  nav{ display:flex; align-items:center; gap:28px; }
+  nav{ display:flex; align-items:center; gap:22px; }
   nav a{
     text-decoration:none; font-size:0.92rem; color:var(--ink-soft);
     padding-bottom:3px; border-bottom:1px solid transparent;
@@ -605,6 +605,27 @@
   .modal.is-error .modal-error{ display:block; }
   .modal.is-error .modal-mark{ background:var(--rose); }
 
+  /* FAQ: нативный details/summary, без скриптов */
+  .faq{ display:grid; gap:12px; max-width:820px; }
+  .faq-item{
+    background:var(--paper-raised); border:1px solid var(--line);
+    border-radius:16px; padding:4px 22px;
+  }
+  .faq-item summary{
+    display:flex; align-items:flex-start; gap:14px; justify-content:space-between;
+    list-style:none; cursor:pointer; padding:16px 0;
+    font-weight:700; font-size:1rem; color:var(--ink);
+  }
+  .faq-item summary::-webkit-details-marker{ display:none; }
+  .faq-item summary::after{
+    content:""; flex:none; width:10px; height:10px; margin-top:6px;
+    border-right:2px solid var(--accent); border-bottom:2px solid var(--accent);
+    transform:rotate(45deg); transition:transform .2s;
+  }
+  .faq-item[open] summary::after{ transform:rotate(-135deg); }
+  .faq-item summary:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; border-radius:8px; }
+  .faq-answer{ padding:0 0 18px; font-size:0.94rem; max-width:64ch; }
+
   footer{ border-top:1px solid var(--line); padding:40px 0; }
   .footer-inner{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
   .footer-links{ display:flex; gap:22px; }
@@ -616,6 +637,9 @@
     font-size:0.76rem; line-height:1.6; color:var(--ink-soft);
   }
   .footer-legal span{ white-space:nowrap; }
+  /* Плавающая кнопка WhatsApp висит над правым нижним углом и накрывала
+     последнюю строку подвала — резервируем под неё место в конце страницы. */
+  @media (max-width:880px){ footer{ padding-bottom:112px; } }
 
   /* Языки: ES по умолчанию, EN и RU — по классу на body.
      display:revert возвращает элементу его обычный тип отображения,
@@ -690,6 +714,46 @@
   "availableLanguage": ["es", "en", "ru"]
 }
 </script>
+<!-- Preguntas frecuentes: el texto debe coincidir con la sección #faq visible -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": "es",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Quién cobra al huésped?",
+      "acceptedAnswer": { "@type": "Answer", "text": "El hotel o la propia atracción, según lo que acordemos con usted. Nosotros no manejamos el dinero del huésped: negociamos la tarifa, preparamos el programa y coordinamos la reserva." }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuándo recibe el hotel su comisión?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Se liquida una vez al mes sobre las reservas confirmadas. El porcentaje —entre el 15% y el 30% según el programa— queda fijado por escrito en el acuerdo antes de empezar, y no cambia sin avisar." }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Tiene algún coste para el hotel?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Ninguno. No hay cuota de alta ni permanencia, no pedimos exclusividad y el hotel no invierte nada: si ningún huésped reserva, el hotel no paga nada." }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué pasa si el huésped cancela?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Se aplican las condiciones de cada atracción, que le entregamos por escrito antes de que ofrezca el programa. El hotel no asume el coste de una cancelación: el riesgo no es suyo." }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Quién responde de la calidad de la excursión?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Cada atracción responde de su propio servicio, pero el hotel tiene un solo interlocutor: nosotros. Solo trabajamos con establecimientos que hemos visitado y comprobado, y si algo sale mal lo resolvemos con el proveedor sin que el hotel tenga que llamar a nadie." }
+    },
+    {
+      "@type": "Question",
+      "name": "¿En qué zona y en qué idiomas trabajan?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Toda la Comunidad Valenciana, con base en Alicante: Elche, Torrevieja, Mar Menor y alrededores. Atendemos a los huéspedes en español, inglés y ruso." }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <header>
@@ -714,6 +778,7 @@
       <a href="#como-funciona"><span lang-es>Cómo funciona</span><span lang-en>How it works</span><span lang-ru>Как это работает</span></a>
       <a href="#audiencias"><span lang-es>Hoteles y atracciones</span><span lang-en>Hotels &amp; attractions</span><span lang-ru>Отелям и объектам</span></a>
       <a href="#excursiones"><span lang-es>Excursiones</span><span lang-en>Excursions</span><span lang-ru>Экскурсии</span></a>
+      <a href="#faq">FAQ</a>
       <a href="#contacto"><span lang-es>Contacto</span><span lang-en>Contact</span><span lang-ru>Контакты</span></a>
     </nav>
     <div class="header-actions">
@@ -736,6 +801,7 @@
     <a href="#audiencias"><span lang-es>Hoteles y atracciones</span><span lang-en>Hotels &amp; attractions</span><span lang-ru>Отелям и объектам</span></a>
     <a href="#excursiones"><span lang-es>Excursiones</span><span lang-en>Excursions</span><span lang-ru>Экскурсии</span></a>
     <a href="#ingresos"><span lang-es>Ingresos del hotel</span><span lang-en>Hotel revenue</span><span lang-ru>Доход отеля</span></a>
+    <a href="#faq"><span lang-es>Preguntas frecuentes</span><span lang-en>FAQ</span><span lang-ru>Частые вопросы</span></a>
     <a href="#contacto"><span lang-es>Contacto</span><span lang-en>Contact</span><span lang-ru>Контакты</span></a>
     <a class="menu-guest" href="guest.html"><span lang-es>Para huéspedes del hotel</span><span lang-en>For hotel guests</span><span lang-ru>Для гостей отеля</span></a>
     <a href="#contacto" class="btn btn-primary">
@@ -1090,6 +1156,95 @@
         <p><span lang-es>Únase como socio y le incluimos en nuestras rutas para hoteles.</span><span lang-en>Join as a partner and we'll include you in our hotel routes.</span><span lang-ru>Станьте партнёром, и мы включим вас в маршруты для отелей.</span></p>
         <a href="#contacto" class="btn btn-ghost btn-block"><span lang-es>Convertirse en socio</span><span lang-en>Become a partner</span><span lang-ru>Стать партнёром</span></a>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow"><span lang-es>Preguntas frecuentes</span><span lang-en>Frequently asked questions</span><span lang-ru>Частые вопросы</span></p>
+      <h2><span lang-es>Lo que preguntan los hoteles</span><span lang-en>What hotels ask us</span><span lang-ru>О чём спрашивают отели</span></h2>
+    </div>
+
+    <div class="faq">
+      <details class="faq-item">
+        <summary>
+          <span lang-es>¿Quién cobra al huésped?</span>
+          <span lang-en>Who charges the guest?</span>
+          <span lang-ru>Кто берёт деньги с гостя?</span>
+        </summary>
+        <p class="faq-answer">
+          <span lang-es>El hotel o la propia atracción, según lo que acordemos con usted. Nosotros no manejamos el dinero del huésped: negociamos la tarifa, preparamos el programa y coordinamos la reserva.</span>
+          <span lang-en>The hotel or the attraction itself, depending on what we agree with you. We never handle the guest's money: we negotiate the rate, build the program and coordinate the booking.</span>
+          <span lang-ru>Отель или сам объект — как договоримся. Деньги гостя через нас не проходят: мы договариваемся о тарифе, собираем программу и координируем бронирование.</span>
+        </p>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span lang-es>¿Cuándo recibe el hotel su comisión?</span>
+          <span lang-en>When does the hotel receive its commission?</span>
+          <span lang-ru>Когда отель получает комиссию?</span>
+        </summary>
+        <p class="faq-answer">
+          <span lang-es>Se liquida una vez al mes sobre las reservas confirmadas. El porcentaje —entre el 15% y el 30% según el programa— queda fijado por escrito en el acuerdo antes de empezar, y no cambia sin avisar.</span>
+          <span lang-en>It is settled once a month on confirmed bookings. The rate — between 15% and 30% depending on the program — is fixed in writing in the agreement before we start, and never changes without notice.</span>
+          <span lang-ru>Расчёт раз в месяц по подтверждённым бронированиям. Процент — от 15% до 30% в зависимости от программы — фиксируется письменно в договоре до старта и не меняется без предупреждения.</span>
+        </p>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span lang-es>¿Tiene algún coste para el hotel?</span>
+          <span lang-en>Does it cost the hotel anything?</span>
+          <span lang-ru>Сколько это стоит отелю?</span>
+        </summary>
+        <p class="faq-answer">
+          <span lang-es>Ninguno. No hay cuota de alta ni permanencia, no pedimos exclusividad y el hotel no invierte nada: si ningún huésped reserva, el hotel no paga nada.</span>
+          <span lang-en>Nothing. There is no sign-up fee and no lock-in, we don't ask for exclusivity, and the hotel invests nothing: if no guest books, the hotel pays nothing.</span>
+          <span lang-ru>Ничего. Нет ни платы за подключение, ни обязательного срока, эксклюзив мы не требуем, вложений от отеля не нужно: не бронируют гости — отель ничего не платит.</span>
+        </p>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span lang-es>¿Qué pasa si el huésped cancela?</span>
+          <span lang-en>What if the guest cancels?</span>
+          <span lang-ru>Что если гость отменит?</span>
+        </summary>
+        <p class="faq-answer">
+          <span lang-es>Se aplican las condiciones de cada atracción, que le entregamos por escrito antes de que ofrezca el programa. El hotel no asume el coste de una cancelación: el riesgo no es suyo.</span>
+          <span lang-en>Each attraction's own terms apply, and we give them to you in writing before you offer the program. The hotel never bears the cost of a cancellation — the risk isn't yours.</span>
+          <span lang-ru>Действуют условия конкретного объекта — мы передаём их письменно до того, как вы предложите программу гостю. Расходы по отмене отель не несёт: риск не ваш.</span>
+        </p>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span lang-es>¿Quién responde de la calidad de la excursión?</span>
+          <span lang-en>Who is responsible for the quality of the excursion?</span>
+          <span lang-ru>Кто отвечает за качество экскурсии?</span>
+        </summary>
+        <p class="faq-answer">
+          <span lang-es>Cada atracción responde de su propio servicio, pero el hotel tiene un solo interlocutor: nosotros. Solo trabajamos con establecimientos que hemos visitado y comprobado, y si algo sale mal lo resolvemos con el proveedor sin que el hotel tenga que llamar a nadie.</span>
+          <span lang-en>Each attraction is responsible for its own service, but the hotel has a single point of contact: us. We only work with venues we have visited and checked, and if something goes wrong we sort it out with the provider — the hotel doesn't have to call anyone.</span>
+          <span lang-ru>За свою услугу отвечает сам объект, но у отеля один собеседник — мы. Работаем только с местами, которые сами посетили и проверили, а если что-то пошло не так, решаем это с объектом: отелю никуда звонить не нужно.</span>
+        </p>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span lang-es>¿En qué zona y en qué idiomas trabajan?</span>
+          <span lang-en>Which area and languages do you cover?</span>
+          <span lang-ru>Какой регион и какие языки?</span>
+        </summary>
+        <p class="faq-answer">
+          <span lang-es>Toda la Comunidad Valenciana, con base en Alicante: Elche, Torrevieja, Mar Menor y alrededores. Atendemos a los huéspedes en español, inglés y ruso.</span>
+          <span lang-en>The whole Comunidad Valenciana, based in Alicante: Elche, Torrevieja, Mar Menor and the surrounding area. Guests are served in Spanish, English and Russian.</span>
+          <span lang-ru>Вся Валенсийская автономия, база — Аликанте: Эльче, Торревьеха, Мар-Менор и окрестности. Гостей обслуживаем на испанском, английском и русском.</span>
+        </p>
+      </details>
     </div>
   </div>
 </section>
