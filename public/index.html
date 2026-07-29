@@ -447,6 +447,9 @@
     background-image:var(--photo, none), var(--fallback, var(--wave-gradient));
     background-size:cover; background-position:center; background-repeat:no-repeat;
   }
+  /* Бейдж поверх фотографии карточки. Цену туда не кладём — она стоит
+     в теле карточки вместе с оговорками («с человека», «группа от 10»),
+     а два одинаковых числа в одной карточке только сбивают. */
   .card-media span{
     position:absolute; top:12px; left:12px; background:rgba(0,0,0,0.35); color:#fff;
     font-size:0.7rem; letter-spacing:0.06em; text-transform:uppercase; padding:5px 10px; border-radius:999px;
@@ -1057,7 +1060,7 @@
     </div>
     <div class="cards">
       <div class="card">
-        <div class="card-media" data-photo="assets/hero/exc1.jpg" style="--fallback:linear-gradient(135deg,#c0466b,#e08a3f);"><span lang-es>desde 18 € / persona</span><span lang-en>from €18 / person</span><span lang-ru>от 18 € / чел.</span></div>
+        <div class="card-media" data-photo="assets/hero/exc1.jpg" style="--fallback:linear-gradient(135deg,#c0466b,#e08a3f);"></div>
         <div class="card-body">
           <h3>Castillo de Santa Bárbara</h3>
           <p><span lang-es>Visita guiada con vistas panorámicas de la bahía de Alicante.</span><span lang-en>Guided visit with panoramic views over Alicante bay.</span><span lang-ru>Экскурсия с гидом и панорамным видом на бухту Аликанте.</span></p>
@@ -1065,7 +1068,7 @@
         </div>
       </div>
       <div class="card">
-        <div class="card-media" data-photo="assets/hero/exc2.jpg" style="--fallback:linear-gradient(135deg,#e08a3f,#1c8a86);"><span lang-es>desde 15 € / persona</span><span lang-en>from €15 / person</span><span lang-ru>от 15 € / чел.</span></div>
+        <div class="card-media" data-photo="assets/hero/exc2.jpg" style="--fallback:linear-gradient(135deg,#e08a3f,#1c8a86);"></div>
         <div class="card-body">
           <h3><span lang-es>Casco Antiguo</span><span lang-en>Old Town Walk</span><span lang-ru>Старый город</span></h3>
           <p><span lang-es>Recorrido a pie por el Barrio de Santa Cruz y la Explanada.</span><span lang-en>Walking route through Santa Cruz quarter and the Explanada.</span><span lang-ru>Пешая прогулка по кварталу Санта-Крус и набережной Эспланада.</span></p>
@@ -1073,7 +1076,7 @@
         </div>
       </div>
       <div class="card">
-        <div class="card-media" data-photo="assets/hero/exc3.jpg" style="--fallback:linear-gradient(135deg,#1c8a86,#1d4d84);"><span lang-es>desde 12 € / persona</span><span lang-en>from €12 / person</span><span lang-ru>от 12 € / чел.</span></div>
+        <div class="card-media" data-photo="assets/hero/exc3.jpg" style="--fallback:linear-gradient(135deg,#1c8a86,#1d4d84);"></div>
         <div class="card-body">
           <h3>MARQ</h3>
           <p><span lang-es>Museo Arqueológico de Alicante, entrada y visita guiada.</span><span lang-en>Alicante Archaeological Museum, entry and guided tour.</span><span lang-ru>Археологический музей Аликанте: билет и экскурсия с гидом.</span></p>
@@ -1502,7 +1505,11 @@
   }
 
   var heroEl = document.getElementById('hero');
-  loadPhoto(slides[1]);
+  /* Второй кадр нужен только через 5 секунд, поэтому не отнимаем канал
+     у первого экрана: ждём окончания загрузки страницы и ещё секунду. */
+  function preloadSecondSlide(){ setTimeout(function(){ loadPhoto(slides[1]); }, 1000); }
+  if(document.readyState === 'complete'){ preloadSecondSlide(); }
+  else { window.addEventListener('load', preloadSecondSlide); }
   restartGallery();
 
   /* ---------- Buscador del hero / hero search ---------- */
